@@ -9,6 +9,7 @@
 #define ALGORITHMS_H_
 
 #include <time.h>
+#include <map>
 #include "Utils.h"
 
 namespace std {
@@ -17,12 +18,14 @@ class Algorithms {
 private:
 	Algorithms();
 	static Algorithms* instance;
+	map<pair<int,int>, int> sample;		// [(n,k):excution_time]
 	clock_t start_time;
 	clock_t stop_time;
 public:
 	static Algorithms* get();
 	int quickSorting(int* array,int n,int k);
 	int getExecutionTime();
+	map<pair<int,int>,int>* getSample();
 	virtual ~Algorithms();
 };
 

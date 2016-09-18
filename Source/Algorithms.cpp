@@ -12,8 +12,8 @@ namespace std {
 Algorithms* Algorithms::instance = NULL;
 
 Algorithms::Algorithms() {
-	// TODO Auto-generated constructor stub
-
+	this->start_time = 0;
+	this->stop_time = 0;
 }
 
 Algorithms* Algorithms::get(){
@@ -27,7 +27,13 @@ int Algorithms::quickSorting(int* array,int n,int k){
 	this->start_time = clock();
 	Utils::get()->quicksort(array,0,n-1);
 	this->stop_time = clock();
+	//sample recording
+	this->sample.insert(std::make_pair( std::make_pair(n,k),this->stop_time-this->start_time));
 	return array[k];
+}
+
+map<pair<int,int>,int>* Algorithms::getSample(){
+	return &this->sample;
 }
 
 int Algorithms::getExecutionTime(){
@@ -35,7 +41,7 @@ int Algorithms::getExecutionTime(){
 }
 
 Algorithms::~Algorithms() {
-	// TODO Auto-generated destructor stub
+	this->sample.erase(this->sample.begin(),this->sample.end());
 }
 
 } /* namespace std */

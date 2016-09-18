@@ -34,7 +34,6 @@ int Algorithms::getExecutionTime(){
 	return this->stop_time - this->start_time;
 }
 
-
 Algorithms::~Algorithms() {
 	// TODO Auto-generated destructor stub
 }

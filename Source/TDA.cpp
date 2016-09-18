@@ -7,19 +7,17 @@
 //============================================================================
 
 #include "../Headers/Utils.h"
+#include "../Headers/Algorithms.h"
 
 #include <iostream>
 
 using namespace std;
 
 int main() {
-	int n = 5;
+	int n = 10000;
+	int k = 6;
 	int* array = Utils::get()->createArray(n);
-
-
-	Utils::get()->quicksort(array,0,n-1);
-	for(int i = 0; i < n; i++){
-		cout << array[i] << endl;
-	}
+	Algorithms::get()->quickSorting(array,n,k);
+	cout << Algorithms::get()->getExecutionTime()<<endl;
 	return 0;
 }

@@ -67,6 +67,14 @@ void  Utils::quicksort(int *array, int start, int end){
     }
 }
 
+int* Utils::createArray(size_t n){
+	int* array = new int[n];
+	for(size_t i = 0; i < n; i++){
+		array[i] = rand();
+	}
+	return array;
+}
+
 Utils::~Utils() {
 	// TODO Auto-generated destructor stub
 }

@@ -9,6 +9,7 @@
 #define UTILS_H_
 
 #include <stdio.h>
+#include <stdlib.h>
 
 namespace std {
 
@@ -18,6 +19,7 @@ private:
 	static Utils* instance;
 public:
 	static Utils* get();
+	int* createArray(size_t n);
 	void quicksort(int* array,int start, int end);
 	virtual ~Utils();
 };

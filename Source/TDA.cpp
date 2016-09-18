@@ -22,5 +22,10 @@ int main() {
 
 	/*MathGl mgl;
 	mgl.plot(Algorithms::get()->getSample(),"Muestra");*/
+
+	//free memory
+	Algorithms::get()->~Algorithms();
+	Utils::get()->~Utils();
+	delete[] array;
 	return 0;
 }

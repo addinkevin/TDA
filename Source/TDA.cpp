@@ -6,7 +6,6 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
-#include "../Headers/Utils.h"
 #include "../Headers/Algorithms.h"
 #include "../Headers/MathGl.h"
 
@@ -15,7 +14,7 @@
 using namespace std;
 
 int main() {
-	int n = 10;
+	int n = 1002500;
 	int k = 6;
 	int* array = Utils::get()->createArray(n);
 	Algorithms::get()->quickSorting(array,n,k);

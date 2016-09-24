@@ -18,12 +18,14 @@ class Algorithms {
 private:
 	Algorithms();
 	static Algorithms* instance;
-	map<pair<int,int>, int> sample;		// [(n,k):excution_time]
+	map<pair<int,int>, int> qsSample;		// [(n,k):excution_time]
+	map<pair<int,int>, int> hsSample;		// [(n,k):excution_time]
 	clock_t start_time;
 	clock_t stop_time;
 public:
 	static Algorithms* get();
-	int quickSorting(int* array,int n,int k);
+	int quickSort(int* array,int n,int k);
+	int heapSort(int* array,int n,int k);
 	int getExecutionTime();
 	map<pair<int,int>,int>* getSample();
 	virtual ~Algorithms();

@@ -21,6 +21,7 @@ public:
 	static Utils* get();
 	int* createArray(size_t n);
 	void quicksort(int* array,int start, int end);
+	void heapsort(int* array,int n);
 	virtual ~Utils();
 };
 

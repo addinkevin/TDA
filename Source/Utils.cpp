@@ -11,18 +11,35 @@ namespace std {
 
 Utils* Utils::instance = NULL;
 
-Utils::Utils() {
-
+/*
+ * AUXILIAR FUNCTIONS
+ * */
+void max_heapify(int *a, int i, int n){
+    int j, temp;
+    temp = a[i];
+    j = 2*i;
+    while (j <= n){
+        if (j < n && a[j+1] > a[j])
+            j = j+1;
+        if (temp > a[j]){
+            break;
+        }else if (temp <= a[j]){
+            a[j/2] = a[j];
+            j = 2*j;
+        }
+    }
+    a[j/2] = temp;
+    return;
 }
 
-Utils* Utils::get(){
-	if(!instance){
-		instance = new Utils();
-	}
-	return instance;
+void build_maxheap(int *a, int n){
+    int i;
+    for(i = n/2; i >= 1; i--){
+        max_heapify(a, i, n);
+    }
 }
 
-// Función para dividir el array y hacer los intercambios
+//QS: Función para dividir el array y hacer los intercambios
 int  divide(int *array, int start, int end) {
     int left;
     int right;
@@ -55,7 +72,19 @@ int  divide(int *array, int start, int end) {
     return right;
 }
 
-// Función recursiva para hacer el ordenamiento
+Utils::Utils() {
+
+}
+
+Utils* Utils::get(){
+	if(!instance){
+		instance = new Utils();
+	}
+	return instance;
+}
+
+
+
 void  Utils::quicksort(int *array, int start, int end){
     int pivot;
     if (start < end) {
@@ -64,6 +93,17 @@ void  Utils::quicksort(int *array, int start, int end){
         quicksort(array, start, pivot - 1);
         // Ordeno la lista de los mayores
         quicksort(array, pivot + 1, end);
+    }
+}
+
+void Utils::heapsort(int *a, int n){
+    build_maxheap(a,n);
+	int i, temp;
+    for (i = n; i >= 2; i--){
+        temp = a[i];
+        a[i] = a[1];
+        a[1] = temp;
+        max_heapify(a, 1, i - 1);
     }
 }
 

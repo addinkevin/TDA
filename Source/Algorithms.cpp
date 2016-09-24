@@ -23,17 +23,25 @@ Algorithms* Algorithms::get(){
 	return instance;
 }
 
-int Algorithms::quickSorting(int* array,int n,int k){
+int Algorithms::quickSort(int* array,int n,int k){
 	this->start_time = clock();
 	Utils::get()->quicksort(array,0,n-1);
 	this->stop_time = clock();
 	//sample recording
-	this->sample.insert(std::make_pair( std::make_pair(n,k),this->stop_time-this->start_time));
+	this->qsSample.insert(std::make_pair( std::make_pair(n,k),this->stop_time-this->start_time));
 	return array[k];
 }
 
+int Algorithms::heapSort(int* array,int n,int k){
+	this->start_time =  clock();
+	Utils::get()->heapsort(array,n);
+	this->stop_time = clock();
+	//sample recording
+	this->hsSample.insert(std::make_pair( std::make_pair(n,k),this->stop_time-this->start_time));
+	return array[k];
+}
 map<pair<int,int>,int>* Algorithms::getSample(){
-	return &this->sample;
+	return &this->qsSample;
 }
 
 int Algorithms::getExecutionTime(){
@@ -41,7 +49,8 @@ int Algorithms::getExecutionTime(){
 }
 
 Algorithms::~Algorithms() {
-	this->sample.erase(this->sample.begin(),this->sample.end());
+	this->qsSample.erase(this->qsSample.begin(),this->qsSample.end());
+	this->hsSample.erase(this->hsSample.begin(),this->hsSample.end());
 }
 
 } /* namespace std */

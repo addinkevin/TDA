@@ -23,22 +23,22 @@ Algorithms* Algorithms::get(){
 	return instance;
 }
 
-int Algorithms::quickSort(int* array,int n,int k){
+int Algorithms::quickSort(vector<int>* array,int n,int k){
 	this->start_time = clock();
-	Utils::get()->quicksort(array,0,n-1);
+	Utils::get()->quicksort(array,0,n);
 	this->stop_time = clock();
 	//sample recording
 	this->qsSample.insert(std::make_pair( std::make_pair(n,k),this->stop_time-this->start_time));
-	return array[k];
+	return  array->at(k);
 }
 
-int Algorithms::heapSort(int* array,int n,int k){
+int Algorithms::heapSort(vector<int>* array,int n,int k){
 	this->start_time =  clock();
 	Utils::get()->heapsort(array,n);
 	this->stop_time = clock();
 	//sample recording
 	this->hsSample.insert(std::make_pair( std::make_pair(n,k),this->stop_time-this->start_time));
-	return array[k];
+	return array->at(k);
 }
 map<pair<int,int>,int>* Algorithms::getSample(){
 	return &this->qsSample;

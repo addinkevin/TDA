@@ -14,25 +14,25 @@ Utils* Utils::instance = NULL;
 /*
  * AUXILIAR FUNCTIONS
  * */
-void max_heapify(int *a, int i, int n){
+void max_heapify(vector<int>* a, int i, int n){
     int j, temp;
-    temp = a[i];
+    temp = a->at(i);
     j = 2*i;
     while (j <= n){
-        if (j < n && a[j+1] > a[j])
+        if (j < n && a->at(j+1) > a->at(j))
             j = j+1;
-        if (temp > a[j]){
+        if (temp > a->at(j)){
             break;
-        }else if (temp <= a[j]){
-            a[j/2] = a[j];
+        }else if (temp <= a->at(j)){
+            a->at(j/2) = a->at(j);
             j = 2*j;
         }
     }
-    a[j/2] = temp;
+    a->at(j/2) = temp;
     return;
 }
 
-void build_maxheap(int *a, int n){
+void build_maxheap(vector<int>* a, int n){
     int i;
     for(i = n/2; i >= 1; i--){
         max_heapify(a, i, n);
@@ -40,34 +40,34 @@ void build_maxheap(int *a, int n){
 }
 
 //QS: Función para dividir el array y hacer los intercambios
-int  divide(int *array, int start, int end) {
+int  divide(vector<int>* array, int start, int end) {
     int left;
     int right;
     int pivot;
     int temp;
 
-    pivot = array[start];
+    pivot = array->at(start);
     left = start;
     right = end;
     // Mientras no se cruzen los índices
     while (left < right) {
-        while (array[right] > pivot) {
+        while (array->at(right) > pivot) {
             right--;
         }
-        while ((left < right) && (array[left] <= pivot)) {
+        while ((left < right) && (array->at(left) <= pivot)) {
             left++;
         }
         // Si todavía no se cruzan los indices seguimos intercambiando
         if (left < right) {
-            temp = array[left];
-            array[left] = array[right];
-            array[right] = temp;
+            temp = array->at(left);
+            array->at(left) = array->at(right);
+            array->at(right) = temp;
         }
     }
     // Los índices ya se han cruzado, ponemos el pivot en el lugar que le corresponde
-    temp = array[right];
-    array[right] = array[start];
-    array[start] = temp;
+    temp = array->at(right);
+    array->at(right) = array->at(start);
+    array->at(start) = temp;
     // La nueva posición del pivot
     return right;
 }
@@ -85,7 +85,7 @@ Utils* Utils::get(){
 
 
 
-void  Utils::quicksort(int *array, int start, int end){
+void  Utils::quicksort(vector<int>* array, int start, int end){
     int pivot;
     if (start < end) {
         pivot = divide(array, start, end);
@@ -96,27 +96,33 @@ void  Utils::quicksort(int *array, int start, int end){
     }
 }
 
-void Utils::heapsort(int *a, int n){
+void Utils::heapsort(vector<int>* a, int n){
     build_maxheap(a,n);
 	int i, temp;
     for (i = n; i >= 2; i--){
-        temp = a[i];
-        a[i] = a[1];
-        a[1] = temp;
+        temp = a->at(i);
+        a->at(i) = a->at(1);
+        a->at(1) = temp;
         max_heapify(a, 1, i - 1);
     }
 }
 
-int* Utils::createArray(size_t n){
-	int* array = new int[n];
+vector<int> Utils::createArray(size_t n){
+	//Allocate memory for n items, but array is still empty
+	this->array.reserve(n);
+	int max = 100;
 	for(size_t i = 0; i < n; i++){
-		array[i] = rand();
+		this->array.push_back(rand()%max);
 	}
-	return array;
+	return this->array;
+}
+
+vector<int> Utils::getArray(){
+	return this->array;
 }
 
 Utils::~Utils() {
-	// TODO Auto-generated destructor stub
+
 }
 
 } /* namespace std */

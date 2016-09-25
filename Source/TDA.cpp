@@ -13,25 +13,28 @@
 
 using namespace std;
 
+//TODO el k minimo a veces no coincide. CHEQUEAR ALGORITMO!
 int main() {
-	int n = 1002500;
-	int k = 6;
+	int n = 950;
+	int k = 75;
 	int kMin;
-	int* array = Utils::get()->createArray(n);
+	vector<int> array = Utils::get()->createArray(n);
 
 	//QuickSort
-	kMin = Algorithms::get()->quickSort(array,n,k);
+	kMin = Algorithms::get()->quickSort(&array,n-1,k);
 	cout << "[QuickSort] Tiempo de ejecucion: "<< Algorithms::get()->getExecutionTime()<<endl;
 	cout << "[QuickSort] k elemento minimo: "<< kMin << endl;
 
+	//Reset array
+	array = Utils::get()->getArray();
+
 	//HeapSort
-	kMin = Algorithms::get()->heapSort(array,n,k);
+	kMin = Algorithms::get()->heapSort(&array,n-1,k);
 	cout << "[HeapSort] Tiempo de ejecucion: "<< Algorithms::get()->getExecutionTime()<<endl;
 	cout << "[HeapSort] k elemento minimo: "<< kMin << endl;
 
 	//Free memory
 	Algorithms::get()->~Algorithms();
 	Utils::get()->~Utils();
-	delete[] array;
 	return 0;
 }

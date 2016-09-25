@@ -10,18 +10,21 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <vector>
 
 namespace std {
 
 class Utils {
 private:
 	Utils();
+	vector<int> array;
 	static Utils* instance;
 public:
 	static Utils* get();
-	int* createArray(size_t n);
-	void quicksort(int* array,int start, int end);
-	void heapsort(int* array,int n);
+	vector<int> createArray(size_t n);
+	vector<int> getArray();
+	void quicksort(vector<int>* array,int start, int end);
+	void heapsort(vector<int>* array,int n);
 	virtual ~Utils();
 };
 

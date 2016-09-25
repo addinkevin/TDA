@@ -24,8 +24,8 @@ private:
 	clock_t stop_time;
 public:
 	static Algorithms* get();
-	int quickSort(int* array,int n,int k);
-	int heapSort(int* array,int n,int k);
+	int quickSort(vector<int>* array,int n,int k);
+	int heapSort(vector<int>* array,int n,int k);
 	int getExecutionTime();
 	map<pair<int,int>,int>* getSample();
 	virtual ~Algorithms();

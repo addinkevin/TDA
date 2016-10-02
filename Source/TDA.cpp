@@ -8,10 +8,21 @@
 
 #include "../Headers/Algorithms.h"
 #include "../Headers/MathGl.h"
+#include "../Headers/Digraph.h"
 
 #include <iostream>
 
 using namespace std;
+
+
+//Ejecuta funciones de Grafos (libera el main de tanto codigo)
+void runGraphs(){
+	cout << endl;
+	cout << "[Algoritmos de Grafos]" << endl;
+	Digraph* g = new Digraph(10);
+	g->addEdge(1,2,3);
+	cout << endl;
+}
 
 //TODO el k minimo a veces no coincide. CHEQUEAR ALGORITMO!
 int main() {
@@ -36,5 +47,9 @@ int main() {
 	//Free memory
 	Algorithms::get()->~Algorithms();
 	Utils::get()->~Utils();
+
+	runGraphs();
 	return 0;
 }
+
+

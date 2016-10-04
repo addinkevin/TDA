@@ -71,6 +71,25 @@ int  divide(vector<int>* array, int start, int end) {
     // La nueva posición del pivot
     return right;
 }
+	
+void swap(vector<int>* array,int pivotIndex,int right){
+
+}
+
+int  partition(vector<int>* array, int left,int right,int pivotIndex){
+    int pivotValue = array->at(pivotIndex);
+    swap(array,pivotIndex, right);
+    int storeIndex = left;
+
+    for(vector<int>::iterator it = array->begin()+left; it < array->begin()+right; ++it){
+        if ( *it < pivotValue){
+            swap(array, storeIndex,distance(array->begin(),it));
+            storeIndex++;
+        }
+	}
+    swap(array,right,storeIndex);  // Move pivot to its final place
+    return storeIndex;
+}
 
 Utils::Utils() {
 
@@ -107,6 +126,21 @@ void Utils::heapsort(vector<int>* a, int n){
     }
 }
 
+int Utils::quickSelect(vector<int>* array,int left, int right, int k){
+    if (left == right)
+        return array->at(left);
+    int pivotIndex = (int)( rand() % (right-left + 1) );
+
+    pivotIndex = partition(array, left, right, pivotIndex);
+    // The pivot is in its final sorted position
+    if (k == pivotIndex)
+        return array->at(k);
+    else if (k < pivotIndex)
+        return quickSelect(array, left, pivotIndex - 1, k);
+    else
+        return quickSelect(array, pivotIndex + 1, right, k);
+}
+	
 vector<int> Utils::createArray(size_t n){
 	//Allocate memory for n items, but array is still empty
 	this->array.reserve(n);

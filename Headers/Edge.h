@@ -23,7 +23,7 @@ public:
 	int getWeight();
 
 
-	virtual ~Edge();
+	~Edge();
 };
 
 #endif /* EDGE_H_ */

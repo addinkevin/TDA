@@ -12,6 +12,7 @@ using namespace std;
 
 Digraph::Digraph(int vertices) {
 	this->v = vertices;
+	this->e = 0;
 	//Reservo espacio para cada una de las listas de adyacencia de cada vertice
 	this->adjList.reserve(vertices);
 
@@ -25,13 +26,30 @@ int Digraph::getVertices(){
 	return this->v;
 }
 
+int Digraph::getEdges(){
+	return this->e;
+}
+
 list<Edge*>* Digraph::getAdjList(int v){
 	return this->adjList[v];
+}
+
+list<int> Digraph::getAdj(int v){
+	list<Edge*>* listVert = this->adjList[v];
+	list<int> vert;
+
+	//Devuelvo los vertices alcanzados por las aristas que salen de v
+	for (std::list<Edge*>::iterator it=listVert->begin(); it != listVert->end(); ++it){
+	    vert.push_back((*it)->getDest());
+	}
+
+	return vert;
 }
 
 void Digraph::addEdge(int source, int dest, int weight){
 	Edge* e = new Edge(source,dest,weight);
 	this->adjList[source]->push_back(e);
+	this->e ++;
 }
 
 

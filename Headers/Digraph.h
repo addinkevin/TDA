@@ -15,19 +15,22 @@
 class Digraph {
 private:
 	//Cantidad de vertices del Grafo
-	int v;
+	int v, e;
 	//Lista de adyacencia del grafo
 	std::vector<std::list<Edge*>*> adjList;
 
 
 public:
 	Digraph(int vertices);
+
 	int getVertices();
+	int getEdges();
 	std::list<Edge*>* getAdjList(int v);
+	std::list<int> getAdj(int v);
 	void addEdge(int source, int dest, int weight);
 
 
-	virtual ~Digraph();
+	~Digraph();
 };
 
 #endif /* DIGRAPH_H_ */

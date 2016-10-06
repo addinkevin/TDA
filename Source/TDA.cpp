@@ -24,7 +24,6 @@ void runGraphs(){
 	cout << endl;
 }
 
-//TODO el k minimo a veces no coincide. CHEQUEAR ALGORITMO!
 int main() {
 	int n = 1025465;
 	int k = 98;

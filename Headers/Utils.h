@@ -27,6 +27,7 @@ public:
 	void quicksort(vector<int>* array,int start, int end);
 	void heapsort(vector<int>* array,int n);
 	int quickSelect(vector<int>* array,int left, int right, int k);
+	int bruteForce(vector<int>* array,int k);
 	virtual ~Utils();
 };
 

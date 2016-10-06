@@ -25,8 +25,8 @@ void runGraphs(){
 }
 
 int main() {
-	int n = 1025465;
-	int k = 98;
+	int n = 5;
+	int k = 1;
 	int kMin;
 	vector<int> array = Utils::get()->createArray(n);
 
@@ -46,6 +46,12 @@ int main() {
 	kMin = Algorithms::get()->quickSelect(&array,0,n-1,++k);
 	cout << "[QuickSelect] Tiempo de ejecucion: "<< Algorithms::get()->getExecutionTime()<<endl;
 	cout << "[QuickSelect] k elemento minimo: "<< kMin << endl;
+
+	//BruteForce TODO revisar
+	array = Utils::get()->getArray();
+	kMin = Algorithms::get()->bruteForce(&array,k);
+	cout << "[BruteForce] Tiempo de ejecucion: "<< Algorithms::get()->getExecutionTime()<<endl;
+	cout << "[BruteForce] k elemento minimo: "<< kMin << endl;
 
 	//Free memory
 	Algorithms::get()->~Algorithms();

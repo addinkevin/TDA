@@ -54,7 +54,14 @@ int Algorithms::nativeSort(vector<int>* array,int k){
 	this->stop_time = clock();
 	return array->at(k);
 }
-	
+
+int Algorithms::bruteForce(vector<int>* array,int k){
+	this->start_time =  clock();
+	int kMinValue = Utils::get()->bruteForce(array,k);
+	this->stop_time = clock();
+	return kMinValue;
+}
+
 map<pair<int,int>,int>* Algorithms::getSample(){
 	return &this->qsSample;
 }

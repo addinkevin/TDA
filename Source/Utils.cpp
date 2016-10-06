@@ -95,6 +95,17 @@ int  partition(vector<int>* array, int p,int r){
     return r;
 }
 
+bool verificador(vector<int>* array,int candidate,int k){
+	return (array->at(k) == candidate);
+}
+
+
+/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * */
+
 Utils::Utils() {
 
 }
@@ -142,6 +153,17 @@ int Utils::quickSelect(vector<int>* array,int p, int r, int k){
     	return quickSelect(array, p, j - 1, k);
     else
     	return quickSelect(array, j + 1, r, k - length);
+}
+
+int Utils::bruteForce(vector<int>* array,int k){
+	int max = 100;
+	std::sort(array->begin(),array->end());
+	std::unique(array->begin(),array->end());
+	for(int i=0; i <= max; i++){
+		if(verificador(array,i,k))
+			return i;
+	}
+	return -1;
 }
 	
 vector<int> Utils::createArray(size_t n){

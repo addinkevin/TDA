@@ -27,6 +27,7 @@ public:
 	int quickSort(vector<int>* array,int n,int k);
 	int heapSort(vector<int>* array,int n,int k);
 	int quickSelect(vector<int>* array,int left,int rigth,int k);
+	int nativeSort(vector<int>* array,int k);
 	int getExecutionTime();
 	map<pair<int,int>,int>* getSample();
 	virtual ~Algorithms();

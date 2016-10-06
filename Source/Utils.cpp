@@ -72,23 +72,27 @@ int  divide(vector<int>* array, int start, int end) {
     return right;
 }
 	
-void swap(vector<int>* array,int pivotIndex,int right){
+int  partition(vector<int>* array, int p,int r){
+    int pivot = array->at(r);
 
-}
+    while ( p < r )
+    {
+        while ( array->at(p) < pivot )
+            p++;
 
-int  partition(vector<int>* array, int left,int right,int pivotIndex){
-    int pivotValue = array->at(pivotIndex);
-    swap(array,pivotIndex, right);
-    int storeIndex = left;
+        while ( array->at(r) > pivot )
+            r--;
 
-    for(vector<int>::iterator it = array->begin()+left; it < array->begin()+right; ++it){
-        if ( *it < pivotValue){
-            swap(array, storeIndex,distance(array->begin(),it));
-            storeIndex++;
+        if ( array->at(p) == array->at(r) )
+            p++;
+        else if ( p < r ) {
+            int tmp = array->at(p);
+            array->at(p) = array->at(r);
+            array->at(r) = tmp;
         }
-	}
-    swap(array,right,storeIndex);  // Move pivot to its final place
-    return storeIndex;
+    }
+
+    return r;
 }
 
 Utils::Utils() {
@@ -126,19 +130,18 @@ void Utils::heapsort(vector<int>* a, int n){
     }
 }
 
-int Utils::quickSelect(vector<int>* array,int left, int right, int k){
-    if (left == right)
-        return array->at(left);
-    int pivotIndex = (int)( rand() % (right-left + 1) );
+int Utils::quickSelect(vector<int>* array,int p, int r, int k){
+    if ( p == r )
+    	return array->at(p);
+    int j = partition(array, p, r);
+    int length = j - p + 1;
 
-    pivotIndex = partition(array, left, right, pivotIndex);
-    // The pivot is in its final sorted position
-    if (k == pivotIndex)
-        return array->at(k);
-    else if (k < pivotIndex)
-        return quickSelect(array, left, pivotIndex - 1, k);
+    if ( length == k )
+    	return array->at(j);
+    else if ( k < length )
+    	return quickSelect(array, p, j - 1, k);
     else
-        return quickSelect(array, pivotIndex + 1, right, k);
+    	return quickSelect(array, j + 1, r, k - length);
 }
 	
 vector<int> Utils::createArray(size_t n){

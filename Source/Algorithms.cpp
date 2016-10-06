@@ -47,6 +47,13 @@ int Algorithms::quickSelect(vector<int>* array,int left, int right, int k){
 	this->stop_time = clock();
 	return kMinValue;
 }
+
+int Algorithms::nativeSort(vector<int>* array,int k){
+	this->start_time =  clock();
+	std::sort(array->begin(),array->end());
+	this->stop_time = clock();
+	return array->at(k);
+}
 	
 map<pair<int,int>,int>* Algorithms::getSample(){
 	return &this->qsSample;

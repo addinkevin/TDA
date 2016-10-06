@@ -26,8 +26,8 @@ void runGraphs(){
 
 //TODO el k minimo a veces no coincide. CHEQUEAR ALGORITMO!
 int main() {
-	int n = 950;
-	int k = 75;
+	int n = 1025465;
+	int k = 98;
 	int kMin;
 	vector<int> array = Utils::get()->createArray(n);
 
@@ -36,19 +36,23 @@ int main() {
 	cout << "[QuickSort] Tiempo de ejecucion: "<< Algorithms::get()->getExecutionTime()<<endl;
 	cout << "[QuickSort] k elemento minimo: "<< kMin << endl;
 
-	//Reset array
+	//Native c++ sort
 	array = Utils::get()->getArray();
+	kMin = Algorithms::get()->nativeSort(&array,k);
+	cout << "[NativeSort] Tiempo de ejecucion: "<< Algorithms::get()->getExecutionTime()<<endl;
+	cout << "[NativeSort] k elemento minimo: "<< kMin << endl;
 
-	//HeapSort
-	kMin = Algorithms::get()->heapSort(&array,n-1,k);
-	cout << "[HeapSort] Tiempo de ejecucion: "<< Algorithms::get()->getExecutionTime()<<endl;
-	cout << "[HeapSort] k elemento minimo: "<< kMin << endl;
+	//QuickSelect
+	array = Utils::get()->getArray();
+	kMin = Algorithms::get()->quickSelect(&array,0,n-1,++k);
+	cout << "[QuickSelect] Tiempo de ejecucion: "<< Algorithms::get()->getExecutionTime()<<endl;
+	cout << "[QuickSelect] k elemento minimo: "<< kMin << endl;
 
 	//Free memory
 	Algorithms::get()->~Algorithms();
 	Utils::get()->~Utils();
 
-	runGraphs();
+	//runGraphs();
 	return 0;
 }
 

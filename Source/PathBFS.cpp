@@ -18,6 +18,7 @@ PathBFS::PathBFS(Digraph* g, int source, int dest ) : Path(g, source, dest ){
 	edgeTo = new Edge*[g->getVertices()];
 
 	for(int i=0;i<g->getVertices();i++) {
+		marked[i] = false;
 		distance[i] = Path::NO_PATH;        //Inicializo distancias con distancia infinito
 	}
 

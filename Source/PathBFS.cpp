@@ -5,7 +5,7 @@
  *      Author: gatti2602
  */
 
-#include "PathBFS.h"
+#include "../Headers/PathBFS.h"
 
 #include <queue>
 

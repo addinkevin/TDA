@@ -5,12 +5,18 @@
  *      Author: gatti2602
  */
 
+#include <fstream>
+#include <sstream>
 #include "../Headers/Digraph.h"
 
 using namespace std;
 
 
 Digraph::Digraph(int vertices) {
+	this->initGraph(vertices);
+}
+
+void Digraph::initGraph(int vertices) {
 	this->v = vertices;
 	this->e = 0;
 	//Reservo espacio para cada una de las listas de adyacencia de cada vertice
@@ -19,8 +25,8 @@ Digraph::Digraph(int vertices) {
 	for(int i=0; i<vertices;i++ ){
 		this->adjList.push_back(new std::list<Edge*>);
 	}
-
 }
+
 
 int Digraph::getVertices(){
 	return this->v;
@@ -65,4 +71,37 @@ Digraph::~Digraph() {
 		delete(list);
 	}
 }
+
+
+Digraph::Digraph(std::string fileName) {
+	std::ifstream file(fileName.c_str());
+	if (!file.is_open()) {
+		throw std::string("Error al abrir el archivo para levantar el grafo") + fileName;
+	}
+
+	std::string line;
+
+	std::getline(file, line);
+	int vertexCount = atoi(line.c_str());
+
+	this->initGraph(vertexCount);
+
+	while (std::getline(file,line)) {
+        if (line.empty()) break;
+
+		std::istringstream stringStream(line);
+		std::string field;
+		getline(stringStream, field, ',');
+		int vertexFrom = atoi(field.c_str());
+		getline(stringStream, field, ',');
+		int vertexTo = atoi(field.c_str());
+		getline(stringStream, field, ',');
+		int weight = atoi(field.c_str());
+
+		this->addEdge(vertexFrom, vertexTo, weight);
+	}
+
+	file.close();
+}
+
 

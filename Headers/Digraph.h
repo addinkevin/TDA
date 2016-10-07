@@ -37,7 +37,7 @@ public:
 	int getEdges();
 	std::list<Edge*>* getAdjList(int v);
 	std::list<int> getAdj(int v);
-	void addEdge(int source, int dest, int weight);
+	void addEdge(int source, int dest, double weight);
 
 	~Digraph();
 };

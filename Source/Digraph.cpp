@@ -52,7 +52,7 @@ list<int> Digraph::getAdj(int v){
 	return vert;
 }
 
-void Digraph::addEdge(int source, int dest, int weight){
+void Digraph::addEdge(int source, int dest, double weight){
 	Edge* e = new Edge(source,dest,weight);
 	this->adjList[source]->push_back(e);
 	this->e ++;
@@ -96,7 +96,7 @@ Digraph::Digraph(std::string fileName) {
 		getline(stringStream, field, ',');
 		int vertexTo = atoi(field.c_str());
 		getline(stringStream, field, ',');
-		int weight = atoi(field.c_str());
+		double weight = std::stod(field.c_str());
 
 		this->addEdge(vertexFrom, vertexTo, weight);
 	}

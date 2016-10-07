@@ -7,7 +7,7 @@
 
 #include "../Headers/Edge.h"
 
-Edge::Edge(int source, int dest, int weight) {
+Edge::Edge(int source, int dest, double weight) {
 	this->source = source;
 	this->dest = dest;
 	this->weight = weight;
@@ -21,7 +21,7 @@ int Edge::getDest(){
 	return this->dest;
 }
 
-int Edge::getWeight(){
+double Edge::getWeight(){
 	return this->weight;
 }
 

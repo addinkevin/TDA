@@ -20,11 +20,11 @@ protected:
 public:
 	Path(Digraph* g, int source, int dest);
 	virtual bool visited(int v)=0;
-	virtual int distanceTo(int v)=0;
+	virtual double distanceTo(int v)=0;
 	virtual std::list<Edge*> pathTo(int v)=0;
 	virtual ~Path();
 
-	const int NO_PATH = std::numeric_limits<int>::max();
+	const double NO_PATH = std::numeric_limits<double>::max();
 };
 
 #endif /* PATH_H_ */

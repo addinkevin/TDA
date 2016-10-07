@@ -15,12 +15,12 @@ class Edge {
 private:
 	int source;
 	int dest;
-	int weight;
+	double weight;
 public:
-	Edge(int source, int dest, int weight);
+	Edge(int source, int dest, double weight);
 	int getSource();
 	int getDest();
-	int getWeight();
+	double getWeight();
 
 
 	~Edge();

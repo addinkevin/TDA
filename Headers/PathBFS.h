@@ -14,7 +14,7 @@ class PathBFS: public Path {
 
 private:
 	bool* marked;
-	int* distance;
+	double* distance;
 	Edge** edgeTo;
 
 public:
@@ -22,7 +22,7 @@ public:
 	virtual ~PathBFS();
 
 	bool visited(int v);
-	int distanceTo(int v);
+	double distanceTo(int v);
 	std::list<Edge*> pathTo(int v);
 };
 

@@ -14,7 +14,7 @@ using namespace std;
 PathBFS::PathBFS(Digraph* g, int source, int dest ) : Path(g, source, dest ){
 
 	marked = new bool[g->getVertices()];
-	distance = new int[g->getVertices()];
+	distance = new double[g->getVertices()];
 	edgeTo = new Edge*[g->getVertices()];
 
 	for(int i=0;i<g->getVertices();i++) {
@@ -54,7 +54,7 @@ bool PathBFS::visited(int v){
 
 }
 
-int PathBFS::distanceTo(int v){
+double PathBFS::distanceTo(int v){
 	return distance[v];
 
 }

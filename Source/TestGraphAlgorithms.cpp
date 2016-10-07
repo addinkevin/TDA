@@ -5,6 +5,8 @@
 #include <fstream>
 #include "../Headers/TestGraphAlgorithms.h"
 #include "../Headers/Digraph.h"
+#include "../Headers/PriorityQueue.h"
+#include "../Headers/SearchWithHeuristic.h"
 
 void TestGraphAlgorithms::testCreateGraphFromFile() {
     std::string fileName = "/tmp/archivoGrafoPrueba.txt";
@@ -28,3 +30,25 @@ void TestGraphAlgorithms::testCreateGraphFromFile() {
 
     delete digraph;
 }
+
+void TestGraphAlgorithms::testPriorityQueue() {
+    PriorityQueue priorityQueue;
+
+    test(priorityQueue.empty(), "Error al probar empty");
+
+    priorityQueue.push(1,10);
+    priorityQueue.push(2,50);
+    priorityQueue.push(3, 30);
+
+    test(priorityQueue.top().first == 2, "Error al dar el de mayor prioridad, 2");
+    priorityQueue.pop();
+    test(priorityQueue.top().first == 3, "Error al dar el de mayor prioridad, 3");
+    priorityQueue.pop();
+    test(priorityQueue.top().first == 1, "Error al dar el de mayor prioridad, 1");
+}
+
+void TestGraphAlgorithms::testSearchWithHeuristic() {
+    // TODO
+}
+
+

@@ -7,6 +7,7 @@
 
 
 class Heuristic {
+public:
     virtual double getCost(int v) = 0;
 };
 

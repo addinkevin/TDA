@@ -61,7 +61,7 @@ double PathBFS::distanceTo(int v){
 }
 
 std::list<Edge*> PathBFS::pathTo(int v){
-	list<Edge*> aList;
+	std::list<Edge*> aList;
 	if(!marked[v])
 		return aList; // Lista vacia
 

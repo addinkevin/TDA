@@ -18,8 +18,13 @@ public:
 
     void testCreateGraphFromFile();
 
+    void testPriorityQueue();
+
+    void testSearchWithHeuristic();
+
     void testAll() {
         testCreateGraphFromFile();
+        testPriorityQueue();
 
         std::cout << "All tests OK" << std::endl;
     }

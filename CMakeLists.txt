@@ -1,10 +1,13 @@
 cmake_minimum_required(VERSION 3.6)
 project(TDA)
 
-file(GLOB Ej2Headers "Ejercicio2/Headers/*.h")
-file(GLOB Ej2Source "Ejercicio2/Source/*.cpp")
+file(GLOB Headers "Headers/*.h")
+file(GLOB Sources "Source/*.cpp")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES main.cpp ${Ej2Headers} ${Ej2Source} )
+set(SOURCE_FILES
+        ${Headers}
+        ${Sources})
+
 add_executable(TDA ${SOURCE_FILES})

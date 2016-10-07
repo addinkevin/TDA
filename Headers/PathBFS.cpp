@@ -17,8 +17,10 @@ PathBFS::PathBFS(Digraph* g, int source, int dest ) : Path(g, source, dest ){
 	distance = new int[g->getVertices()];
 	edgeTo = new Edge*[g->getVertices()];
 
-	for(int i=0;i<g->getVertices();i++)
-		distance[i] = Path::NO_PATH;		//Inicializo distancias con distancia infinito
+	for(int i=0;i<g->getVertices();i++) {
+		distance[i] = Path::NO_PATH;        //Inicializo distancias con distancia infinito
+	}
+
 	queue<int> queue;
 
 	marked[this->source] = true;
@@ -35,10 +37,9 @@ PathBFS::PathBFS(Digraph* g, int source, int dest ) : Path(g, source, dest ){
 		//Barro la lista de adyacencia
 		for (std::list<Edge*>::iterator it=adjList->begin(); it != adjList->end(); ++it){
 			    int vert = (*it)->getDest();
-			    int weight = (*it)->getWeight();
 
 			    if(!marked[vert]){
-			    	distance[vert] = distance[v]+weight; //Acumulo la distancia desde el origen hasta el vertice
+			    	distance[vert] = distance[v] + 1; // Acumulo la distancia desde el origen hasta el vertice
 			    	marked[vert]= true;
 			    	queue.push(vert);
 			    	edgeTo[vert] = *it;	//guardo el camino por el que fui
@@ -59,16 +60,17 @@ int PathBFS::distanceTo(int v){
 }
 
 std::list<Edge*> PathBFS::pathTo(int v){
-	list<Edge*>* aList = 0;
+	list<Edge*> aList;
 	if(!marked[v])
-		return *aList; //TODO devolver null
-	 aList = new list<Edge*>();
+		return aList; // Lista vacia
+
 	for(int i = v;i!= this->source;i=edgeTo[i]->getSource())
-		aList->push_back(edgeTo[i]);
+		aList.push_back(edgeTo[i]);
 
-	aList->push_back(edgeTo[this->source]);
+	aList.push_back(edgeTo[this->source]); // Creo que esta no hace falta.
 
-	return *aList;
+	// TODO: Invertir el orden de la lista.
+	return aList;
 }
 
 PathBFS::~PathBFS() {

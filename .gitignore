@@ -32,3 +32,5 @@
 #Others
 .cproject
 .project
+.settings/
+Release/

@@ -53,6 +53,12 @@ int main() {
 	cout << "[BruteForce] Tiempo de ejecucion: "<< Algorithms::get()->getExecutionTime()<<endl;
 	cout << "[BruteForce] k elemento minimo: "<< kMin << endl;
 
+	//KSelection
+	array = Utils::get()->getArray();
+	kMin = Algorithms::get()->kSelection(&array,k);
+	cout << "[KSelection] Tiempo de ejecucion: "<< Algorithms::get()->getExecutionTime()<<endl;
+	cout << "[KSelection] k elemento minimo: "<< kMin << endl;
+
 	//Free memory
 	Algorithms::get()->~Algorithms();
 	Utils::get()->~Utils();

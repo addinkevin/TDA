@@ -99,6 +99,25 @@ bool verificador(vector<int>* array,int candidate,int k){
 	return (array->at(k) == candidate);
 }
 
+int getPositionOfSmallerValue(vector<int>* array,int initPosition){
+	int smallerPosition = initPosition;
+	int smallerValue = array->at(initPosition);
+	for(int auxPosition = (initPosition+1); auxPosition < array->size(); auxPosition++){
+		if(array->at(auxPosition) < smallerValue){
+			smallerPosition = auxPosition;
+			smallerValue = array->at(auxPosition);
+		}
+	}
+	return smallerPosition;
+}
+
+void changeSmallerWithInitial(vector<int>* array, int initPosition, int smallerPosition){
+	int initValue = array->at(initPosition);
+	int smallerValue = array->at(smallerPosition);
+	array->at(initPosition) = smallerValue;
+	array->at(smallerPosition) = initValue;
+}
+
 
 /*
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -165,6 +184,16 @@ int Utils::bruteForce(vector<int>* array,int k){
 	}
 	return -1;
 }
+
+int Utils::kSelection(vector<int>* array,int k){
+	for(int indexArray=0; indexArray<array->size(); indexArray++){
+		int position = getPositionOfSmallerValue(array, indexArray);
+		changeSmallerWithInitial(array, indexArray, position);
+	}
+	return array->at(k);
+}
+
+
 	
 vector<int> Utils::createArray(size_t n){
 	//Allocate memory for n items, but array is still empty

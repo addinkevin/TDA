@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <algorithm>
+#include <iostream>
 
 namespace std {
 
@@ -20,6 +21,7 @@ private:
 	Utils();
 	vector<int> array;
 	static Utils* instance;
+
 public:
 	static Utils* get();
 	vector<int> createArray(size_t n);
@@ -28,6 +30,8 @@ public:
 	void heapsort(vector<int>* array,int n);
 	int quickSelect(vector<int>* array,int left, int right, int k);
 	int bruteForce(vector<int>* array,int k);
+	int kSelection(vector<int>* array,int k);
+
 	virtual ~Utils();
 };
 

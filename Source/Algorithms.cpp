@@ -62,6 +62,13 @@ int Algorithms::bruteForce(vector<int>* array,int k){
 	return kMinValue;
 }
 
+int Algorithms::kSelection(vector<int>* array,int k){
+	this->start_time =  clock();
+	int kMinValue = Utils::get()->kSelection(array,k);
+	this->stop_time = clock();
+	return kMinValue;
+}
+
 map<pair<int,int>,int>* Algorithms::getSample(){
 	return &this->qsSample;
 }

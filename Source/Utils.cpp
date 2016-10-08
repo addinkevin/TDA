@@ -71,6 +71,40 @@ int  divide(vector<int>* array, int start, int end) {
     // La nueva posición del pivot
     return right;
 }
+	
+int  partition(vector<int>* array, int p,int r){
+    int pivot = array->at(r);
+
+    while ( p < r )
+    {
+        while ( array->at(p) < pivot )
+            p++;
+
+        while ( array->at(r) > pivot )
+            r--;
+
+        if ( array->at(p) == array->at(r) )
+            p++;
+        else if ( p < r ) {
+            int tmp = array->at(p);
+            array->at(p) = array->at(r);
+            array->at(r) = tmp;
+        }
+    }
+
+    return r;
+}
+
+bool verificador(vector<int>* array,int candidate,int k){
+	return (array->at(k) == candidate);
+}
+
+
+/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * */
 
 Utils::Utils() {
 
@@ -107,6 +141,31 @@ void Utils::heapsort(vector<int>* a, int n){
     }
 }
 
+int Utils::quickSelect(vector<int>* array,int p, int r, int k){
+    if ( p == r )
+    	return array->at(p);
+    int j = partition(array, p, r);
+    int length = j - p + 1;
+
+    if ( length == k )
+    	return array->at(j);
+    else if ( k < length )
+    	return quickSelect(array, p, j - 1, k);
+    else
+    	return quickSelect(array, j + 1, r, k - length);
+}
+
+int Utils::bruteForce(vector<int>* array,int k){
+	int max = 100;
+	std::sort(array->begin(),array->end());
+	std::unique(array->begin(),array->end());
+	for(int i=0; i <= max; i++){
+		if(verificador(array,i,k))
+			return i;
+	}
+	return -1;
+}
+	
 vector<int> Utils::createArray(size_t n){
 	//Allocate memory for n items, but array is still empty
 	this->array.reserve(n);

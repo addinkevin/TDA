@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
+#include <algorithm>
 
 namespace std {
 
@@ -25,6 +26,8 @@ public:
 	vector<int> getArray();
 	void quicksort(vector<int>* array,int start, int end);
 	void heapsort(vector<int>* array,int n);
+	int quickSelect(vector<int>* array,int left, int right, int k);
+	int bruteForce(vector<int>* array,int k);
 	virtual ~Utils();
 };
 

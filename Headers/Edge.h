@@ -15,15 +15,15 @@ class Edge {
 private:
 	int source;
 	int dest;
-	int weight;
+	double weight;
 public:
-	Edge(int source, int dest, int weight);
+	Edge(int source, int dest, double weight);
 	int getSource();
 	int getDest();
-	int getWeight();
+	double getWeight();
 
 
-	virtual ~Edge();
+	~Edge();
 };
 
 #endif /* EDGE_H_ */

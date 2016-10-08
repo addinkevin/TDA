@@ -40,6 +40,28 @@ int Algorithms::heapSort(vector<int>* array,int n,int k){
 	this->hsSample.insert(std::make_pair( std::make_pair(n,k),this->stop_time-this->start_time));
 	return array->at(k);
 }
+	
+int Algorithms::quickSelect(vector<int>* array,int left, int right, int k){
+	this->start_time =  clock();
+	int kMinValue = Utils::get()->quickSelect(array,left,right,k);
+	this->stop_time = clock();
+	return kMinValue;
+}
+
+int Algorithms::nativeSort(vector<int>* array,int k){
+	this->start_time =  clock();
+	std::sort(array->begin(),array->end());
+	this->stop_time = clock();
+	return array->at(k);
+}
+
+int Algorithms::bruteForce(vector<int>* array,int k){
+	this->start_time =  clock();
+	int kMinValue = Utils::get()->bruteForce(array,k);
+	this->stop_time = clock();
+	return kMinValue;
+}
+
 map<pair<int,int>,int>* Algorithms::getSample(){
 	return &this->qsSample;
 }

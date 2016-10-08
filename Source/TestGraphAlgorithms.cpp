@@ -40,11 +40,11 @@ void TestGraphAlgorithms::testPriorityQueue() {
     priorityQueue.push(2,50);
     priorityQueue.push(3, 30);
 
-    test(priorityQueue.top().first == 2, "Error al dar el de mayor prioridad, 2");
+    test(priorityQueue.top().first == 1, "Error al dar el de mayor prioridad, 1");
     priorityQueue.pop();
     test(priorityQueue.top().first == 3, "Error al dar el de mayor prioridad, 3");
     priorityQueue.pop();
-    test(priorityQueue.top().first == 1, "Error al dar el de mayor prioridad, 1");
+    test(priorityQueue.top().first == 2, "Error al dar el de mayor prioridad, 2");
 }
 
 void TestGraphAlgorithms::testSearchWithHeuristic() {

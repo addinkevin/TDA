@@ -13,7 +13,7 @@
 class ComparePair {
 public:
     bool operator()(std::pair<int,double> left, std::pair<int,double> right) {
-        return left.second < right.second;
+        return left.second > right.second;
     };
 };
 

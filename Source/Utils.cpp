@@ -177,7 +177,6 @@ int Utils::quickSelect(vector<int>* array,int p, int r, int k){
 int Utils::bruteForce(vector<int>* array,int k){
 	int max = 100;
 	std::sort(array->begin(),array->end());
-	std::unique(array->begin(),array->end());
 	for(int i=0; i <= max; i++){
 		if(verificador(array,i,k))
 			return i;

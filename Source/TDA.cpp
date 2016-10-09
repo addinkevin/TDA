@@ -7,7 +7,6 @@
 //============================================================================
 
 #include "../Headers/Algorithms.h"
-#include "../Headers/MathGl.h"
 #include "../Headers/Digraph.h"
 
 #include <iostream>
@@ -25,8 +24,8 @@ void runGraphs(){
 }
 
 int main() {
-	int n = 5;
-	int k = 1;
+	int n = 15000;
+	int k = 1500;
 	int kMin;
 	vector<int> array = Utils::get()->createArray(n);
 
@@ -43,7 +42,7 @@ int main() {
 
 	//QuickSelect
 	array = Utils::get()->getArray();
-	kMin = Algorithms::get()->quickSelect(&array,0,n-1,++k);
+	kMin = Algorithms::get()->quickSelect(&array,0,n-1,k);
 	cout << "[QuickSelect] Tiempo de ejecucion: "<< Algorithms::get()->getExecutionTime()<<endl;
 	cout << "[QuickSelect] k elemento minimo: "<< kMin << endl;
 

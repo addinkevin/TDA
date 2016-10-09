@@ -9,8 +9,10 @@
 #define DIGRAPH_H_
 #include <vector>
 #include <list>
+#include <string>
 #include "../Headers/Edge.h"
 #include <iostream>
+#include <stdlib.h>
 
 class Digraph {
 private:

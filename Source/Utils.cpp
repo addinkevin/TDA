@@ -114,8 +114,16 @@ int getPositionOfSmallerValue(vector<int>* array,int initPosition){
 void changeSmallerWithInitial(vector<int>* array, int initPosition, int smallerPosition){
 	int initValue = array->at(initPosition);
 	int smallerValue = array->at(smallerPosition);
-	array->at(initPosition) = smallerValue;
-	array->at(smallerPosition) = initValue;
+	array->erase(array->begin()+smallerPosition);
+	array->insert(array->begin()+initPosition, smallerValue);
+}
+
+void printArray(vector<int>* array){
+	cout << " VECTOR: ";
+	for(int indexArray=0; indexArray<array->size(); indexArray++){
+			cout << array->at(indexArray) << " ; ";
+	}
+	cout << " "<< endl;
 }
 
 
@@ -185,7 +193,7 @@ int Utils::bruteForce(vector<int>* array,int k){
 }
 
 int Utils::kSelection(vector<int>* array,int k){
-	for(int indexArray=0; indexArray<array->size(); indexArray++){
+	for(int indexArray=0; (indexArray<array->size() && indexArray <= k); indexArray++){
 		int position = getPositionOfSmallerValue(array, indexArray);
 		changeSmallerWithInitial(array, indexArray, position);
 	}

@@ -17,7 +17,7 @@ public:
     };
 };
 
-typedef std::priority_queue<std::pair<int,double>,std::vector<std::pair<int,int>>,ComparePair> PriorityQueueType;
+typedef std::priority_queue<std::pair<int,double>,std::vector<std::pair<int,int > >,ComparePair> PriorityQueueType;
 
 class PriorityQueue {
 private:

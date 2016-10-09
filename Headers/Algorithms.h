@@ -18,10 +18,15 @@ class Algorithms {
 private:
 	Algorithms();
 	static Algorithms* instance;
-	map<pair<int,int>, int> qsSample;		// [(n,k):excution_time]
-	map<pair<int,int>, int> hsSample;		// [(n,k):excution_time]
 	clock_t start_time;
 	clock_t stop_time;
+	map<pair<int,int>, int> qsSample;		// [(n,k):excution_time]
+	map<pair<int,int>, int> hsSample;		// [(n,k):excution_time]
+	map<pair<int,int>, int> qSSample;		// [(n,k):excution_time]
+	map<pair<int,int>, int> nsSample;		// [(n,k):excution_time]
+	map<pair<int,int>, int> bfSample;		// [(n,k):excution_time]
+	map<pair<int,int>, int> ksSample;		// [(n,k):excution_time]
+
 public:
 	static Algorithms* get();
 	int quickSort(vector<int>* array,int n,int k);
@@ -31,7 +36,7 @@ public:
 	int bruteForce(vector<int>* array,int k);
 	int kSelection(vector<int>* array,int k);
 	int getExecutionTime();
-	map<pair<int,int>,int>* getSample();
+	void recordData();
 	virtual ~Algorithms();
 };
 

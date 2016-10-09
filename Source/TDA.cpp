@@ -13,7 +13,6 @@
 
 using namespace std;
 
-
 //Ejecuta funciones de Grafos (libera el main de tanto codigo)
 void runGraphs(){
 	cout << endl;
@@ -24,39 +23,37 @@ void runGraphs(){
 }
 
 int main() {
-	int n = 15000;
-	int k = 1500;
+	int n = 1500;
+	int k = 0;
 	int kMin;
-	vector<int> array = Utils::get()->createArray(n);
 
-	//QuickSort
-	kMin = Algorithms::get()->quickSort(&array,n-1,k);
-	cout << "[QuickSort] Tiempo de ejecucion: "<< Algorithms::get()->getExecutionTime()<<endl;
-	cout << "[QuickSort] k elemento minimo: "<< kMin << endl;
+	//create differents arrays with the same k value
+	for(int i=1; i <= 100; i++){
+		n = 150 * i;
+		vector<int> array = Utils::get()->createArray(n);
 
-	//Native c++ sort
-	array = Utils::get()->getArray();
-	kMin = Algorithms::get()->nativeSort(&array,k);
-	cout << "[NativeSort] Tiempo de ejecucion: "<< Algorithms::get()->getExecutionTime()<<endl;
-	cout << "[NativeSort] k elemento minimo: "<< kMin << endl;
+		//QuickSort
+		kMin = Algorithms::get()->quickSort(&array,n-1,k);
 
-	//QuickSelect
-	array = Utils::get()->getArray();
-	kMin = Algorithms::get()->quickSelect(&array,0,n-1,k);
-	cout << "[QuickSelect] Tiempo de ejecucion: "<< Algorithms::get()->getExecutionTime()<<endl;
-	cout << "[QuickSelect] k elemento minimo: "<< kMin << endl;
+		//Native c++ sort
+		array = Utils::get()->getArray();
+		kMin = Algorithms::get()->nativeSort(&array,k);
 
-	//BruteForce TODO revisar
-	array = Utils::get()->getArray();
-	kMin = Algorithms::get()->bruteForce(&array,k);
-	cout << "[BruteForce] Tiempo de ejecucion: "<< Algorithms::get()->getExecutionTime()<<endl;
-	cout << "[BruteForce] k elemento minimo: "<< kMin << endl;
+		//QuickSelect
+		array = Utils::get()->getArray();
+		kMin = Algorithms::get()->quickSelect(&array,0,n-1,k);
 
-	//KSelection
-	array = Utils::get()->getArray();
-	kMin = Algorithms::get()->kSelection(&array,k);
-	cout << "[KSelection] Tiempo de ejecucion: "<< Algorithms::get()->getExecutionTime()<<endl;
-	cout << "[KSelection] k elemento minimo: "<< kMin << endl;
+		//BruteForce
+		array = Utils::get()->getArray();
+		kMin = Algorithms::get()->bruteForce(&array,k);
+
+		//KSelection
+		array = Utils::get()->getArray();
+		kMin = Algorithms::get()->kSelection(&array,k);
+	}
+
+	//Save data into .csv file
+	Algorithms::get()->recordData();
 
 	//Free memory
 	Algorithms::get()->~Algorithms();

@@ -195,6 +195,8 @@ int Utils::kSelection(vector<int>* array,int k){
 
 	
 vector<int> Utils::createArray(size_t n){
+	//At first clear data from array
+	this->array.clear();
 	//Allocate memory for n items, but array is still empty
 	this->array.reserve(n);
 	int max = 100;

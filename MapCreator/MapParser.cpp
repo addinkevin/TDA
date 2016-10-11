@@ -193,7 +193,7 @@ void MapParser::drawGraphResults(std::string fileName, Path &pathAlgorithm) {
     int height = 50;
 
     std::list<int> vertexPath = pathAlgorithm.getVertexPath(this->destVertexNum);
-    
+
     SVGDrawer svgDrawer(fileName, cols * width, rows * height);
 
     int i = 0;

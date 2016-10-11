@@ -10,17 +10,9 @@
 #include "Heuristic.h"
 
 class SearchWithHeuristic : public Path {
-private:
-    bool* marked;
-    double* distance;
-    Edge** edgeTo;
 public:
     SearchWithHeuristic(Digraph *g, int source, int dest, Heuristic& heuristic);
     virtual ~SearchWithHeuristic();
-
-    bool visited(int v);
-    double distanceTo(int v);
-    std::list<Edge*> pathTo(int v);
 
 };
 

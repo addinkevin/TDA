@@ -6,9 +6,6 @@
 #include "../Headers/PriorityQueue.h"
 
 SearchWithHeuristic::SearchWithHeuristic(Digraph *g, int source, int dest, Heuristic& heuristic) : Path(g, source, dest) {
-    marked = new bool[g->getVertices()];
-    distance = new double[g->getVertices()];
-    edgeTo = new Edge*[g->getVertices()];
 
     for(int i=0; i < g->getVertices(); i++) {
         marked[i] = false;
@@ -44,32 +41,6 @@ SearchWithHeuristic::SearchWithHeuristic(Digraph *g, int source, int dest, Heuri
 
 }
 
-
-bool SearchWithHeuristic::visited(int v) {
-    return this->marked[v];
-}
-
-double SearchWithHeuristic::distanceTo(int v) {
-    return this->distance[v];
-}
-
-std::list<Edge *> SearchWithHeuristic::pathTo(int v) {
-    std::list<Edge*> aList;
-    if (!marked[v]) {
-        return aList; // Lista vacia
-    }
-
-    for(int i = v; i!= this->source; i=edgeTo[i]->getSource()) {
-        aList.push_back(edgeTo[i]);
-    }
-
-    aList.reverse();
-
-    return aList;
-}
-
 SearchWithHeuristic::~SearchWithHeuristic() {
-    delete marked;
-    delete edgeTo;
-    delete distance;
+
 }

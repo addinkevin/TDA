@@ -6,9 +6,6 @@
 #include "../Headers/PriorityQueue.h"
 
 Dijkstra::Dijkstra(Digraph *g, int source, int dest) : Path(g, source, dest) {
-    this->marked = new bool[g->getVertices()];
-    this->distance = new double[g->getVertices()];
-    this->edgeTo = new Edge*[g->getVertices()];
 
     for(int i=0; i < g->getVertices(); i++) {
         this->marked[i] = false;
@@ -50,30 +47,5 @@ Dijkstra::Dijkstra(Digraph *g, int source, int dest) : Path(g, source, dest) {
 }
 
 Dijkstra::~Dijkstra() {
-    delete marked;
-    delete edgeTo;
-    delete distance;
-}
 
-bool Dijkstra::visited(int v) {
-    return this->marked[v];
-}
-
-double Dijkstra::distanceTo(int v) {
-    return this->distance[v];
-}
-
-std::list<Edge *> Dijkstra::pathTo(int v) {
-    std::list<Edge*> aList;
-    if (!marked[v]) {
-        return aList; // Lista vacia
-    }
-
-    for(int i = v; i!= this->source; i=edgeTo[i]->getSource()) {
-        aList.push_back(edgeTo[i]);
-    }
-
-    aList.reverse();
-
-    return aList;
 }

@@ -10,17 +10,9 @@
 #include "Heuristic.h"
 
 class AStar : public Path {
-private:
-    bool* marked;
-    double* distance;
-    Edge** edgeTo;
 public:
     AStar(Digraph *g, int source, int dest, Heuristic& heuristic);
     virtual ~AStar();
-
-    bool visited(int v);
-    double distanceTo(int v);
-    std::list<Edge*> pathTo(int v);
 
 };
 

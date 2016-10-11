@@ -11,19 +11,10 @@
 #include "Path.h"
 
 class PathBFS: public Path {
-
-private:
-	bool* marked;
-	double* distance;
-	Edge** edgeTo;
-
 public:
 	PathBFS(Digraph* g, int source, int dest);
 	virtual ~PathBFS();
 
-	bool visited(int v);
-	double distanceTo(int v);
-	std::list<Edge*> pathTo(int v);
 };
 
 #endif /* PATHBFS_H_ */

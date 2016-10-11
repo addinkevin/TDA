@@ -8,6 +8,9 @@
 
 #include "../Headers/Algorithms.h"
 #include "../Headers/Digraph.h"
+#include "../MapCreator/MapParser.h"
+#include "../Headers/PathBFS.h"
+#include "../Headers/Dijkstra.h"
 
 #include <iostream>
 
@@ -22,7 +25,7 @@ void runGraphs(){
 	cout << endl;
 }
 
-int main() {
+int main2() {
 	int n = 1500;
 	int k = 0;
 	int kMin;
@@ -63,4 +66,22 @@ int main() {
 	return 0;
 }
 
+int main() {
+	MapParser mapParser("./MapCreator/mapExample.txt");
 
+	mapParser.drawGraph("salidaGrafo.svg");
+
+    Digraph* digraph = mapParser.createGraph();
+
+    //PathBFS pathBFS(digraph, mapParser.getSourceVertex(), mapParser.getDestVertex());
+	Path* path;
+	path = new Dijkstra(digraph, mapParser.getSourceVertex(), mapParser.getDestVertex());
+	//path = new PathBFS(digraph, mapParser.getSourceVertex(), mapParser.getDestVertex());
+
+    mapParser.drawGraphResults("salidaGrafoResultadoBFS.svg", *path);
+
+	delete path;
+    delete digraph;
+
+    return 0;
+}

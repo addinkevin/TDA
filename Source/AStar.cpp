@@ -7,13 +7,10 @@
 
 AStar::AStar(Digraph *g, int source, int dest, Heuristic &heuristic) : Path(g, source, dest) {
 
-    this->marked = new bool[g->getVertices()];
-    this->distance = new double[g->getVertices()];
-    this->edgeTo = new Edge*[g->getVertices()];
-
     for(int i=0; i < g->getVertices(); i++) {
         this->marked[i] = false;
-        this->distance[i] = Path::NO_PATH;        // Inicializo distancias con distancia infinito
+        this->distance[i] = Path::NO_PATH;
+        this->edgeTo[i] = NULL;
     }
 
     this->marked[this->source] = true;
@@ -52,30 +49,4 @@ AStar::AStar(Digraph *g, int source, int dest, Heuristic &heuristic) : Path(g, s
 }
 
 AStar::~AStar() {
-    delete marked;
-    delete edgeTo;
-    delete distance;
-}
-
-bool AStar::visited(int v) {
-    return this->marked[v];
-}
-
-double AStar::distanceTo(int v) {
-    return this->distance[v];
-}
-
-std::list<Edge *> AStar::pathTo(int v) {
-    std::list<Edge*> aList;
-    if (!marked[v]) {
-        return aList; // Lista vacia
-    }
-
-    for(int i = v; i!= this->source; i=edgeTo[i]->getSource()) {
-        aList.push_back(edgeTo[i]);
-    }
-
-    aList.reverse();
-
-    return aList;
 }

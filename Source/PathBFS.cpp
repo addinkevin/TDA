@@ -13,10 +13,6 @@ using namespace std;
 
 PathBFS::PathBFS(Digraph* g, int source, int dest ) : Path(g, source, dest ){
 
-	marked = new bool[g->getVertices()];
-	distance = new double[g->getVertices()];
-	edgeTo = new Edge*[g->getVertices()];
-
 	for(int i=0;i<g->getVertices();i++) {
 		marked[i] = false;
 		distance[i] = Path::NO_PATH;        //Inicializo distancias con distancia infinito
@@ -50,33 +46,7 @@ PathBFS::PathBFS(Digraph* g, int source, int dest ) : Path(g, source, dest ){
 
 }
 
-bool PathBFS::visited(int v){
-	return marked[v];
-
-}
-
-double PathBFS::distanceTo(int v){
-	return distance[v];
-
-}
-
-std::list<Edge*> PathBFS::pathTo(int v){
-	std::list<Edge*> aList;
-	if(!marked[v])
-		return aList; // Lista vacia
-
-	for(int i = v;i!= this->source;i=edgeTo[i]->getSource())
-		aList.push_back(edgeTo[i]);
-
-	aList.push_back(edgeTo[this->source]); // Creo que esta no hace falta.
-
-	// TODO: Invertir el orden de la lista.
-	return aList;
-}
-
 PathBFS::~PathBFS() {
-	delete marked;
-	delete edgeTo;
-	delete distance;
+
 }
 

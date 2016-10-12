@@ -12,15 +12,13 @@ public:
 
     void test(bool condition, std::string msgError) {
         if (!condition) {
-            throw std::string("Error al probar") + msgError;
+            std::cout << "Error:" << msgError;
         }
     }
 
     void testCreateGraphFromFile();
 
     void testPriorityQueue();
-
-    void testSearchWithHeuristic();
 
     void testAll() {
         testCreateGraphFromFile();

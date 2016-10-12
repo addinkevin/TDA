@@ -15,6 +15,7 @@
 #include "../Headers/ManhattanHeuristic.h"
 #include "../Headers/SearchWithHeuristic.h"
 #include "../Headers/EuclideanHeuristic.h"
+#include "../Headers/TestEstadisticoOrdenK.h"
 
 #include <iostream>
 
@@ -59,7 +60,7 @@ int main2() {
         kMin = Algorithms::get()->heapSelect(&arrays[4],k);
 
 		//QuickSelect
-		kMin = Algorithms::get()->quickSelect(&arrays[5],0,n-1,k);
+		kMin = Algorithms::get()->quickSelect(&arrays[5],k);
 
 	}
 
@@ -74,7 +75,7 @@ int main2() {
 	return 0;
 }
 
-int main() {
+int main3() {
 	MapParser mapParser("./MapCreator/MapExampleForAStar2");
 
 	mapParser.drawGraph("salidaGrafo.svg");
@@ -96,4 +97,9 @@ int main() {
     delete digraph;
 
     return 0;
+}
+
+int main() {
+    TestEstadisticoOrdenK testEstadisticoOrdenK;
+    testEstadisticoOrdenK.testAll();
 }

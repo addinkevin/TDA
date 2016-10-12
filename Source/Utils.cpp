@@ -97,7 +97,7 @@ Utils* Utils::get(){
 	return instance;
 }
 
-int Utils::quickSelect(vector<int>* array,int p, int r, int k){
+int Utils::_quickSelect(vector<int>* array,int p, int r, int k){
     if ( p == r )
     	return array->at(p);
     int j = partition(array, p, r);
@@ -106,9 +106,12 @@ int Utils::quickSelect(vector<int>* array,int p, int r, int k){
     if ( length == k )
     	return array->at(j);
     else if ( k < length )
-    	return quickSelect(array, p, j - 1, k);
+    	return _quickSelect(array, p, j - 1, k);
     else
-    	return quickSelect(array, j + 1, r, k - length);
+    	return _quickSelect(array, j + 1, r, k - length);
+}
+int Utils::quickSelect(vector<int>* array, int k) {
+    return _quickSelect(array, 0, array->size(), k);
 }
 
 int Utils::bruteForce(vector<int>* array,int k){
@@ -133,12 +136,12 @@ int Utils::orderAndSelect(vector<int> *array, int k) {
 }
 
 int Utils::kHeapSort(vector<int>* array, int k) {
-    std::make_heap(array->begin(), array->end(), std::less<int>()); // Heapify
+    std::make_heap(array->begin(), array->end(), std::greater<int>()); // Heapify
 
     int extraccion;
     // K extracciones
-    for (int i = 0; i < k; i++) {
-        std::pop_heap(array->begin(), array->end(), std::less<int>());
+    for (int i = 0; i < k + 1 ; i++) {
+        std::pop_heap(array->begin(), array->end(), std::greater<int>());
         extraccion = array->back();
         array->pop_back();
     }
@@ -150,7 +153,7 @@ int Utils::heapSelect(vector<int>* array, int k) {
     std::vector<int> heapK(array->begin(), array->begin()+k+1);
     std::make_heap(heapK.begin(), heapK.end()); // Heapify de los k primeros elementos.
 
-    for (int i = k ; i < array->size(); i++) {
+    for (int i = k+1 ; i < array->size(); i++) {
         if (heapK.at(0) > array->at(i)) {
             std::pop_heap(heapK.begin(), heapK.end());
             heapK.pop_back();

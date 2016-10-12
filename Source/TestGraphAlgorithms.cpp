@@ -47,8 +47,4 @@ void TestGraphAlgorithms::testPriorityQueue() {
     test(priorityQueue.top().first == 2, "Error al dar el de mayor prioridad, 2");
 }
 
-void TestGraphAlgorithms::testSearchWithHeuristic() {
-    // TODO
-}
-
 

@@ -16,7 +16,7 @@
 #include <fstream>
 #include <sstream>
 
-namespace std {
+using namespace std;
 
 class Utils {
 private:
@@ -29,27 +29,25 @@ public:
 	vector<int> createArray(size_t n);
 	vector<int> getArray();
 
-	void quicksort(vector<int>* array,int start, int end);
 
-	int quickSelect(vector<int>* array,int left, int right, int k);
-	int bruteForce(vector<int>* array,int k);
-	int kSelection(vector<int>* array,int k);
-    int orderAndSelect(vector<int>* array, int k);
-	int kHeapSort(vector<int> *array, int k);
-	int heapSelect(vector<int> *array, int k);
+	static int _quickSelect(vector<int>* array,int left, int right, int k);
+    static int quickSelect(vector<int>* array,int k);
+	static int bruteForce(vector<int>* array,int k);
+	static int kSelection(vector<int>* array,int k);
+    static int orderAndSelect(vector<int>* array, int k);
+	static int kHeapSort(vector<int> *array, int k);
+	static int heapSelect(vector<int> *array, int k);
 
 	virtual ~Utils();
 
 
-    int partition(vector<int> *array, int p, int r);
+    static int partition(vector<int> *array, int p, int r);
 
-    bool verificador(vector<int> *array, int candidate, int k);
+    static bool verificador(vector<int> *array, int candidate, int k);
 
-    int getPositionOfSmallerValue(vector<int> *array, int initPosition);
+    static int getPositionOfSmallerValue(vector<int> *array, int initPosition);
 
-    void changeSmallerWithInitial(vector<int> *array, int initPosition, int smallerPosition);
+    static void changeSmallerWithInitial(vector<int> *array, int initPosition, int smallerPosition);
 };
-
-} /* namespace std */
 
 #endif /* UTILS_H_ */

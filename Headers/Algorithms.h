@@ -31,7 +31,7 @@ private:
 
 public:
 	static Algorithms* get();
-	int quickSelect(vector<int>* array,int left,int rigth,int k);
+	int quickSelect(vector<int>* array, int k);
 	int orderAndSelect(vector<int>* array,int k);
 	int bruteForce(vector<int>* array,int k);
 	int kSelection(vector<int>* array,int k);

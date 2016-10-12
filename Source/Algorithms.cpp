@@ -23,9 +23,9 @@ Algorithms* Algorithms::get(){
 	return instance;
 }
 
-int Algorithms::quickSelect(vector<int>* array,int left, int right, int k){
+int Algorithms::quickSelect(vector<int>* array,int k){
 	this->start_time =  clock();
-	int kMinValue = Utils::get()->quickSelect(array,left,right,k);
+	int kMinValue = Utils::get()->quickSelect(array, k);
 	this->stop_time = clock();
 	//sample recording
 	this->quickSelectSample.insert(std::make_pair( std::make_pair(array->size(),k),this->stop_time-this->start_time));

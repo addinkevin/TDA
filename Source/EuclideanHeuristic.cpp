@@ -2,24 +2,22 @@
 // Created by kevin on 10/11/16.
 //
 
-#include <iostream>
-#include "../Headers/ManhattanHeuristic.h"
+#include "../Headers/EuclideanHeuristic.h"
 
-double ManhattanHeuristic::FACTOR = 1.0;
+double EuclideanHeuristic::FACTOR = 1.0;
 
-ManhattanHeuristic::ManhattanHeuristic(std::map<int, Vertex> vertexMap, int source, int dest) {
+EuclideanHeuristic::EuclideanHeuristic(std::map<int, Vertex> vertexMap, int source, int dest) {
     this->source = source;
     this->dest = dest;
     this->vertexMap = vertexMap;
 }
 
-double ManhattanHeuristic::getCost(int v) {
+double EuclideanHeuristic::getCost(int v) {
     Vertex destVertex = this->vertexMap.at(this->dest);
     Vertex actualVertex = this->vertexMap.at(v);
 
     int dx = abs(destVertex.x - actualVertex.x);
     int dy = abs(destVertex.y - actualVertex.y);
 
-    std::cout << (dx+dy) << std::endl;
-    return FACTOR * (dx + dy);
+    return FACTOR * (dx*dx + dy*dy);
 }

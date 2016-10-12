@@ -105,6 +105,8 @@ bool verificador(vector<int>* array,int candidate,int k){
     return (leftCount == k);
 }
 
+
+    /* Busca la posicion del elemento mas chico, buscando a partir de initPosition */
 int getPositionOfSmallerValue(vector<int>* array,int initPosition){
 	int smallerPosition = initPosition;
 	int smallerValue = array->at(initPosition);
@@ -117,11 +119,13 @@ int getPositionOfSmallerValue(vector<int>* array,int initPosition){
 	return smallerPosition;
 }
 
+    /* Swap entre initPosition y smallerPosition */
 void changeSmallerWithInitial(vector<int>* array, int initPosition, int smallerPosition){
 	int initValue = array->at(initPosition);
 	int smallerValue = array->at(smallerPosition);
-	array->erase(array->begin()+smallerPosition);
-	array->insert(array->begin()+initPosition, smallerValue);
+
+    array->at(initPosition) = smallerValue;
+    array->at(smallerPosition) = initValue;
 }
 
 void printArray(vector<int>* array){

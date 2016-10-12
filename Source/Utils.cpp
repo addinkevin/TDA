@@ -111,7 +111,7 @@ int Utils::_quickSelect(vector<int>* array,int p, int r, int k){
     	return _quickSelect(array, j + 1, r, k - length);
 }
 int Utils::quickSelect(vector<int>* array, int k) {
-    return _quickSelect(array, 0, array->size(), k);
+    return _quickSelect(array, 0, array->size()-1, k+1);
 }
 
 int Utils::bruteForce(vector<int>* array,int k){

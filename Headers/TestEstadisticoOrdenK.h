@@ -39,8 +39,9 @@ public:
         int vectorSize = 1000;
         std::vector<int> vector;
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             int k = std::rand()% vectorSize;
+
 
             vector = crearVector(vectorSize);
             testAlgorithm(Utils::bruteForce, &vector, k, "Fuerza bruta");
@@ -52,8 +53,9 @@ public:
             testAlgorithm(Utils::kHeapSort,&vector, k, "k heapsort");
             vector = crearVector(vectorSize);
             testAlgorithm(Utils::heapSelect,&vector, k, "heap select");
-            //vector = crearVector(vectorSize);
-            //testAlgorithm(Utils::quickSelect,&vector, k, "quick select");
+
+            vector = crearVector(vectorSize);
+            testAlgorithm(Utils::quickSelect,&vector, k, "quick select");
 
         }
     }

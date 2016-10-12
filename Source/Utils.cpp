@@ -7,72 +7,15 @@
 
 #include "../Headers/Utils.h"
 
-namespace std {
+using namespace std;
 
 Utils* Utils::instance = NULL;
 
 /*
  * AUXILIAR FUNCTIONS
  * */
-void max_heapify(vector<int>* a, int i, int n){
-    int j, temp;
-    temp = a->at(i);
-    j = 2*i;
-    while (j <= n){
-        if (j < n && a->at(j+1) > a->at(j))
-            j = j+1;
-        if (temp > a->at(j)){
-            break;
-        }else if (temp <= a->at(j)){
-            a->at(j/2) = a->at(j);
-            j = 2*j;
-        }
-    }
-    a->at(j/2) = temp;
-    return;
-}
 
-void build_maxheap(vector<int>* a, int n){
-    int i;
-    for(i = n/2; i >= 1; i--){
-        max_heapify(a, i, n);
-    }
-}
-
-//QS: Función para dividir el array y hacer los intercambios
-int  divide(vector<int>* array, int start, int end) {
-    int left;
-    int right;
-    int pivot;
-    int temp;
-
-    pivot = array->at(start);
-    left = start;
-    right = end;
-    // Mientras no se cruzen los índices
-    while (left < right) {
-        while (array->at(right) > pivot) {
-            right--;
-        }
-        while ((left < right) && (array->at(left) <= pivot)) {
-            left++;
-        }
-        // Si todavía no se cruzan los indices seguimos intercambiando
-        if (left < right) {
-            temp = array->at(left);
-            array->at(left) = array->at(right);
-            array->at(right) = temp;
-        }
-    }
-    // Los índices ya se han cruzado, ponemos el pivot en el lugar que le corresponde
-    temp = array->at(right);
-    array->at(right) = array->at(start);
-    array->at(start) = temp;
-    // La nueva posición del pivot
-    return right;
-}
-	
-int  partition(vector<int>* array, int p,int r){
+int Utils::partition(vector<int>* array, int p,int r){
     int pivot = array->at(r);
 
     while ( p < r )
@@ -95,9 +38,9 @@ int  partition(vector<int>* array, int p,int r){
     return r;
 }
 
-bool verificador(vector<int>* array,int candidate,int k){
+bool Utils::verificador(vector<int>* array,int candidate,int k){
     int leftCount = 0;
-    for (int i = 0; i < array->size; i++) {
+    for (int i = 0; i < array->size(); i++) {
         if (array->at(i) < candidate) {
             leftCount++;
         }
@@ -107,7 +50,7 @@ bool verificador(vector<int>* array,int candidate,int k){
 
 
     /* Busca la posicion del elemento mas chico, buscando a partir de initPosition */
-int getPositionOfSmallerValue(vector<int>* array,int initPosition){
+int Utils::getPositionOfSmallerValue(vector<int>* array,int initPosition){
 	int smallerPosition = initPosition;
 	int smallerValue = array->at(initPosition);
 	for(int auxPosition = (initPosition+1); auxPosition < array->size(); auxPosition++){
@@ -120,7 +63,7 @@ int getPositionOfSmallerValue(vector<int>* array,int initPosition){
 }
 
     /* Swap entre initPosition y smallerPosition */
-void changeSmallerWithInitial(vector<int>* array, int initPosition, int smallerPosition){
+void Utils::changeSmallerWithInitial(vector<int>* array, int initPosition, int smallerPosition){
 	int initValue = array->at(initPosition);
 	int smallerValue = array->at(smallerPosition);
 
@@ -154,30 +97,6 @@ Utils* Utils::get(){
 	return instance;
 }
 
-
-
-void  Utils::quicksort(vector<int>* array, int start, int end){
-    int pivot;
-    if (start < end) {
-        pivot = divide(array, start, end);
-        // Ordeno la lista de los menores
-        quicksort(array, start, pivot - 1);
-        // Ordeno la lista de los mayores
-        quicksort(array, pivot + 1, end);
-    }
-}
-
-void Utils::heapsort(vector<int>* a, int n){
-    build_maxheap(a,n);
-	int i, temp;
-    for (i = n; i >= 2; i--){
-        temp = a->at(i);
-        a->at(i) = a->at(1);
-        a->at(1) = temp;
-        max_heapify(a, 1, i - 1);
-    }
-}
-
 int Utils::quickSelect(vector<int>* array,int p, int r, int k){
     if ( p == r )
     	return array->at(p);
@@ -208,8 +127,41 @@ int Utils::kSelection(vector<int>* array,int k){
 	return array->at(k);
 }
 
+int Utils::orderAndSelect(vector<int> *array, int k) {
+    std::sort(array->begin(),array->end());
+    return array->at(k);
+}
 
-	
+int Utils::kHeapSort(vector<int>* array, int k) {
+    std::make_heap(array->begin(), array->end(), std::less<int>()); // Heapify
+
+    int extraccion;
+    // K extracciones
+    for (int i = 0; i < k; i++) {
+        std::pop_heap(array->begin(), array->end(), std::less<int>());
+        extraccion = array->back();
+        array->pop_back();
+    }
+
+    return extraccion;
+}
+
+int Utils::heapSelect(vector<int>* array, int k) {
+    std::vector<int> heapK(array->begin(), array->begin()+k+1);
+    std::make_heap(heapK.begin(), heapK.end()); // Heapify de los k primeros elementos.
+
+    for (int i = k ; i < array->size(); i++) {
+        if (heapK.at(0) > array->at(i)) {
+            std::pop_heap(heapK.begin(), heapK.end());
+            heapK.pop_back();
+            heapK.push_back(array->at(i));
+            std::push_heap(heapK.begin(), heapK.end());
+        }
+    }
+
+    return heapK.at(0);
+}
+
 vector<int> Utils::createArray(size_t n){
 	//At first clear data from array
 	this->array.clear();
@@ -229,5 +181,3 @@ vector<int> Utils::getArray(){
 Utils::~Utils() {
 
 }
-
-} /* namespace std */

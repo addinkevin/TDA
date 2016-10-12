@@ -11,6 +11,10 @@
 #include "../MapCreator/MapParser.h"
 #include "../Headers/PathBFS.h"
 #include "../Headers/Dijkstra.h"
+#include "../Headers/AStar.h"
+#include "../Headers/ManhattanHeuristic.h"
+#include "../Headers/SearchWithHeuristic.h"
+#include "../Headers/EuclideanHeuristic.h"
 
 #include <iostream>
 
@@ -34,25 +38,29 @@ int main2() {
 	for(int i=1; i <= 100; i++){
 		n = 150 * i;
 		vector<int> array = Utils::get()->createArray(n);
+        vector<int> arrays[6];
+        for (int i = 0; i < 6; i++) {
+            arrays[i] = vector<int>(array);
+        }
 
-		//QuickSort
-		kMin = Algorithms::get()->quickSort(&array,n-1,k);
+        // Fuerza bruta
+        kMin = Algorithms::get()->bruteForce(&arrays[0],k);
 
-		//Native c++ sort
-		array = Utils::get()->getArray();
-		kMin = Algorithms::get()->nativeSort(&array,k);
+        // Order and Select
+        kMin = Algorithms::get()->orderAndSelect(&arrays[1],k);
+
+        //KSelection
+        kMin = Algorithms::get()->kSelection(&arrays[2],k);
+
+        // k-heapsort
+        kMin = Algorithms::get()->kHeapSort(&arrays[3],k);
+
+        // HeapSelect
+        kMin = Algorithms::get()->heapSelect(&arrays[4],k);
 
 		//QuickSelect
-		array = Utils::get()->getArray();
-		kMin = Algorithms::get()->quickSelect(&array,0,n-1,k);
+		kMin = Algorithms::get()->quickSelect(&arrays[5],0,n-1,k);
 
-		//BruteForce
-		array = Utils::get()->getArray();
-		kMin = Algorithms::get()->bruteForce(&array,k);
-
-		//KSelection
-		array = Utils::get()->getArray();
-		kMin = Algorithms::get()->kSelection(&array,k);
 	}
 
 	//Save data into .csv file
@@ -67,7 +75,7 @@ int main2() {
 }
 
 int main() {
-	MapParser mapParser("./MapCreator/mapExample.txt");
+	MapParser mapParser("./MapCreator/MapExampleForAStar2");
 
 	mapParser.drawGraph("salidaGrafo.svg");
 
@@ -75,10 +83,14 @@ int main() {
 
     //PathBFS pathBFS(digraph, mapParser.getSourceVertex(), mapParser.getDestVertex());
 	Path* path;
-	path = new Dijkstra(digraph, mapParser.getSourceVertex(), mapParser.getDestVertex());
+	//path = new Dijkstra(digraph, mapParser.getSourceVertex(), mapParser.getDestVertex());
 	//path = new PathBFS(digraph, mapParser.getSourceVertex(), mapParser.getDestVertex());
+	ManhattanHeuristic manhattanHeuristic = ManhattanHeuristic(mapParser.getVertexMap(), mapParser.getSourceVertex(), mapParser.getDestVertex());
+	EuclideanHeuristic euclideanHeuristic = EuclideanHeuristic(mapParser.getVertexMap(), mapParser.getSourceVertex(), mapParser.getDestVertex());
+	//path = new AStar(digraph, mapParser.getSourceVertex(), mapParser.getDestVertex(), manhattanHeuristic);
+	path = new SearchWithHeuristic(digraph, mapParser.getSourceVertex(), mapParser.getDestVertex(), manhattanHeuristic);
 
-    mapParser.drawGraphResults("salidaGrafoResultadoBFS.svg", *path);
+    mapParser.drawGraphResults("salidaGrafoResultadoBestSearch.svg", *path);
 
 	delete path;
     delete digraph;

@@ -28,13 +28,26 @@ public:
 	static Utils* get();
 	vector<int> createArray(size_t n);
 	vector<int> getArray();
+
 	void quicksort(vector<int>* array,int start, int end);
-	void heapsort(vector<int>* array,int n);
+
 	int quickSelect(vector<int>* array,int left, int right, int k);
 	int bruteForce(vector<int>* array,int k);
 	int kSelection(vector<int>* array,int k);
+    int orderAndSelect(vector<int>* array, int k);
+	int kHeapSort(vector<int> *array, int k);
+	int heapSelect(vector<int> *array, int k);
 
 	virtual ~Utils();
+
+
+    int partition(vector<int> *array, int p, int r);
+
+    bool verificador(vector<int> *array, int candidate, int k);
+
+    int getPositionOfSmallerValue(vector<int> *array, int initPosition);
+
+    void changeSmallerWithInitial(vector<int> *array, int initPosition, int smallerPosition);
 };
 
 } /* namespace std */

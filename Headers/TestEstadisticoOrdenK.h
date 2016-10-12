@@ -20,7 +20,7 @@ public:
     }
 
     void testAlgorithm(int (*algorithm)(vector<int>*, int), vector<int>* array, int k, std::string descr) {
-        //std::random_shuffle(array->begin(), array->end());
+        std::random_shuffle(array->begin(), array->end());
         int result = algorithm(array,k);
 
         test(result == k, "Error al correr " + descr + ". Se esperaba " + std::to_string(k) + " se obtuvo: " + std::to_string(result));
@@ -36,12 +36,11 @@ public:
 
     void testAll() {
         std::srand ( unsigned ( std::time(0) ) );
-        int vectorSize = 1000;
+        int vectorSize = 100;
         std::vector<int> vector;
 
         for (int i = 0; i < 100; i++) {
             int k = std::rand()% vectorSize;
-
 
             vector = crearVector(vectorSize);
             testAlgorithm(Utils::bruteForce, &vector, k, "Fuerza bruta");
@@ -53,7 +52,6 @@ public:
             testAlgorithm(Utils::kHeapSort,&vector, k, "k heapsort");
             vector = crearVector(vectorSize);
             testAlgorithm(Utils::heapSelect,&vector, k, "heap select");
-
             vector = crearVector(vectorSize);
             testAlgorithm(Utils::quickSelect,&vector, k, "quick select");
 

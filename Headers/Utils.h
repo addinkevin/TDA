@@ -41,13 +41,15 @@ public:
 	virtual ~Utils();
 
 
-    static int partition(vector<int> *array, int p, int r);
+    static int partition(vector<int> *array, int left, int right);
 
     static bool verificador(vector<int> *array, int candidate, int k);
 
     static int getPositionOfSmallerValue(vector<int> *array, int initPosition);
 
     static void changeSmallerWithInitial(vector<int> *array, int initPosition, int smallerPosition);
+
+    static void swap(vector<int>* array, int i, int j);
 };
 
 #endif /* UTILS_H_ */

@@ -15,6 +15,7 @@ Utils* Utils::instance = NULL;
  * AUXILIAR FUNCTIONS
  * */
 
+/*
 int Utils::partition(vector<int>* array, int p,int r){
     int pivot = array->at(r);
 
@@ -37,7 +38,29 @@ int Utils::partition(vector<int>* array, int p,int r){
 
     return r;
 }
+*/
 
+void Utils::swap(vector<int>* array, int i, int j) {
+    int tmp = array->at(i);
+    array->at(i) = array->at(j);
+    array->at(j) = tmp;
+}
+
+int Utils::partition(vector<int>* array, int left, int right) {
+    int pivotIndex = left + std::rand() % (right - left);
+    int pivotValue = array->at(pivotIndex);
+
+    swap(array,pivotIndex, right); // Move pivot to end
+    int storeIndex = left;
+    for (int i = left; i < right; i++) {
+        if(array->at(i) < pivotValue) {
+            swap(array, storeIndex, i);
+            storeIndex++;
+        }
+    }
+    swap(array, right, storeIndex); // Move pivot to its final place
+    return storeIndex;
+}
 bool Utils::verificador(vector<int>* array,int candidate,int k){
     int leftCount = 0;
     for (int i = 0; i < array->size(); i++) {
@@ -97,21 +120,21 @@ Utils* Utils::get(){
 	return instance;
 }
 
-int Utils::_quickSelect(vector<int>* array,int p, int r, int k){
-    if ( p == r )
-    	return array->at(p);
-    int j = partition(array, p, r);
-    int length = j - p + 1;
+int Utils::_quickSelect(vector<int>* array,int left, int right, int k){
+    if ( left == right )
+    	return array->at(left);
 
-    if ( length == k )
-    	return array->at(j);
-    else if ( k < length )
-    	return _quickSelect(array, p, j - 1, k);
+    int pivotIndex = partition(array, left, right);
+
+    if ( pivotIndex == k )
+    	return array->at(pivotIndex);
+    else if ( k < pivotIndex )
+    	return _quickSelect(array, left, pivotIndex - 1, k);
     else
-    	return _quickSelect(array, j + 1, r, k - length);
+    	return _quickSelect(array, pivotIndex + 1, right, k);
 }
 int Utils::quickSelect(vector<int>* array, int k) {
-    return _quickSelect(array, 0, array->size()-1, k+1);
+    return _quickSelect(array, 0, array->size()-1, k);
 }
 
 int Utils::bruteForce(vector<int>* array,int k){

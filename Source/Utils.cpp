@@ -96,7 +96,13 @@ int  partition(vector<int>* array, int p,int r){
 }
 
 bool verificador(vector<int>* array,int candidate,int k){
-	return (array->at(k) == candidate);
+    int leftCount = 0;
+    for (int i = 0; i < array->size; i++) {
+        if (array->at(i) < candidate) {
+            leftCount++;
+        }
+    }
+    return (leftCount == k);
 }
 
 int getPositionOfSmallerValue(vector<int>* array,int initPosition){
@@ -183,11 +189,9 @@ int Utils::quickSelect(vector<int>* array,int p, int r, int k){
 }
 
 int Utils::bruteForce(vector<int>* array,int k){
-	int max = 100;
-	std::sort(array->begin(),array->end());
-	for(int i=0; i <= max; i++){
-		if(verificador(array,i,k))
-			return i;
+	for(int i=0; i <= array->size(); i++){
+		if(verificador(array,array->at(i),k))
+			return array->at(i);
 	}
 	return -1;
 }

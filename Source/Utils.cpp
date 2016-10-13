@@ -11,34 +11,37 @@ using namespace std;
 
 Utils* Utils::instance = NULL;
 
-/*
- * AUXILIAR FUNCTIONS
- * */
+Utils::Utils() {
 
-/*
-int Utils::partition(vector<int>* array, int p,int r){
-    int pivot = array->at(r);
-
-    while ( p < r )
-    {
-        while ( array->at(p) < pivot )
-            p++;
-
-        while ( array->at(r) > pivot )
-            r--;
-
-        if ( array->at(p) == array->at(r) )
-            p++;
-        else if ( p < r ) {
-            int tmp = array->at(p);
-            array->at(p) = array->at(r);
-            array->at(r) = tmp;
-        }
-    }
-
-    return r;
 }
-*/
+
+Utils* Utils::get(){
+	if(!instance){
+		instance = new Utils();
+	}
+	return instance;
+}
+
+
+vector<int> Utils::createArray(size_t n){
+    //At first clear data from array
+    this->array.clear();
+    //Allocate memory for n items, but array is still empty
+    this->array.reserve(n);
+    int max = 100;
+    for(size_t i = 0; i < n; i++){
+        this->array.push_back(rand()%max);
+    }
+    return this->array;
+}
+
+vector<int> Utils::getArray(){
+    return this->array;
+}
+
+Utils::~Utils() {
+
+}
 
 void Utils::swap(vector<int>* array, int i, int j) {
     int tmp = array->at(i);
@@ -61,64 +64,6 @@ int Utils::partition(vector<int>* array, int left, int right) {
     swap(array, right, storeIndex); // Move pivot to its final place
     return storeIndex;
 }
-bool Utils::verificador(vector<int>* array,int candidate,int k){
-    int leftCount = 0;
-    for (int i = 0; i < array->size(); i++) {
-        if (array->at(i) < candidate) {
-            leftCount++;
-        }
-    }
-    return (leftCount == k);
-}
-
-
-    /* Busca la posicion del elemento mas chico, buscando a partir de initPosition */
-int Utils::getPositionOfSmallerValue(vector<int>* array,int initPosition){
-	int smallerPosition = initPosition;
-	int smallerValue = array->at(initPosition);
-	for(int auxPosition = (initPosition+1); auxPosition < array->size(); auxPosition++){
-		if(array->at(auxPosition) < smallerValue){
-			smallerPosition = auxPosition;
-			smallerValue = array->at(auxPosition);
-		}
-	}
-	return smallerPosition;
-}
-
-    /* Swap entre initPosition y smallerPosition */
-void Utils::changeSmallerWithInitial(vector<int>* array, int initPosition, int smallerPosition){
-	int initValue = array->at(initPosition);
-	int smallerValue = array->at(smallerPosition);
-
-    array->at(initPosition) = smallerValue;
-    array->at(smallerPosition) = initValue;
-}
-
-void printArray(vector<int>* array){
-	cout << " VECTOR: ";
-	for(int indexArray=0; indexArray<array->size(); indexArray++){
-			cout << array->at(indexArray) << " ; ";
-	}
-	cout << " "<< endl;
-}
-
-
-/*
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * */
-
-Utils::Utils() {
-
-}
-
-Utils* Utils::get(){
-	if(!instance){
-		instance = new Utils();
-	}
-	return instance;
-}
 
 int Utils::_quickSelect(vector<int>* array,int left, int right, int k){
     if ( left == right )
@@ -137,12 +82,44 @@ int Utils::quickSelect(vector<int>* array, int k) {
     return _quickSelect(array, 0, array->size()-1, k);
 }
 
+bool Utils::verificador(vector<int>* array,int candidate,int k){
+    int leftCount = 0;
+    for (int i = 0; i < array->size(); i++) {
+        if (array->at(i) < candidate) {
+            leftCount++;
+        }
+    }
+    return (leftCount == k);
+}
+
 int Utils::bruteForce(vector<int>* array,int k){
 	for(int i=0; i < array->size(); i++){
 		if(verificador(array,array->at(i),k))
 			return array->at(i);
 	}
 	return -1;
+}
+
+/* Busca la posicion del elemento mas chico, buscando a partir de initPosition */
+int Utils::getPositionOfSmallerValue(vector<int>* array,int initPosition){
+    int smallerPosition = initPosition;
+    int smallerValue = array->at(initPosition);
+    for(int auxPosition = (initPosition+1); auxPosition < array->size(); auxPosition++){
+        if(array->at(auxPosition) < smallerValue){
+            smallerPosition = auxPosition;
+            smallerValue = array->at(auxPosition);
+        }
+    }
+    return smallerPosition;
+}
+
+/* Swap entre initPosition y smallerPosition */
+void Utils::changeSmallerWithInitial(vector<int>* array, int initPosition, int smallerPosition){
+    int initValue = array->at(initPosition);
+    int smallerValue = array->at(smallerPosition);
+
+    array->at(initPosition) = smallerValue;
+    array->at(smallerPosition) = initValue;
 }
 
 int Utils::kSelection(vector<int>* array,int k){
@@ -186,24 +163,4 @@ int Utils::heapSelect(vector<int>* array, int k) {
     }
 
     return heapK.at(0);
-}
-
-vector<int> Utils::createArray(size_t n){
-	//At first clear data from array
-	this->array.clear();
-	//Allocate memory for n items, but array is still empty
-	this->array.reserve(n);
-	int max = 100;
-	for(size_t i = 0; i < n; i++){
-		this->array.push_back(rand()%max);
-	}
-	return this->array;
-}
-
-vector<int> Utils::getArray(){
-	return this->array;
-}
-
-Utils::~Utils() {
-
 }

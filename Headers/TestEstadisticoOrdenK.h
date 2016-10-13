@@ -34,28 +34,35 @@ public:
         return vector;
     }
 
+    void test(int vectorSize, int k) {
+        std::vector<int> vector;
+        vector = crearVector(vectorSize);
+        testAlgorithm(Utils::bruteForce, &vector, k, "Fuerza bruta");
+        vector = crearVector(vectorSize);
+        testAlgorithm(Utils::orderAndSelect,&vector, k, "Order and select");
+        vector = crearVector(vectorSize);
+        testAlgorithm(Utils::kSelection,&vector, k, "k selection");
+        vector = crearVector(vectorSize);
+        testAlgorithm(Utils::kHeapSort,&vector, k, "k heapsort");
+        vector = crearVector(vectorSize);
+        testAlgorithm(Utils::heapSelect,&vector, k, "heap select");
+        vector = crearVector(vectorSize);
+        testAlgorithm(Utils::quickSelect,&vector, k, "quick select");
+    }
+
     void testAll() {
         std::srand ( unsigned ( std::time(0) ) );
-        int vectorSize = 100;
-        std::vector<int> vector;
+        int vectorSize = 1000;
 
         for (int i = 0; i < 100; i++) {
             int k = std::rand()% vectorSize;
 
-            vector = crearVector(vectorSize);
-            testAlgorithm(Utils::bruteForce, &vector, k, "Fuerza bruta");
-            vector = crearVector(vectorSize);
-            testAlgorithm(Utils::orderAndSelect,&vector, k, "Order and select");
-            vector = crearVector(vectorSize);
-            testAlgorithm(Utils::kSelection,&vector, k, "k selection");
-            vector = crearVector(vectorSize);
-            testAlgorithm(Utils::kHeapSort,&vector, k, "k heapsort");
-            vector = crearVector(vectorSize);
-            testAlgorithm(Utils::heapSelect,&vector, k, "heap select");
-            vector = crearVector(vectorSize);
-            testAlgorithm(Utils::quickSelect,&vector, k, "quick select");
-
+            test(vectorSize, k);
+            test(vectorSize, 0);
+            test(vectorSize, vectorSize-1);
+            test(vectorSize, vectorSize/2);
         }
+
     }
 };
 

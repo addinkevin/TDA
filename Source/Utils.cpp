@@ -138,7 +138,7 @@ int Utils::quickSelect(vector<int>* array, int k) {
 }
 
 int Utils::bruteForce(vector<int>* array,int k){
-	for(int i=0; i <= array->size(); i++){
+	for(int i=0; i < array->size(); i++){
 		if(verificador(array,array->at(i),k))
 			return array->at(i);
 	}

@@ -64,7 +64,7 @@ int Algorithms::kHeapSort(vector<int> *array, int k) {
     int kMinValue = Utils::get()->kHeapSort(array,k);
     this->stop_time = clock();
     //sample recording
-    this->kSelectSample.insert(std::make_pair( std::make_pair(array->size(),k),this->stop_time-this->start_time));
+    this->kheapSortSample.insert(std::make_pair( std::make_pair(array->size(),k),this->stop_time-this->start_time));
     return kMinValue;
 }
 
@@ -73,7 +73,7 @@ int Algorithms::heapSelect(vector<int> *array, int k) {
     int kMinValue = Utils::get()->heapSelect(array,k);
     this->stop_time = clock();
     //sample recording
-    this->kSelectSample.insert(std::make_pair( std::make_pair(array->size(),k),this->stop_time-this->start_time));
+    this->heapSelectSample.insert(std::make_pair( std::make_pair(array->size(),k),this->stop_time-this->start_time));
     return kMinValue;
 }
 

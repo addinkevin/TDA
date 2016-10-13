@@ -84,12 +84,20 @@ int Utils::quickSelect(vector<int>* array, int k) {
 
 bool Utils::verificador(vector<int>* array,int candidate,int k){
     int leftCount = 0;
+    int frequency = 0;
     for (int i = 0; i < array->size(); i++) {
         if (array->at(i) < candidate) {
             leftCount++;
+        } else if (array->at(i) == candidate) {
+            frequency++;
         }
     }
-    return (leftCount == k);
+    if (frequency == 0) {
+        return leftCount == k;
+    } else {
+        return leftCount <= k && k <= leftCount + frequency - 1;
+    }
+
 }
 
 int Utils::bruteForce(vector<int>* array,int k){

@@ -87,7 +87,8 @@ void Algorithms::_recordData(map<pair<int,int>, int> sampleMap, std::string file
     output.open(fileName);
     for(map<pair<int,int>, int>::iterator it = sampleMap.begin(); it !=sampleMap.end(); ++it){
         stringstream line;
-        line << "n:" << it->first.first <<",k:" << it->first.second <<",time:"<<it->second<<'\n';
+        //n,k,time
+        line << it->first.first <<"," << it->first.second <<","<<it->second<<'\n';
         output << line.str().c_str();
     }
     output.close();

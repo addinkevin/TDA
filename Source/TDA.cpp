@@ -30,14 +30,15 @@ void runGraphs(){
 	cout << endl;
 }
 
-int main2() {
-	int n = 1500;
+int main() {
+	int n = 15000;
 	int k = 0;
 	int kMin;
 
 	//create differents arrays with the same k value
 	for(int i=1; i <= 100; i++){
 		n = 150 * i;
+		//k = n-1;
 		vector<int> array = Utils::get()->createArray(n);
         vector<int> arrays[6];
         for (int i = 0; i < 6; i++) {
@@ -75,7 +76,7 @@ int main2() {
 	return 0;
 }
 
-int main3() {
+/*int main3() {
 	MapParser mapParser("./MapCreator/MapExampleForAStar2");
 
 	mapParser.drawGraph("salidaGrafo.svg");
@@ -102,4 +103,4 @@ int main3() {
 int main() {
     TestEstadisticoOrdenK testEstadisticoOrdenK;
     testEstadisticoOrdenK.testAll();
-}
+}*/

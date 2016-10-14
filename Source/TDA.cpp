@@ -68,22 +68,22 @@ void dijkstra() {
     Digraph *digraph;
     Path* path;
 
-    mapParser = new MapParser("./Grafos/dijkstra1.txt");
-    mapParser->drawGraph("./Grafos/dijkstra1.svg");
+    mapParser = new MapParser("./Grafos/Dijkstra/dijkstra1.txt");
+    mapParser->drawGraph("./Grafos/Dijkstra/dijkstra1.svg");
 
     digraph = mapParser->createGraph();
     path = new Dijkstra(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex());
-    mapParser->drawGraphResults("./Grafos/dijkstra1Result.svg", *path);
+    mapParser->drawGraphResults("./Grafos/Dijkstra/dijkstra1Result.svg", *path);
     delete mapParser;
     delete digraph;
     delete path;
 
-    mapParser = new MapParser("./Grafos/dijkstra2.txt");
-    mapParser->drawGraph("./Grafos/dijkstra2.svg");
+    mapParser = new MapParser("./Grafos/Dijkstra/dijkstra2.txt");
+    mapParser->drawGraph("./Grafos/Dijkstra/dijkstra2.svg");
 
     digraph = mapParser->createGraph();
     path = new Dijkstra(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex());
-    mapParser->drawGraphResults("./Grafos/dijkstra2Result.svg", *path);
+    mapParser->drawGraphResults("./Grafos/Dijkstra/dijkstra2Result.svg", *path);
     delete mapParser;
     delete digraph;
     delete path;
@@ -325,8 +325,8 @@ void testMain() {
 }
 
 int main() {
-    //generarGrafos();
-    //runK()
+    generarGrafos();
+    //runK();
     //testMain();
     return 0;
 }

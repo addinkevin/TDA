@@ -1,6 +1,3 @@
-//
-// Created by kevin on 10/10/16.
-//
 
 #ifndef TDA_MAPPARSER_H
 #define TDA_MAPPARSER_H

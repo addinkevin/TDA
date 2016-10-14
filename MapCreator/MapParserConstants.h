@@ -1,7 +1,3 @@
-//
-// Created by kevin on 10/10/16.
-//
-
 #ifndef TDA_MAPPARSERCONSTANTS_H
 #define TDA_MAPPARSERCONSTANTS_H
 

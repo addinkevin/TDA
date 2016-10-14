@@ -1,9 +1,3 @@
-/*
- * Algorithms.h
- *
- *  Created on: 18 de set. de 2016
- *      Author: jorge
- */
 
 #ifndef ALGORITHMS_H_
 #define ALGORITHMS_H_

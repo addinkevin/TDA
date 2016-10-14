@@ -1,10 +1,3 @@
-/*
- * Utils.cpp
- *
- *  Created on: 18 de set. de 2016
- *      Author: jorge
- */
-
 #include "../Headers/Utils.h"
 
 using namespace std;
@@ -91,11 +84,8 @@ bool Utils::verificador(vector<int>* array,int candidate,int k){
             frequency++;
         }
     }
-    if (frequency == 0) {
-        return leftCount == k;
-    } else {
-        return leftCount <= k && k <= leftCount + frequency - 1;
-    }
+
+    return leftCount <= k && k <= leftCount + frequency - 1;
 
 }
 

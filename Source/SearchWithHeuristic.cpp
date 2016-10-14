@@ -1,7 +1,3 @@
-//
-// Created by kevin on 10/7/16.
-//
-
 #include "../Headers/SearchWithHeuristic.h"
 #include "../Headers/PriorityQueue.h"
 
@@ -29,9 +25,10 @@ SearchWithHeuristic::SearchWithHeuristic(Digraph *g, int source, int dest, Heuri
         //Barro la lista de adyacencia
         for (std::list<Edge*>::iterator it=adjList->begin(); it != adjList->end(); ++it){
             int vert = (*it)->getDest();
+            double weight = (*it)->getWeight();
 
             if(!marked[vert]){
-                distance[vert] = distance[v] + 1; // Acumulo la distancia desde el origen hasta el vertice
+                distance[vert] = distance[v] + weight; // Acumulo la distancia desde el origen hasta el vertice
                 marked[vert]= true;
                 priorityQueue.push(vert, heuristic.getCost(vert));
                 edgeTo[vert] = *it;	//guardo el camino por el que fui

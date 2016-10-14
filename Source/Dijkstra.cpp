@@ -1,6 +1,3 @@
-//
-// Created by kevin on 10/8/16.
-//
 
 #include "../Headers/Dijkstra.h"
 #include "../Headers/PriorityQueue.h"

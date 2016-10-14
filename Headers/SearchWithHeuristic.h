@@ -1,6 +1,3 @@
-//
-// Created by kevin on 10/7/16.
-//
 
 #ifndef TDA_SEARCHWITHHEURISTIC_H
 #define TDA_SEARCHWITHHEURISTIC_H

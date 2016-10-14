@@ -1,10 +1,3 @@
-//============================================================================
-// Name        : TDA.cpp
-// Author      : Jorge
-// Version     :
-// Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
-//============================================================================
 
 #include "../Headers/Algorithms.h"
 #include "../Headers/Digraph.h"
@@ -16,23 +9,19 @@
 #include "../Headers/SearchWithHeuristic.h"
 #include "../Headers/EuclideanHeuristic.h"
 #include "../Headers/TestEstadisticoOrdenK.h"
+#include "../Headers/ExactHeuristic.h"
+#include "../Headers/OptimisticHeuristic.h"
+#include "../Headers/PessimisticHeuristic.h"
+#include "../Headers/TestGraphAlgorithms.h"
 
 #include <iostream>
 
 using namespace std;
 
-//Ejecuta funciones de Grafos (libera el main de tanto codigo)
-void runGraphs(){
-	cout << endl;
-	cout << "[Algoritmos de Grafos]" << endl;
-	Digraph* g = new Digraph(10);
-	g->addEdge(1,2,3);
-	cout << endl;
-}
 
-int main() {
+int runK() {
 	int n = 10000;
-	int k = n - 1;
+	int k = 0;
 	int kMin;
 
 	//create differents arrays with the same k value
@@ -73,31 +62,271 @@ int main() {
 	return 0;
 }
 
-/*int main3() {
-	MapParser mapParser("./MapCreator/MapExampleForAStar2");
 
-	mapParser.drawGraph("salidaGrafo.svg");
+void dijkstra() {
+    MapParser* mapParser;
+    Digraph *digraph;
+    Path* path;
 
-    Digraph* digraph = mapParser.createGraph();
+    mapParser = new MapParser("./Grafos/dijkstra1.txt");
+    mapParser->drawGraph("./Grafos/dijkstra1.svg");
 
-    //PathBFS pathBFS(digraph, mapParser.getSourceVertex(), mapParser.getDestVertex());
-	Path* path;
-	//path = new Dijkstra(digraph, mapParser.getSourceVertex(), mapParser.getDestVertex());
-	//path = new PathBFS(digraph, mapParser.getSourceVertex(), mapParser.getDestVertex());
-	ManhattanHeuristic manhattanHeuristic = ManhattanHeuristic(mapParser.getVertexMap(), mapParser.getSourceVertex(), mapParser.getDestVertex());
-	EuclideanHeuristic euclideanHeuristic = EuclideanHeuristic(mapParser.getVertexMap(), mapParser.getSourceVertex(), mapParser.getDestVertex());
-	//path = new AStar(digraph, mapParser.getSourceVertex(), mapParser.getDestVertex(), manhattanHeuristic);
-	path = new SearchWithHeuristic(digraph, mapParser.getSourceVertex(), mapParser.getDestVertex(), manhattanHeuristic);
-
-    mapParser.drawGraphResults("salidaGrafoResultadoBestSearch.svg", *path);
-
-	delete path;
+    digraph = mapParser->createGraph();
+    path = new Dijkstra(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex());
+    mapParser->drawGraphResults("./Grafos/dijkstra1Result.svg", *path);
+    delete mapParser;
     delete digraph;
+    delete path;
 
-    return 0;
+    mapParser = new MapParser("./Grafos/dijkstra2.txt");
+    mapParser->drawGraph("./Grafos/dijkstra2.svg");
+
+    digraph = mapParser->createGraph();
+    path = new Dijkstra(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex());
+    mapParser->drawGraphResults("./Grafos/dijkstra2Result.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+
+}
+
+void searchWithHeuristic() {
+    MapParser* mapParser;
+    Digraph *digraph;
+    Path* path;
+
+    //
+    mapParser = new MapParser("./Grafos/SearchWithHeuristic/grafo1.txt");
+    mapParser->drawGraph("./Grafos/SearchWithHeuristic/grafo1.svg");
+
+    digraph = mapParser->createGraph();
+    ExactHeuristic exactHeuristic(digraph, mapParser->getDestVertex());
+    path = new SearchWithHeuristic(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex(), exactHeuristic);
+    mapParser->drawGraphResults("./Grafos/SearchWithHeuristic/grafo1HeuristicaExacta.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+    //
+
+    mapParser = new MapParser("./Grafos/SearchWithHeuristic/grafo3.txt");
+    mapParser->drawGraph("./Grafos/SearchWithHeuristic/grafo3.svg");
+
+    digraph = mapParser->createGraph();
+    ExactHeuristic exactHeuristic2(digraph, mapParser->getDestVertex());
+    path = new SearchWithHeuristic(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex(), exactHeuristic2);
+    mapParser->drawGraphResults("./Grafos/SearchWithHeuristic/grafo3HeuristicaExacta.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+    //
+    mapParser = new MapParser("./Grafos/SearchWithHeuristic/grafo1.txt");
+    mapParser->drawGraph("./Grafos/SearchWithHeuristic/grafo1.svg");
+
+    digraph = mapParser->createGraph();
+    OptimisticHeuristic optimisticHeuristic(digraph, mapParser->getDestVertex());
+    path = new SearchWithHeuristic(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex(), optimisticHeuristic);
+    mapParser->drawGraphResults("./Grafos/SearchWithHeuristic/grafo1HeuristicaOptimista.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+    //
+    mapParser = new MapParser("./Grafos/SearchWithHeuristic/grafo1.txt");
+    mapParser->drawGraph("./Grafos/SearchWithHeuristic/grafo1.svg");
+
+    digraph = mapParser->createGraph();
+    PessimisticHeuristic pessimisticHeuristic(digraph, mapParser->getDestVertex());
+    path = new SearchWithHeuristic(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex(), pessimisticHeuristic);
+    mapParser->drawGraphResults("./Grafos/SearchWithHeuristic/grafo1HeuristicaPesimista.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+    //
+    mapParser = new MapParser("./Grafos/SearchWithHeuristic/grafo2.txt");
+    mapParser->drawGraph("./Grafos/SearchWithHeuristic/grafo2.svg");
+
+    digraph = mapParser->createGraph();
+    ManhattanHeuristic manhattanHeuristic(mapParser->getVertexMap(), mapParser->getSourceVertex(), mapParser->getDestVertex());
+    path = new SearchWithHeuristic(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex(), manhattanHeuristic);
+    mapParser->drawGraphResults("./Grafos/SearchWithHeuristic/grafo2Manhattan.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+    //
+    mapParser = new MapParser("./Grafos/SearchWithHeuristic/grafo2.txt");
+    mapParser->drawGraph("./Grafos/SearchWithHeuristic/grafo2.svg");
+
+    digraph = mapParser->createGraph();
+    EuclideanHeuristic euclideanHeuristic(mapParser->getVertexMap(), mapParser->getSourceVertex(), mapParser->getDestVertex());
+    path = new SearchWithHeuristic(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex(), euclideanHeuristic);
+    mapParser->drawGraphResults("./Grafos/SearchWithHeuristic/grafo2Euclidean.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+    //
+    mapParser = new MapParser("./Grafos/SearchWithHeuristic/grafo3.txt");
+    mapParser->drawGraph("./Grafos/SearchWithHeuristic/grafo3.svg");
+
+    digraph = mapParser->createGraph();
+    ManhattanHeuristic manhattanHeuristic2(mapParser->getVertexMap(), mapParser->getSourceVertex(), mapParser->getDestVertex());
+    path = new SearchWithHeuristic(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex(), manhattanHeuristic2);
+    mapParser->drawGraphResults("./Grafos/SearchWithHeuristic/grafo3Manhattan.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+    //
+    mapParser = new MapParser("./Grafos/SearchWithHeuristic/grafo3.txt");
+    mapParser->drawGraph("./Grafos/SearchWithHeuristic/grafo3.svg");
+
+    digraph = mapParser->createGraph();
+    EuclideanHeuristic euclideanHeuristic2(mapParser->getVertexMap(), mapParser->getSourceVertex(), mapParser->getDestVertex());
+    path = new SearchWithHeuristic(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex(), euclideanHeuristic2);
+    mapParser->drawGraphResults("./Grafos/SearchWithHeuristic/grafo3Euclidean.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+}
+
+void aStar() {
+    MapParser* mapParser;
+    Digraph *digraph;
+    Path* path;
+
+    //
+    mapParser = new MapParser("./Grafos/AStar/grafo1.txt");
+    mapParser->drawGraph("./Grafos/AStar/grafo1.svg");
+
+    digraph = mapParser->createGraph();
+    ExactHeuristic exactHeuristic(digraph, mapParser->getDestVertex());
+    path = new AStar(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex(), exactHeuristic);
+    mapParser->drawGraphResults("./Grafos/AStar/grafo1HeuristicaExacta.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+    //
+    mapParser = new MapParser("./Grafos/AStar/grafo1.txt");
+    mapParser->drawGraph("./Grafos/AStar/grafo1.svg");
+
+    digraph = mapParser->createGraph();
+    ManhattanHeuristic manhattanHeuristic1(mapParser->getVertexMap(), mapParser->getSourceVertex(), mapParser->getDestVertex());
+    path = new AStar(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex(), manhattanHeuristic1);
+    mapParser->drawGraphResults("./Grafos/AStar/grafo1HeuristicaManhattan.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+    mapParser = new MapParser("./Grafos/AStar/grafo1.txt");
+    mapParser->drawGraph("./Grafos/AStar/grafo1.svg");
+
+    digraph = mapParser->createGraph();
+    EuclideanHeuristic euclideanHeuristic1(mapParser->getVertexMap(), mapParser->getSourceVertex(), mapParser->getDestVertex());
+    path = new AStar(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex(), euclideanHeuristic1);
+    mapParser->drawGraphResults("./Grafos/AStar/grafo1HeuristicaEuclidean.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+    //
+    mapParser = new MapParser("./Grafos/AStar/grafo1.txt");
+    mapParser->drawGraph("./Grafos/AStar/grafo1.svg");
+
+    digraph = mapParser->createGraph();
+    PessimisticHeuristic pessimisticHeuristic1(digraph, mapParser->getDestVertex());
+    path = new AStar(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex(), pessimisticHeuristic1);
+    mapParser->drawGraphResults("./Grafos/AStar/grafo1HeuristicaPesimista.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+    //
+    mapParser = new MapParser("./Grafos/AStar/grafo2.txt");
+    mapParser->drawGraph("./Grafos/AStar/grafo2.svg");
+
+    digraph = mapParser->createGraph();
+    ManhattanHeuristic manhattanHeuristic(mapParser->getVertexMap(), mapParser->getSourceVertex(), mapParser->getDestVertex());
+    path = new AStar(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex(), manhattanHeuristic);
+    mapParser->drawGraphResults("./Grafos/AStar/grafo2Manhattan.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+    //
+    mapParser = new MapParser("./Grafos/AStar/grafo2.txt");
+    mapParser->drawGraph("./Grafos/AStar/grafo2.svg");
+
+    digraph = mapParser->createGraph();
+    EuclideanHeuristic euclideanHeuristic(mapParser->getVertexMap(), mapParser->getSourceVertex(), mapParser->getDestVertex());
+    path = new AStar(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex(), euclideanHeuristic);
+    mapParser->drawGraphResults("./Grafos/AStar/grafo2Euclidean.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+    //
+    mapParser = new MapParser("./Grafos/AStar/grafo3.txt");
+    mapParser->drawGraph("./Grafos/AStar/grafo3.svg");
+
+    digraph = mapParser->createGraph();
+    ManhattanHeuristic manhattanHeuristic2(mapParser->getVertexMap(), mapParser->getSourceVertex(), mapParser->getDestVertex());
+    path = new AStar(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex(), manhattanHeuristic2);
+    mapParser->drawGraphResults("./Grafos/AStar/grafo3Manhattan.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+    //
+    mapParser = new MapParser("./Grafos/AStar/grafo3.txt");
+    mapParser->drawGraph("./Grafos/AStar/grafo3.svg");
+
+    digraph = mapParser->createGraph();
+    EuclideanHeuristic euclideanHeuristic2(mapParser->getVertexMap(), mapParser->getSourceVertex(), mapParser->getDestVertex());
+    path = new AStar(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex(), euclideanHeuristic2);
+    mapParser->drawGraphResults("./Grafos/AStar/grafo3Euclidean.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+    //
+
+    mapParser = new MapParser("./Grafos/AStar/grafo3.txt");
+    mapParser->drawGraph("./Grafos/AStar/grafo3.svg");
+
+    digraph = mapParser->createGraph();
+    ExactHeuristic exactHeuristic2(digraph, mapParser->getDestVertex());
+    path = new AStar(digraph, mapParser->getSourceVertex(), mapParser->getDestVertex(), exactHeuristic2);
+    mapParser->drawGraphResults("./Grafos/AStar/grafo3HeuristicaExacta.svg", *path);
+    delete mapParser;
+    delete digraph;
+    delete path;
+
+}
+
+void generarGrafos() {
+    dijkstra();
+    searchWithHeuristic();
+    aStar();
+}
+
+void testMain() {
+    TestEstadisticoOrdenK testEstadisticoOrdenK;
+    testEstadisticoOrdenK.testAll();
+
+    TestGraphAlgorithms testGraphAlgorithms;
+    testGraphAlgorithms.testAll();
 }
 
 int main() {
-    TestEstadisticoOrdenK testEstadisticoOrdenK;
-    testEstadisticoOrdenK.testAll();
-}*/
+    //generarGrafos();
+    //runK()
+    //testMain();
+    return 0;
+}

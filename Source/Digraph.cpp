@@ -1,9 +1,3 @@
-/*
- * Digraph.cpp
- *
- *  Created on: Oct 1, 2016
- *      Author: gatti2602
- */
 
 #include <fstream>
 #include <sstream>

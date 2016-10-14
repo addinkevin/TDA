@@ -1,9 +1,3 @@
-/*
- * PathBFS.h
- *
- *  Created on: Oct 4, 2016
- *      Author: gatti2602
- */
 
 #ifndef PATHBFS_H_
 #define PATHBFS_H_

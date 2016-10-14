@@ -1,6 +1,3 @@
-//
-// Created by kevin on 10/11/16.
-//
 
 #ifndef TDA_EUCLIDEANHEURISTIC_H
 #define TDA_EUCLIDEANHEURISTIC_H

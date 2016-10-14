@@ -1,7 +1,3 @@
-//
-// Created by kevin on 10/10/16.
-//
-
 #include "SVGDrawer.h"
 
 SVGDrawer::SVGDrawer(std::string fileName, int width, int height) {

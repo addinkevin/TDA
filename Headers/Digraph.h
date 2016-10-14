@@ -1,9 +1,3 @@
-/*
- * Digraph.h
- *
- *  Created on: Oct 1, 2016
- *      Author: gatti2602
- */
 
 #ifndef DIGRAPH_H_
 #define DIGRAPH_H_

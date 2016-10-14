@@ -1,6 +1,3 @@
-//
-// Created by kevin on 10/14/16.
-//
 
 #include "../Headers/ExactHeuristic.h"
 #include "../Headers/Dijkstra.h"

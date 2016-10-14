@@ -1,7 +1,5 @@
-//
-// Created by kevin on 10/11/16.
-//
 
+#include <cmath>
 #include "../Headers/EuclideanHeuristic.h"
 
 double EuclideanHeuristic::FACTOR = 1.0;
@@ -19,5 +17,5 @@ double EuclideanHeuristic::getCost(int v) {
     int dx = abs(destVertex.x - actualVertex.x);
     int dy = abs(destVertex.y - actualVertex.y);
 
-    return FACTOR * (dx*dx + dy*dy);
+    return FACTOR * std::sqrt(dx*dx + dy*dy);
 }

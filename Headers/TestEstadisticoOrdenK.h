@@ -1,6 +1,3 @@
-//
-// Created by kevin on 10/12/16.
-//
 
 #ifndef TDA_TESTESTADISTICOORDENK_H
 #define TDA_TESTESTADISTICOORDENK_H

@@ -1,6 +1,3 @@
-//
-// Created by kevin on 10/10/16.
-//
 
 #include <sstream>
 #include "MapParser.h"
@@ -53,8 +50,6 @@ void MapParser::parseFile() {
                 double cost = std::stod(field);
                 getline(stringStream, field, ',');
                 std::string color = field;
-
-                std::cout << element.at(0) << "," << cost << "," << color << std::endl;
 
                 this->fileMap.insert(std::pair<char, PairCostColor>(element.at(0), PairCostColor(cost,color)));
             }

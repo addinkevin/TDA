@@ -1,9 +1,3 @@
-/*
- * Algorithms.cpp
- *
- *  Created on: 18 de set. de 2016
- *      Author: jorge
- */
 
 #include "../Headers/Algorithms.h"
 

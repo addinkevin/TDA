@@ -1,6 +1,3 @@
-//
-// Created by kevin on 10/8/16.
-//
 
 #ifndef TDA_DIJKSTRA_H
 #define TDA_DIJKSTRA_H

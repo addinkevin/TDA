@@ -1,6 +1,3 @@
-//
-// Created by kevin on 10/10/16.
-//
 
 #include "MapParserConstants.h"
 

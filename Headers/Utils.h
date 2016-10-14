@@ -1,9 +1,3 @@
-/*
- * Utils.h
- *
- *  Created on: 18 de set. de 2016
- *      Author: jorge
- */
 
 #ifndef UTILS_H_
 #define UTILS_H_

@@ -1,6 +1,3 @@
-//
-// Created by kevin on 10/10/16.
-//
 
 #ifndef TDA_SVGDRAWER_H
 #define TDA_SVGDRAWER_H

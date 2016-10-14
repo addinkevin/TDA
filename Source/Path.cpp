@@ -1,9 +1,3 @@
-/*
- * Path.cpp
- *
- *  Created on: Oct 4, 2016
- *      Author: gatti2602
- */
 
 #include "../Headers/Path.h"
 

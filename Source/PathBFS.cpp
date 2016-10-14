@@ -1,9 +1,3 @@
-/*
- * PathBFS.cpp
- *
- *  Created on: Oct 4, 2016
- *      Author: gatti2602
- */
 
 #include "../Headers/PathBFS.h"
 
@@ -34,9 +28,10 @@ PathBFS::PathBFS(Digraph* g, int source, int dest ) : Path(g, source, dest ){
 		//Barro la lista de adyacencia
 		for (std::list<Edge*>::iterator it=adjList->begin(); it != adjList->end(); ++it){
 			    int vert = (*it)->getDest();
+				double weight = (*it)->getWeight();
 
 			    if(!marked[vert]){
-			    	distance[vert] = distance[v] + 1; // Acumulo la distancia desde el origen hasta el vertice
+			    	distance[vert] = distance[v] + weight; // Acumulo la distancia desde el origen hasta el vertice
 			    	marked[vert]= true;
 			    	queue.push(vert);
 			    	edgeTo[vert] = *it;	//guardo el camino por el que fui

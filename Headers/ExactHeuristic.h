@@ -1,6 +1,3 @@
-//
-// Created by kevin on 10/14/16.
-//
 
 #ifndef TDA_EXACTHEURISTIC_H
 #define TDA_EXACTHEURISTIC_H

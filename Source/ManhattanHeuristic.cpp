@@ -1,7 +1,3 @@
-//
-// Created by kevin on 10/11/16.
-//
-
 #include <iostream>
 #include "../Headers/ManhattanHeuristic.h"
 
@@ -20,6 +16,5 @@ double ManhattanHeuristic::getCost(int v) {
     int dx = abs(destVertex.x - actualVertex.x);
     int dy = abs(destVertex.y - actualVertex.y);
 
-    std::cout << (dx+dy) << std::endl;
     return FACTOR * (dx + dy);
 }

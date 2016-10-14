@@ -1,6 +1,3 @@
-//
-// Created by kevin on 10/7/16.
-//
 
 #ifndef TDA_PRIORITYQUEUE_H
 #define TDA_PRIORITYQUEUE_H

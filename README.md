@@ -1,9 +1,6 @@
 # TDA
 Teoría de algoritmos 
 
-### Redaccion Informe
-https://www.overleaf.com/6566326ytphtg#/22227873/
-
 ###Enunciado
   https://algoritmos-rw.github.io/tda/tp1.html
 

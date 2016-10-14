@@ -38,7 +38,6 @@ SearchWithHeuristic::SearchWithHeuristic(Digraph *g, int source, int dest, Heuri
             }
         }
     }
-
 }
 
 SearchWithHeuristic::~SearchWithHeuristic() {

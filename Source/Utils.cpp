@@ -28,9 +28,8 @@ vector<int> Utils::createArray(size_t n){
     this->array.clear();
     //Allocate memory for n items, but array is still empty
     this->array.reserve(n);
-    int max = 100;
     for(size_t i = 0; i < n; i++){
-        this->array.push_back(rand()%max);
+        this->array.push_back(rand()%n);
     }
     return this->array;
 }

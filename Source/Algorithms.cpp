@@ -14,6 +14,13 @@ Algorithms* Algorithms::instance = NULL;
 Algorithms::Algorithms() {
 	this->start_time = 0;
 	this->stop_time = 0;
+
+	this->kheapSortCount = 0;
+	this->quickSelectCount = 0;
+	this->heapSelectCount = 0;
+	this->kSelectCount = 0;
+	this->orderAndSelectCount = 0;
+	this->bruteForceCount = 0;
 }
 
 Algorithms* Algorithms::get(){
@@ -28,7 +35,7 @@ int Algorithms::quickSelect(vector<int>* array,int k){
 	int kMinValue = Utils::get()->quickSelect(array, k);
 	this->stop_time = clock();
 	//sample recording
-	this->quickSelectSample.insert(std::make_pair( std::make_pair(array->size(),k),this->stop_time-this->start_time));
+	this->quickSelectSample.insert(std::make_pair( std::make_pair(this->quickSelectCount++,k),this->stop_time-this->start_time));
 	return kMinValue;
 }
 
@@ -37,7 +44,7 @@ int Algorithms::orderAndSelect(vector<int>* array,int k){
 	int kMinValue = Utils::get()->orderAndSelect(array, k);
 	this->stop_time = clock();
 	//sample recording
-	this->orderAndSelectSample.insert(std::make_pair( std::make_pair(array->size(),k),this->stop_time-this->start_time));
+	this->orderAndSelectSample.insert(std::make_pair( std::make_pair(this->orderAndSelectCount++,k),this->stop_time-this->start_time));
 	return kMinValue;
 }
 
@@ -46,7 +53,7 @@ int Algorithms::bruteForce(vector<int>* array,int k){
 	int kMinValue = Utils::get()->bruteForce(array,k);
 	this->stop_time = clock();
 	//sample recording
-	this->bruteForceSample.insert(std::make_pair( std::make_pair(array->size(),k),this->stop_time-this->start_time));
+	this->bruteForceSample.insert(std::make_pair( std::make_pair(this->bruteForceCount++,k),this->stop_time-this->start_time));
 	return kMinValue;
 }
 
@@ -55,7 +62,7 @@ int Algorithms::kSelection(vector<int>* array,int k){
 	int kMinValue = Utils::get()->kSelection(array,k);
 	this->stop_time = clock();
 	//sample recording
-	this->kSelectSample.insert(std::make_pair( std::make_pair(array->size(),k),this->stop_time-this->start_time));
+	this->kSelectSample.insert(std::make_pair( std::make_pair(this->kSelectCount++,k),this->stop_time-this->start_time));
 	return kMinValue;
 }
 
@@ -64,7 +71,7 @@ int Algorithms::kHeapSort(vector<int> *array, int k) {
     int kMinValue = Utils::get()->kHeapSort(array,k);
     this->stop_time = clock();
     //sample recording
-    this->kheapSortSample.insert(std::make_pair( std::make_pair(array->size(),k),this->stop_time-this->start_time));
+    this->kheapSortSample.insert(std::make_pair( std::make_pair(this->kheapSortCount++,k),this->stop_time-this->start_time));
     return kMinValue;
 }
 
@@ -73,7 +80,7 @@ int Algorithms::heapSelect(vector<int> *array, int k) {
     int kMinValue = Utils::get()->heapSelect(array,k);
     this->stop_time = clock();
     //sample recording
-    this->heapSelectSample.insert(std::make_pair( std::make_pair(array->size(),k),this->stop_time-this->start_time));
+    this->heapSelectSample.insert(std::make_pair( std::make_pair(this->heapSelectCount++,k),this->stop_time-this->start_time));
     return kMinValue;
 }
 
@@ -85,10 +92,11 @@ int Algorithms::getExecutionTime(){
 void Algorithms::_recordData(map<pair<int,int>, int> sampleMap, std::string fileName) {
     ofstream output;
     output.open(fileName);
+	output << "Corrida,Tiempo\n";
     for(map<pair<int,int>, int>::iterator it = sampleMap.begin(); it !=sampleMap.end(); ++it){
         stringstream line;
         //n,k,time
-        line << it->first.first <<"," << it->first.second <<","<<it->second<<'\n';
+        line << it->first.first <<"," <<it->second<<'\n';
         output << line.str().c_str();
     }
     output.close();

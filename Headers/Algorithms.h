@@ -27,6 +27,13 @@ private:
 	map<pair<int,int>, int> orderAndSelectSample;		// [(n,k):excution_time]
 	map<pair<int,int>, int> bruteForceSample;		// [(n,k):excution_time]
 
+	int kheapSortCount;
+	int quickSelectCount;
+	int heapSelectCount;
+	int kSelectCount;
+	int orderAndSelectCount;
+	int bruteForceCount;
+
 	void _recordData(map<pair<int, int>, int> sampleMap, string fileName);
 
 public:

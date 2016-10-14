@@ -31,18 +31,16 @@ void runGraphs(){
 }
 
 int main() {
-	int n = 15000;
-	int k = 0;
+	int n = 10000;
+	int k = n - 1;
 	int kMin;
 
 	//create differents arrays with the same k value
-	for(int i=1; i <= 100; i++){
-		n = 150 * i;
-		//k = n-1;
+	for(int i=0; i < 10; i++){
 		vector<int> array = Utils::get()->createArray(n);
         vector<int> arrays[6];
-        for (int i = 0; i < 6; i++) {
-            arrays[i] = vector<int>(array);
+        for (int j = 0; j < 6; j++) {
+            arrays[j] = vector<int>(array);
         }
 
         // Fuerza bruta
@@ -72,7 +70,6 @@ int main() {
 	Algorithms::get()->~Algorithms();
 	Utils::get()->~Utils();
 
-	//runGraphs();
 	return 0;
 }
 

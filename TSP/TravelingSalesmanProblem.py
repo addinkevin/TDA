@@ -48,11 +48,16 @@ class TravelingSalesmanProblem:
 
     def createPathList(self, initialVertex,setNumber):
         pathList = [initialVertex]
+        actualVertex = initialVertex
         for i in range(self.vertexCount-1):
-            nextVertex = self.path[initialVertex][setNumber]
+            nextVertex = self.path[actualVertex][setNumber]
             pathList.append(nextVertex)
             setNumber = self.getSetNumberWithOutVertex(setNumber, nextVertex)
-            initialVertex = nextVertex
+            actualVertex = nextVertex
 
+        pathList.append(initialVertex)
         return pathList
+    
+
+
 

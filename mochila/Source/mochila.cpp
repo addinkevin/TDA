@@ -7,9 +7,17 @@
 //============================================================================
 
 #include <iostream>
+#include "../Headers/Parser.h"
+#include <list>
 using namespace std;
 
 int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	Parser* parser = new Parser();
+	list<Stage>* lista = parser->getListOfStages("/home/jorlando/test.csv");
+
+	for (list<Stage>::iterator it=lista->begin(); it != lista->end(); ++it){
+		cout << "ES EL STAGE" <<  it->name << endl;
+		(*it).print();
+	}
 	return 0;
 }

@@ -1,0 +1,63 @@
+/*
+ * Parser.cpp
+ *
+ *  Created on: 12 de nov. de 2016
+ *      Author: jorlando
+ */
+
+#include "../Headers/Parser.h"
+
+Parser::Parser() {
+}
+
+
+void loadConfigOfStage(Stage* stage, int lineConfig, string* line){
+ switch(lineConfig){
+	 case 0:
+		 stage->name = *line;
+		 break;
+	 case 1:
+		 stage->qtyNode = atoi(line->substr(line->find(" ")+1).c_str());
+		 break;
+	 case 2:
+		 string capacityBagStr = line->substr(line->find(" ")+1);
+		 stage->capacityBag = atoi(capacityBagStr.c_str());
+		 break;
+ }
+}
+
+void processLine(list<Stage>* listStage, Stage* stage, int* lineConfig, string* line){
+	if(*lineConfig >= 0 && *lineConfig < 5){
+		loadConfigOfStage(stage, *(lineConfig), line);
+	} else {
+		stage->loadNode(line);
+	}
+	if(stage->isFull()){
+		listStage->push_back(*stage);
+		stage = new Stage();
+		//Es -3 porque el archivo tiene una linea con --- y otra vacia entre cada uno de los Stage
+		*(lineConfig) = -3;
+	}
+	*(lineConfig) = *(lineConfig)+1;
+}
+
+list<Stage>* Parser::getListOfStages(string path){
+	list<Stage> listStage;
+	ifstream inputFile;
+	inputFile.open(path.c_str());
+	char output[100];
+	if (inputFile.is_open()) {
+		int lineConfig = 0;
+		Stage* stage = new Stage();
+		 while (!inputFile.eof()) {
+			 inputFile >> output;
+			 string line = string(output);
+			 processLine(&listStage, stage, &lineConfig, &line);
+		 }
+	}
+	inputFile.close();
+}
+
+Parser::~Parser() {
+	// TODO Auto-generated destructor stub
+}

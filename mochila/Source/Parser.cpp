@@ -44,8 +44,8 @@ void processLine(list<Stage>* listStage, Stage* stage, int* lineConfig, string* 
 	*(lineConfig) = *(lineConfig)+1;
 }
 
-list<Stage> Parser::getListOfStages(string path){
-	list<Stage> listStage;
+list<Stage>* Parser::getListOfStages(string path){
+	list<Stage>* listStage = new list<Stage>();
 	ifstream inputFile;
 	inputFile.open(path.c_str());
 	if (inputFile.is_open()) {
@@ -54,11 +54,11 @@ list<Stage> Parser::getListOfStages(string path){
 		string line;
 		 while (std::getline(inputFile, line)) {
 			 //cout << "LINEA " << line << endl;
-			 processLine(&listStage, stage, &lineConfig, &line);
+			 processLine(listStage, stage, &lineConfig, &line);
 		 }
 	}
 	inputFile.close();
-	cout << "SALGO " << listStage.size()<< endl;
+	cout << "SALGO " << listStage->size()<< endl;
 	return listStage;
 }
 

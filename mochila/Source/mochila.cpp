@@ -13,11 +13,15 @@ using namespace std;
 
 int main() {
 	Parser* parser = new Parser();
-	list<Stage>* lista = parser->getListOfStages("/home/jorlando/test.csv");
-
-	for (list<Stage>::iterator it=lista->begin(); it != lista->end(); ++it){
+	cout << "ANTES "<< endl;
+	list<Stage> lista = parser->getListOfStages("/home/jorlando/test.csv");
+	cout << "DESPUES "<< endl;
+	cout << "size lista " << (lista).size()<< endl;
+	cout << "FIN "<< endl;
+	for (list<Stage>::iterator it=lista.begin(); it != lista.end(); ++it){
 		cout << "ES EL STAGE" <<  it->name << endl;
 		(*it).print();
 	}
+
 	return 0;
 }

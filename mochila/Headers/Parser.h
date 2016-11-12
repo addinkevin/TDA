@@ -21,7 +21,7 @@ class Parser {
 public:
 	Parser();
 
-	list<Stage>* getListOfStages(string path);
+	list<Stage> getListOfStages(string path);
 	~Parser();
 };
 

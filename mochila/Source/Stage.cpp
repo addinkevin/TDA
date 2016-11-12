@@ -16,6 +16,7 @@ Stage::~Stage() {
 }
 
 void Stage::loadNode(string* line){
+	//cout << "ENTRE AL LOAD NODE se STAGE " << *line<<endl;
 	Node* newNode = new Node();
 
 	string lineWithoutNumberNode = line->substr(line->find(",")+1);
@@ -24,10 +25,10 @@ void Stage::loadNode(string* line){
 	string valorStr = lineWithoutNumberNode.substr(0,posEndValor);
 	newNode->valor = atoi(valorStr.c_str());
 
-	string lineWithoutValor = lineWithoutNumberNode.substr(posEndValor);
+	string lineWithoutValor = lineWithoutNumberNode.substr(posEndValor+1);
 	size_t posEndWeight = lineWithoutValor.find(",");
 
-	string weightStr = lineWithoutValor.substr(0,posEndWeight-1);
+	string weightStr = lineWithoutValor.substr(0,posEndWeight);
 	newNode->weight = atoi(weightStr.c_str());
 	this->nodes.push_back(newNode);
 }
@@ -38,6 +39,7 @@ void Stage::print(){
 		}
 }
 bool Stage::isFull(){
-	return (this->nodes.size() == this->qtyNode);
+	//cout << "this->nodes.size() " << this->nodes.size() << " this->qtyNode " << this->qtyNode << endl;
+	return (this->nodes.size() == this->qtyNode) && (this->qtyNode>=1);
 }
 

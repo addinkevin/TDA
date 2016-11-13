@@ -1,7 +1,7 @@
 import unittest
 from TSP.ParserTSPFile import ParserTSPFile
-from TSP.TSP import TSP
-from TSP.TravelingSalesmanProblem import TravelingSalesmanProblem
+from TSP.TSPIterative import TSPIterative
+from TSP.TSPRecursive import TSPRecursive
 
 
 class TestTSP(unittest.TestCase):
@@ -20,8 +20,8 @@ class TestTSP(unittest.TestCase):
         expectedList = parser.getSolutionList()
         expectedCost = self._calculateCost(matrix,expectedList)
 
-        #tsp = TravelingSalesmanProblem(matrix)
-        tsp = TSP(matrix)
+        tsp = TSPRecursive(matrix)
+        #tsp = TSPIterative(matrix)
 
         actualCost, actualList = tsp.run(0)
 
@@ -34,9 +34,9 @@ class TestTSP(unittest.TestCase):
 
 
     def testExamples(self):
-        #self.runExample("../files/tsp1.txt", "../files/tsp1_s.txt")
-        self.runExample("../files/tsp2.txt", "../files/tsp2_s.txt")
-        #self.runExample("../files/tsp3.txt", "../files/tsp3_s.txt")
+        self.runExample("./files/tsp1.txt", "./files/tsp1_s.txt")
+        #self.runExample("./TSP/files/tsp2.txt", "./TSP/files/tsp2_s.txt")
+        #self.runExample("./TSP/files/tsp3.txt", "./TSP/files/tsp3_s.txt")
 
 
 if __name__ == '__main__':

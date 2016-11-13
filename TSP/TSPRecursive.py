@@ -1,4 +1,4 @@
-class TravelingSalesmanProblem:
+class TSPRecursive:
     def __init__(self, costMatrix):
         self.costMatrix = costMatrix
         self.vertexCount = len(costMatrix)

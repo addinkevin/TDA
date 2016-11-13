@@ -1,7 +1,7 @@
 from itertools import combinations
 from sys import maxsize
 
-class TSP:
+class TSPIterative:
     def __init__(self, costMatrix):
         self.costMatrix = costMatrix
         self.vertexCount = len(costMatrix)
@@ -33,11 +33,11 @@ class TSP:
 
 
         for k in range(1, self.vertexCount-1):
-            for u in vertexList:
-                newList = list(vertexList)
-                newList.remove(u)
-                newListSetNumber = self.getSetNumberFromList(newList)
-                for set in combinations(newList,k):
+            listToIterate = list(vertexList)
+            for u in listToIterate:
+                vertexList.remove(u)
+                newListSetNumber = self.getSetNumberFromList(vertexList)
+                for set in combinations(vertexList,k):
                     actualSetNumber = self.getSetNumberFromList(set)
                     minCost = maxValue
                     minVertex = -1
@@ -52,6 +52,7 @@ class TSP:
                     self.memory[u][actualSetNumber] = minCost
                     self.path[u][actualSetNumber] = minVertex
 
+                vertexList.append(u)
         setVertex = 2 ** self.vertexCount - 1
         setVertex = self.getSetNumberWithOutVertex(setVertex, self.initialVertex)
         minCost = maxValue

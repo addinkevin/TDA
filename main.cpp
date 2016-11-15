@@ -5,6 +5,7 @@
 #include "Viajante/ParserTSPFile.h"
 #include "Viajante/Types.h"
 #include "Viajante/TSPTest.h"
+#include "mochila/Headers/Mochila.h"
 
 using namespace std;
 
@@ -43,10 +44,11 @@ int main() {
 
         TSPTest test;
         //test.runExample("./Viajante/files/prueba.txt", "./Viajante/files/prueba_s.txt");
-        test.runExample("./Viajante/files/tsp2.txt", "./Viajante/files/tsp2_s.txt");
+        //test.runExample("./Viajante/files/tsp2.txt", "./Viajante/files/tsp2_s.txt");
+        Mochila mochila;
 
-    } catch(string error) {
-        std::cout << error;
+    } catch(string & error) {
+        std::cout << "***ERROR***: "<< error << endl;
     }
     return 0;
 }

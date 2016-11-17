@@ -27,6 +27,7 @@ public:
 	void loadNode(string* line);
 	bool isFull();
 	void print();
+	Node* getNode(int);
 
 	Stage();
 	~Stage();

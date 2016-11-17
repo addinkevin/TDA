@@ -43,3 +43,10 @@ bool Stage::isFull(){
 	return (this->nodes.size() == this->qtyNode) && (this->qtyNode>=1);
 }
 
+Node* Stage::getNode(int i){
+	list<Node*>::iterator it = this->nodes.begin();
+	advance(it, i);
+	return *it;
+
+}
+

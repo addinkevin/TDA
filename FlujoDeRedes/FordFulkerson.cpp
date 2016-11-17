@@ -30,12 +30,12 @@ int FordFulkerson::bottleneck(vector<Edge *> pathInResidualGraph) {
 
 
 Edge *FordFulkerson::getEdgeInG(Edge *edgeInGResidual) {
-    return edgeInGResidual->edgeRef;
+    return this->parser->mapping.mapEdgeResidualGToEdgeG[edgeInGResidual];
 }
 
 
 bool FordFulkerson::isEdgeForward(Edge* edgeInGResidual) {
-    return (edgeInGResidual->isFordward);
+    return this->parser->mapping.isEdgeResidualForward[edgeInGResidual];
 }
 
 void FordFulkerson::augment(vector<Edge *> pathInResidualGraph) {
@@ -127,5 +127,3 @@ vector<int> FordFulkerson::getAreas() {
     }
     return areasToPay;
 }
-
-

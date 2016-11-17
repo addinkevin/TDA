@@ -16,9 +16,6 @@ public:
     int getCapacity();
 	void setCapacity(int capacity);
 
-	bool isFordward = false;
-	Edge* edgeRef = nullptr;
-
 	~Edge();
 };
 

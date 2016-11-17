@@ -14,9 +14,9 @@ class Mapping {
 private:
 
 public:
-    //map<Edge*, Edge*> mapEdgeForwardToG;
-    //map<Edge*, Edge*> mapEdgeBackwardToG;
     map<Edge*, pair<Edge*,Edge*>> mapEdgeGToResidualG;
+    map<Edge*, Edge*> mapEdgeResidualGToEdgeG;
+    map<Edge*, bool> isEdgeResidualForward;
 
     Mapping();
 };

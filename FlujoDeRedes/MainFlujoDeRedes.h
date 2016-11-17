@@ -28,6 +28,7 @@ public:
     }
 
     void runExample(string fileName) {
+        std::cout << "-----" << std::endl;
         std::cout << ">Corrida del algoritmo sobre " << fileName << std::endl;
         ParserNetworkFlow parserNetworkFlow(fileName);
         FordFulkerson fordFulkerson(&parserNetworkFlow);
@@ -51,11 +52,11 @@ public:
     }
 
     void run() {
-        //runExample("./FlujoDeRedes/files/trivialExample.txt");
-        //runExample("./FlujoDeRedes/files/trivialExample2.txt");
-        //runExample("./FlujoDeRedes/files/trivialExample3.txt");
-        //runExample("./FlujoDeRedes/files/trivialExample4.txt");
-        //runExample("./FlujoDeRedes/files/example1.txt");
+        runExample("./FlujoDeRedes/files/trivialExample.txt");
+        runExample("./FlujoDeRedes/files/trivialExample2.txt");
+        runExample("./FlujoDeRedes/files/trivialExample3.txt");
+        runExample("./FlujoDeRedes/files/trivialExample4.txt");
+        runExample("./FlujoDeRedes/files/example1.txt");
         runExample("./FlujoDeRedes/files/example2.txt");
 
     }

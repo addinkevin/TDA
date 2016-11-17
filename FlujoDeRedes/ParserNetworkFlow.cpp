@@ -102,9 +102,10 @@ void ParserNetworkFlow::createGraphs() {
         Edge* edgeG = new Edge(sVertex, projectVertex, this->profits.at(i));
         Edge* edgeForward = new Edge(sVertex, projectVertex, this->profits.at(i));
         Edge* edgeBackward = new Edge(projectVertex, sVertex, 0);
-        edgeForward->edgeRef = edgeG;
-        edgeForward->isFordward = true;
-        edgeBackward->edgeRef = edgeG;
+        this->mapping.isEdgeResidualForward[edgeForward] = true;
+        this->mapping.isEdgeResidualForward[edgeBackward] = false;
+        this->mapping.mapEdgeResidualGToEdgeG[edgeForward] = edgeG;
+        this->mapping.mapEdgeResidualGToEdgeG[edgeBackward] = edgeG;
 
         this->mapping.mapEdgeGToResidualG[edgeG] = pair<Edge*,Edge*>(edgeForward, edgeBackward);
         VertexInfo vertexInfo("Projecto:" + to_string(i+1), i+1, true);
@@ -121,9 +122,10 @@ void ParserNetworkFlow::createGraphs() {
         Edge* edgeG = new Edge(areaVertex, tVertex, this->areaCosts.at(i));
         Edge* edgeForward = new Edge(areaVertex, tVertex, this->areaCosts.at(i));
         Edge* edgeBackward = new Edge(tVertex, areaVertex, 0);
-        edgeForward->edgeRef = edgeG;
-        edgeForward->isFordward = true;
-        edgeBackward->edgeRef = edgeG;
+        this->mapping.isEdgeResidualForward[edgeForward] = true;
+        this->mapping.isEdgeResidualForward[edgeBackward] = false;
+        this->mapping.mapEdgeResidualGToEdgeG[edgeForward] = edgeG;
+        this->mapping.mapEdgeResidualGToEdgeG[edgeBackward] = edgeG;
 
         this->mapping.mapEdgeGToResidualG[edgeG] = pair<Edge*,Edge*>(edgeForward, edgeBackward);
         VertexInfo vertexInfo("Area:" + to_string(i+1), i+1, false);
@@ -144,9 +146,10 @@ void ParserNetworkFlow::createGraphs() {
             Edge* edgeG = new Edge(projectVertex, areaVertex, this->infinityCapacity);
             Edge* edgeForward = new Edge(projectVertex, areaVertex, this->infinityCapacity);
             Edge* edgeBackward = new Edge(areaVertex, projectVertex, 0);
-            edgeForward->edgeRef = edgeG;
-            edgeForward->isFordward = true;
-            edgeBackward->edgeRef = edgeG;
+            this->mapping.isEdgeResidualForward[edgeForward] = true;
+            this->mapping.isEdgeResidualForward[edgeBackward] = false;
+            this->mapping.mapEdgeResidualGToEdgeG[edgeForward] = edgeG;
+            this->mapping.mapEdgeResidualGToEdgeG[edgeBackward] = edgeG;
 
             this->mapping.mapEdgeGToResidualG[edgeG] = pair<Edge*,Edge*>(edgeForward, edgeBackward);
 

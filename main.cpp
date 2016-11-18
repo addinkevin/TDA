@@ -19,7 +19,7 @@ int main() {
         //MainFlujoDeRedes().run();
 
         // Mochila test
-        string ruta = "/home/gatti2602/Downloads/hardinstances_pisinger/knapPI_16_100_1000.csv";
+        string ruta = "./mochila/files/knapPI_16_100_1000.csv";
         Mochila* mochila = new Mochila(ruta);
 
     } catch(string & error) {

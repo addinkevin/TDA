@@ -35,7 +35,7 @@ void Stage::loadNode(string* line){
 
 void Stage::print(){
 	for (list<Node*>::iterator it=this->nodes.begin(); it != this->nodes.end(); ++it){
-			cout << "Nodo valor: " <<  (*it)->valor << " peso: "<< (*it)->weight<<  endl;
+			//cout << "Nodo valor: " <<  (*it)->valor << " peso: "<< (*it)->weight<<  endl;
 		}
 }
 bool Stage::isFull(){

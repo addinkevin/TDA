@@ -16,10 +16,10 @@ int main() {
         std::cout << "Hello, World!" << std::endl;
 
         //MainViajante().run();
-        MainFlujoDeRedes().run();
+        //MainFlujoDeRedes().run();
 
         // Mochila test
-        //Mochila mochila;
+        Mochila mochila;
 
     } catch(string & error) {
         std::cout << "***ERROR***: "<< error << endl;

@@ -10,6 +10,7 @@
 #include <iostream>
 #include <list>
 #include <set>
+#include <ctime>
 #include "../Headers/Parser.h"
 #include "../Headers/Stage.h"
 #include "../Headers/Node.h"
@@ -21,7 +22,7 @@ Mochila::Mochila(){
 
 int Mochila::initMochila() {
 	Parser* parser = new Parser();
-	string ruta = "/home/gatti2602/Downloads/smallcoeff_pisinger/knapPI_1_50_1000.csv";
+	string ruta = "/home/gatti2602/Downloads/hardinstances_pisinger/knapPI_16_100_1000.csv";
 	list<Stage>* lista = parser->getListOfStages(ruta);
 	cout << "size lista " << (lista)->size()<< endl;
 	for (list<Stage>::iterator it=lista->begin(); it != lista->end(); ++it){
@@ -34,51 +35,50 @@ int Mochila::initMochila() {
 
 void Mochila::computarMochila(Stage stage){
 	//cout << "ComputarMochila: start" << endl;
+
+	unsigned t0, t1;
+	t0=clock();
 	int tPesos[stage.qtyNode+1][stage.capacityBag+1];
 	std::set<int> tSoluciones[stage.qtyNode+1][stage.capacityBag+1];
 	std::set<int> empty;
-	try{
 
-		for (int i=0;i<stage.qtyNode;i++)
-			for(int j=0;j<=stage.capacityBag;j++){
-				tPesos[i][j] = 0;
-				tSoluciones[i][j] = empty;
+	for (int i=0;i<stage.qtyNode;i++)
+		for(int j=0;j<=stage.capacityBag;j++){
+			tPesos[i][j] = 0;
+			tSoluciones[i][j] = empty;
+		}
 
+	for(int i=1; i<=stage.qtyNode; i++){
+		for(int w=0;w<=stage.capacityBag;w++){
+			int weight = stage.getNode(i-1)->weight;
+			int valor = stage.getNode(i-1)->valor;
+			if(w < weight){
+				tPesos[i][w] = tPesos[i-1][w];
+				tSoluciones[i][w] = tSoluciones[i-1][w];
 			}
-
-		for(int i=1; i<=stage.qtyNode; i++){
-			for(int w=0;w<=stage.capacityBag;w++){
-				int weight = stage.getNode(i-1)->weight;
-				int valor = stage.getNode(i-1)->valor;
-				if(w < weight){
+			else{
+				if(tPesos[i-1][w] > (valor + tPesos[i-1][w-weight])){
 					tPesos[i][w] = tPesos[i-1][w];
 					tSoluciones[i][w] = tSoluciones[i-1][w];
 				}
 				else{
-					if(tPesos[i-1][w] > (valor + tPesos[i-1][w-weight])){
-						tPesos[i][w] = tPesos[i-1][w];
-						tSoluciones[i][w] = tSoluciones[i-1][w];
-					}
-					else{
-						tPesos[i][w] = valor + tPesos[i-1][w-weight];
-						tSoluciones[i][w] = tSoluciones[i-1][w-weight];
-						tSoluciones[i][w].insert(i);
-					}
+					tPesos[i][w] = valor + tPesos[i-1][w-weight];
+					tSoluciones[i][w] = tSoluciones[i-1][w-weight];
+					tSoluciones[i][w].insert(i);
 				}
-				//cout<< "w"<<w<<endl;
 			}
-			//cout << "i" << i<< endl;
+			//cout<< "w"<<w<<endl;
 		}
-		cout << "ComputarMochila: RESULTADO: " << tPesos[stage.qtyNode][stage.capacityBag] << endl;
-	} catch(string & error) {
-		std::cout << "***ERROR***: "<< error << endl;
+		//cout << "i" << i<< endl;
 	}
-
 	//Imprimo objetos en la mochila
 
 	std::set<int> mochilaFinal;
 	mochilaFinal.swap(tSoluciones[stage.qtyNode][stage.capacityBag]);
 
+	t1 = clock();
+	double time = (double(t1-t0)/CLOCKS_PER_SEC);
+	cout << "ComputarMochila: RESULTADO: " << tPesos[stage.qtyNode][stage.capacityBag] << " , " << time << endl;
 
 	for ( std::set<int>::const_iterator si = mochilaFinal.begin( ) ;
 		 si != mochilaFinal.end( ) ; si++ ) {

@@ -1,7 +1,3 @@
-//
-// Created by kevin on 11/12/16.
-//
-
 #ifndef TRABAJOPRACTICO2_TSPTEST_H
 #define TRABAJOPRACTICO2_TSPTEST_H
 
@@ -32,6 +28,7 @@ public:
             return false;
         }
 
+        // Puede que los recorridos estén invertidos, pero valen igual en el caso de que la matriz sea simetrica.
         bool toReturn = true;
         for (unsigned int i = 0; i < expectedList->size(); i++) {
             if (expectedList->at(i) != actualList->at(i)) {

@@ -1,7 +1,3 @@
-//
-// Created by kevin on 11/13/16.
-//
-
 #include "Flow.h"
 
 Flow::Flow(Digraph *digraph) {
@@ -10,6 +6,7 @@ Flow::Flow(Digraph *digraph) {
 }
 
 void Flow::init() {
+    // f(e) = 0 para toda arista del grafo.
     for (int v = 0; v < this->digraph->getVertices(); v++) {
         std::list<Edge*>* list = this->digraph->getAdjList(v);
         for (std::list<Edge*>::iterator it = list->begin(); it != list->end(); ++it) {
@@ -26,5 +23,7 @@ EdgeInfo* Flow::getEdgeInfo(Edge *edge) {
 }
 
 Flow::~Flow() {
-    // TODO: Borrar contenido del map
+    for (map<Edge*,EdgeInfo*>::iterator it = this->edgeMap.begin(); it != this->edgeMap.end(); ++it) {
+        delete it->second;
+    }
 }

@@ -1,7 +1,3 @@
-//
-// Created by kevin on 11/13/16.
-//
-
 #ifndef TRABAJOPRACTICO2_FORDFULKENSON_H
 #define TRABAJOPRACTICO2_FORDFULKENSON_H
 
@@ -31,6 +27,7 @@ private:
     vector<Edge *> getPathST();
 
     void calculateMinCut();
+
 public:
 
     FordFulkerson(ParserNetworkFlow* parser);

@@ -1,7 +1,3 @@
-//
-// Created by kevin on 11/13/16.
-//
-
 #include "FordFulkerson.h"
 #include "ParserNetworkFlow.h"
 #include "PathBFS.h"
@@ -16,11 +12,14 @@ FordFulkerson::~FordFulkerson() {
     delete flow;
 }
 
+/*
+ * Calcula el cuello de botella del camino pasado como argumento
+ */
 int FordFulkerson::bottleneck(vector<Edge *> pathInResidualGraph) {
-    int min = this->flow->getEdgeInfo(getEdgeInG(pathInResidualGraph.at(0)))->getResidualCapacity();
+    int min = pathInResidualGraph.at(0)->getCapacity();
 
     for (unsigned int i = 1; i < pathInResidualGraph.size(); i++) {
-        int residualCapacity = this->flow->getEdgeInfo(getEdgeInG(pathInResidualGraph.at(i)))->getResidualCapacity();
+        int residualCapacity = pathInResidualGraph.at(i)->getCapacity();
         if (residualCapacity < min) {
             min = residualCapacity;
         }
@@ -51,8 +50,9 @@ void FordFulkerson::augment(vector<Edge *> pathInResidualGraph) {
         }
 
         this->flow->getEdgeInfo(edgeInG)->setFlow(newFlow);
-        Edge* edgeForward = this->parser->mapping.mapEdgeGToResidualG[edgeInG].first;
-        Edge* edgeBackward =this->parser->mapping.mapEdgeGToResidualG[edgeInG].second;
+        pair<Edge*,Edge*> edgesInResidualG = this->parser->mapping.mapEdgeGToResidualG[edgeInG];
+        Edge* edgeForward = edgesInResidualG.first;
+        Edge* edgeBackward = edgesInResidualG.second;
         edgeForward->setCapacity(edgeInG->getCapacity() - newFlow);
         edgeBackward->setCapacity(newFlow);
     }

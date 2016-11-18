@@ -1,7 +1,3 @@
-//
-// Created by kevin on 11/13/16.
-//
-
 #ifndef TRABAJOPRACTICO2_EDGEINFO_H
 #define TRABAJOPRACTICO2_EDGEINFO_H
 

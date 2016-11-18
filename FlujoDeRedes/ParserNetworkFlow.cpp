@@ -1,7 +1,3 @@
-//
-// Created by kevin on 11/13/16.
-//
-
 #include "ParserNetworkFlow.h"
 #include "Digraph.h"
 #include <fstream>
@@ -27,13 +23,31 @@ vector<int> ParserNetworkFlow::getAreaCosts(ifstream& file, int areasCount) {
     return costs;
 }
 
-int ParserNetworkFlow::calculateTotalCapacity(vector<int> costs) {
+int ParserNetworkFlow::calculateTotalCapacity(vector<int> v) {
     int total = 0;
-    for (int i = 0; i < costs.size(); i++) {
-        total += costs.at(i);
+    for (int i = 0; i < v.size(); i++) {
+        total += v.at(i);
     }
 
     return total;
+}
+
+pair<int,vector<int>> ParserNetworkFlow::splitLine(string line, char delim) {
+    vector<int > dependencies;
+    stringstream ss;
+    ss.str(line);
+    string item;
+
+    getline(ss, item, delim);
+    int profit = stoi(item);
+
+    while (getline(ss, item, delim)) {
+        if (!item.empty()) {
+            dependencies.push_back(stoi(item));
+        }
+    }
+
+    return pair<int,vector<int>>(profit, dependencies);
 }
 
 void ParserNetworkFlow::getProjects(ifstream& file, int count) {
@@ -64,30 +78,13 @@ void ParserNetworkFlow::parse() {
     this->projectsCount = stoi(line);
 
     this->areaCosts = getAreaCosts(file, this->areasCount);
-    this->infinityCapacity = calculateTotalCapacity(this->areaCosts) + 1;
 
     getProjects(file,this->projectsCount);
+    this->infinityCapacity = calculateTotalCapacity(this->profits) + 1;
 
     file.close();
 }
 
-pair<int,vector<int>> ParserNetworkFlow::splitLine(string line, char delim) {
-    vector<int > dependencies;
-    stringstream ss;
-    ss.str(line);
-    string item;
-
-    getline(ss, item, delim);
-    int profit = stoi(item);
-
-    while (getline(ss, item, delim)) {
-        if (!item.empty()) {
-            dependencies.push_back(stoi(item));
-        }
-    }
-
-    return pair<int,vector<int>>(profit, dependencies);
-}
 
 void ParserNetworkFlow::createGraphs() {
     this->graph = new Digraph(this->projectsCount + this->areasCount + 2);

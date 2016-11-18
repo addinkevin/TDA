@@ -1,7 +1,3 @@
-//
-// Created by kevin on 11/13/16.
-//
-
 #ifndef TRABAJOPRACTICO2_VERTEXINFO_H
 #define TRABAJOPRACTICO2_VERTEXINFO_H
 
@@ -16,6 +12,7 @@ public:
         this->isProject = isProject;
         this->number = number;
     }
+
     string description;
     bool isProject = false;
     int number = 0;

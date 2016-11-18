@@ -1,0 +1,404 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% University Assignment Title Page 
+% LaTeX Template
+% Version 1.0 (27/12/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% WikiBooks (http://en.wikibooks.org/wiki/LaTeX/Title_Creation)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% 
+% Instructions for using this template:
+% This title page is capable of being compiled as is. This is not useful for 
+% including it in another document. To do this, you have two options: 
+%
+% 1) Copy/paste everything between \begin{document} and \end{document} 
+% starting at \begin{titlepage} and paste this into another LaTeX file where you 
+% want your title page.
+% OR
+% 2) Remove everything outside the \begin{titlepage} and \end{titlepage} and 
+% move this file to the same directory as the LaTeX file you wish to add it to. 
+% Then add \input{./title_page_1.tex} to your LaTeX file where you want your
+% title page.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Title page with logo}
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt]{article}
+%\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{float}
+
+
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\lstset{
+backgroundcolor=\color{lbcolor},
+    tabsize=4,    
+%   rulecolor=,
+    language=[GNU]C++,
+        basicstyle=\scriptsize,
+        upquote=true,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=false,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        numbers=left,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.026,0.112,0.095},
+        stringstyle=\color[rgb]{0.627,0.126,0.941},
+        numberstyle=\color[rgb]{0.205, 0.142, 0.73},
+%        \lstdefinestyle{C++}{language=C++,style=numbers}’.
+}
+\lstset{
+    backgroundcolor=\color{lbcolor},
+    tabsize=4,
+  language=C++,
+  captionpos=b,
+  tabsize=3,
+  frame=lines,
+  numbers=left,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  breaklines=true,
+  showstringspaces=false,
+  basicstyle=\footnotesize,
+%  identifierstyle=\color{magenta},
+  keywordstyle=\color[rgb]{0,0,1},
+  %commentstyle=\color{green},
+  stringstyle=\color{red}
+  }
+
+\begin{document}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Facultad de Ingeniería\\Universidad de Buenos Aires}\\[1.5cm] % Name of your university/college
+\textsc{\Large Teoría de algoritmos}\\[0.5cm] % Major heading such as course name
+%\textsc{\large Minor Heading}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Trabajo Práctico Nº2}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Autores:}\\
+Addin Kevin\\
+Cabrera Jorge\\
+Gatti Nicolas\\
+Orlando Juan Manuel
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Padrón:} \\
+94280\\
+93310\\
+93570\\
+93152
+\end{flushright}
+\end{minipage}\\[1cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large 18 de Noviembre, 2016}\\[1cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+\includegraphics[width=0.3\textwidth]{FIUBA.png}\\[0.8cm] % Include a department/university logo - this will require the graphicx package
+ 
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Programación dinámica}
+\subsection{El problema de la mochila}
+\subsubsection{Análisis de complejidad}
+El cálculo de la complejidad de este algoritmo es sencillo ya que lo que se realiza es iterar una matriz bidimensional, realizando en cada iteración una cantidad finita de 
+operaciones $O(1)$.
+Luego para el obtener el listado de items a incluir en la mochila debemos realizar una iteración adicional $O(n)$.
+
+Por lo tanto, la complejidad del algoritmo es
+$$ O(n W) $$ siendo n la cantidad de elementos en la mochila y W el peso máximo soportado por la mochila.
+
+\subsubsection{Análisis de tiempos}
+\newpage
+
+\subsubsection{Implementación del algoritmo}
+\newpage
+
+\subsection{El problema del viajante de comercio}
+\subsubsection{Análisis de complejidad}
+En este algoritmo tenemos que analizar los distintos conjuntos de vertices posibles. Para cada conjunto de vertices posible, luego tenemos que determinar el optimo de cada vertice para recorrer ese conjunto.
+Para determinar ese optimo, tenemos que realizar un minimo entre el resto de los vertices del conjunto, haciendo que la complejidad del algoritmo en tiempo sea:
+$$O(n^2 2^n)$$
+siendo n la cantidad de vértices.
+
+En cuanto el espacio, hay que tener en cuenta que tenemos n vértices, y por cada vertice necesitamos guardar el resultado optimo para los distintos conjuntos de vertices posibles.
+Por lo tanto, la complejidad en espacio del algoritmo es:
+$$O(n 2^n)$$
+siendo n la cantidad de vértices.
+
+\subsubsection{Análisis de tiempos}
+Para la medición de tiempos, correremos el archivo de prueba ``p01.tsp''(renombrado como tsp1) y 7 archivos adicionales que contienen desde 15 vertices hasta 21 vertices inclusive, 
+extraidos del archivo
+``att48\_d.txt''.
+La idea es poder ver como varía el tiempo con tan solo aumentar la entrada en una unidad.
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{prueba} & \textbf{clocks} \\ \hline
+tsp1            & 593626          \\ \hline
+n15             & 597700          \\ \hline
+n16             & 1480802         \\ \hline
+n17             & 3629355         \\ \hline
+n18             & 8816650         \\ \hline
+n19             & 21099357        \\ \hline
+n20             & 49919981        \\ \hline
+n21             & 117923147       \\ \hline
+\end{tabular}
+\caption{Tabla de tiempos}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{ProblemaDelViajante/tiempos.png}
+\caption{Gráfico de tiempos}
+\end{figure}
+
+Con el gráfico podemos observar que la ejecución del archivo de prueba ``p01.tsp''(renombrado como tsp1) es casi instantanea.
+
+También podemos apreciar que a medida que aumenta el número de nodos en tan solo una unidad, aumenta enormemente el tiempo insumido a más del doble.
+
+En cuanto al archivo de prueba ``fri26.tsp'' de 26 nodos, no pudimos realizar la medición de tiempo debido a que el espacio requerido para la ejecución del 
+algoritmo excedía nuestra memoria RAM disponible.
+
+Si hacemos un poco de cuentas, mencionamos que la complejidad en espacio del algoritmo es $O(n 2^n)$.
+Si $n = 26$, tenemos que $26 * 2^{26} = 1744830464$. Supongamos que requerimos 8B para almacenar el costo asociado a dicho vértice y conjunto, tendríamos: $26 * 2^{26} * 8B \approx 14GB$.
+
+Nuestra implementación trato de optimizar el espacio lo más posible, utilizando para ello un entero para representar al conjunto de vértices, pero no pudo ser posible ejecutarlo.
+\newpage
+\subsubsection{Implementación del algoritmo}
+\newpage
+\section{Flujo de redes}
+\subsection{Modelado del problema}
+Para el modelado del problema, supongamos que tenemos 4 proyectos, con ganancias de 10\$, 5\$, 4\$ y 3\$, y supongamos que tenemos 3 areas con costos de 15\$, 8\$ y 4\$.
+Para realizar un proyecto dado requerimos contratar ciertas areas, por ejemplo:
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Proyecto & Areas requeridas \\ \hline
+1        & 1, 2             \\ \hline
+2        & 2,3              \\ \hline
+3        & 3                \\ \hline
+4        & 3                \\ \hline
+\end{tabular}
+\caption{Tabla de requisitos}
+\end{table}
+
+Resolveremos este problema utilizando flujo de redes, basandonos en la versión del libro ``Algorithm Design'' \cite{ALGORITHMDESIGN}.
+
+Para ello lo que haremos será crear un grafo que contengan como vertices los proyectos, las areas y dos vertices adicionales, s y t.
+
+Conectaremos el vertice s con cada proyecto y conectaremos cada area con el vertice t.
+Luego, conectaremos cada proyecto con las areas requeridas para su realización.
+
+En cuanto a las capacidad de las aristas, las aristas que conecten el vertice s con los proyectos tendrán como capacidad la ganancia de realizar dicho proyecto. Para las aristas que conecten las areas 
+con el vertice t tendrán como capacidad el costo de contratar dicha area. Por ultimo, las aristas que conectan los proyectos con las areas tendrán capacidad ''Infinita``, de modo que no constituyan 
+una limitación para el algoritmo. Esta capacidad infinita basta que sea igual a $ C + 1 $, siendo $ C = \sum g_i $, donde $g_i$ es la ganancia del proyecto $i$.
+\newpage
+El grafo nos quedaría de la siguiente manera:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{FlujoDeRedes/GrafoInicial.png}
+\caption{Grafo de ejemplo}
+\end{figure}
+
+Para obtener qué proyectos se realizarán y qué areas se contratarán se debe calcular el corte mínimo de este grafo, esto es equivalente a calcular el flujo máximo. 
+
+
+Sea $A$ un conjunto de vertices tal que si existe un proyecto dentro del mismo, también están las areas requeridas para dicho proyecto.
+Definimos $A' = A \cup \{s\}$, $B' = (V - A) \cup \{t\}$, donde $V$ es el conjunto de vertices del grafo.
+Sea $c(A',B')$ la capacidad del corte $(A',B')$, se puede demostrar que 
+$$c(A', B') = C - \left(\sum g_i - \sum c_i\right)$$
+donde $g_i$ es la ganancia del proyecto $i$ y $c_i$ es el costo para contratar el area $i$.
+Tenemos tres tipos de aristas: Las aristas que conectan s con los proyectos, las aristas que conectan las areas con t y las aristas que conectan los proyectos con las areas.
+Estas ultimas no contribuyen a dicho corte debido al supuesto inicial sobre A, esto es, si está un proyecto también están las areas requeridas para el mismo.
+
+Las aristas que conectan s con los proyectos que no están en $A$ aportan al corte
+$$ \sum_{project\ i \notin A} g_i $$
+
+Las aristas que conectan las areas que están en $A$ con t aportan al corte
+$$ \sum_{area\ i \in A} c_i $$
+
+Usando la definición de C
+$$ \sum_{project\ i \notin A} g_i = C - \sum_{project\ i \in A} g_i$$
+
+Por lo tanto, la capacidad del corte $c(A',B')$ es
+$$c(A',B') = \left( C - \sum_{project\ i \in A} g_i \right)+  \sum_{area\ i \in A} c_i $$
+
+$$c(A',B') = C - \left(\sum_{project\ i \in A} g_i - \sum_{area\ i \in A} c_i \right)$$
+
+
+Entonces, si $(A', B')$ es un corte con capacidad a lo sumo C, entonces el conjunto $A = A' -\{s\}$ satisface el problema planteado, ya que no existirá ninguna arista del estilo $(proy, area)$ que 
+contribuya al corte.
+
+Al maximizar el flujo, minimizamos el corte minimo. Esto quiere decir que maximizamos $\sum_{project\ i \in A} g_i - \sum_{area\ i \in A} c_i$, que es lo que buscamos.
+
+
+
+Volviendo al grafo de ejemplo, al aplicar el algoritmo de Ford Fulkerson, obtenemos un corte c(S,T), tal que $$S = \{ s, Proyecto 3, Proyecto 4, Area 3\}$$ 
+$$ T = \{ t, Projecto 1, Proyecto 2, Area 1, Area 2 \}$$
+
+La conclusión que obtenemos de este resultado es que:
+\begin{itemize}
+ \item[-] Los proyectos a realizar son: Proyecto 3, Proyecto 4
+ \item[-] Las areas a contratar son: Area 3
+ \item[-] Los proyectos a descartar: Proyecto 1, Proyecto 2
+ \item[-] Las areas a no contratar son: Area1, Area 2
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{FlujoDeRedes/GrafoResultado.png}
+\caption{Resultado aplicado al grafo. En azul el conjunto S, en rojo el conjunto T.}
+\end{figure}
+
+Se puede observar que no hay ninguna arista de capacidad $C+1$ que contribuya a la capacidad del corte. Esto significa que no existe ningun proyecto i en el conjunto S tal que alguna de sus areas requeridas 
+esté en el conjunto T, lo cual es correcto ya que en ese caso no se cumplirían las restricciones necesarias para la realización del proyecto.
+
+
+\subsection{Análisis de complejidad}
+
+Para realizar el análisis vamos a suponer lo siguiente. Sea G el grafo y sea m la cantidad de aristas y n la cantidad de vertices. Diremos que cada vértice tiene al menos una arista incidente, 
+por lo tanto $m >= \frac{n}{2}$, de modo tal que $O(m + n) = O(m)$, con el fin de simplificar las cuentas.
+
+Lo primero que podemos observar es que necesitamos calcular un camino desde el nodo s hasta el nodo t. Utilizando BFS, logramos esto con una complejidad de $O(m)$.
+
+Luego, aplicamos el método ''augment``, que tiene una complejidad de $O(m)$ debido a que se calcula el cuello de botella del camino obtenido en el BFS, 
+teniendo que iterar por todas las aristas, y luego se itera 
+nuevamente cada arista para mejorar el flujo donde cada iteración realiza operaciones finitas 
+en tiempo $O(1)$.
+
+Lo que faltaría determinar es la cantidad de iteraciones que realiza este algoritmo.
+Dentro del método ''augment``, el método ''bottleneck'' calcula el cuello de botella y en función de ese resultado se mejora el flujo del camino obtenido. En el peor de los casos, tendríamos que en cada 
+iteración a realizar obtengamos un cuello de botella de 1, provocando que tengamos que iterar hasta C veces como máximo para maximizar el flujo, siendo $ C = \sum\limits_{e\ out\ of\ s} c_e$, 
+para que de esta forma no quede ningun camino de s a t en el grafo residual y pueda terminar el algoritmo.
+
+En conclusión, la complejidad del algoritmo es:
+$$ O(C * m) $$
+
+Sea $p$ el numero de proyectos, $a$ el número de areas y $r$ la cantidad total de requisitos por parte de todos los proyectos.
+Estos números determinan la cantidad de aristas que tendrá nuestro grafo sobre el cual aplicaremos el algoritmo de Ford-Fulkerson.
+
+Dicha relación la podemos calcular teniendo en cuenta que para crear el grafo agregamos $p$ aristas que unen al vértice s con cada proyecto, 
+agregamos $a$ aristas que unen cada area con el vértice t, y luego tenemos una arista por cada requisito entre un proyecto y un area, agregandose $r$ aristas más. Por lo tanto tenemos que:
+$$ m = p + a + r $$
+
+Por lo tanto, la complejidad del algoritmo utilizando estos parametros es:
+$$ O ( C * (p +a +r)) $$
+
+\subsection{Análisis de tiempos}
+Para poder analizar los tiempos de ejecución, supondremos como casos una entrada donde el número de proyectos y el número de areas esté fijado a 1000. Las ganancias y los costos los 
+dejaremos fijo a una unidad. 
+Variaremos la cantidad de restricciones r para ver como se comporta el algoritmo.
+$C = \sum g_i$ no variará, por lo que solo tendrá influencia la cantidad de restricciones.
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+r 	& clocks       \\ \hline
+1000    & 94334        \\ \hline
+2000    & 142673       \\ \hline
+4000    & 301215       \\ \hline
+8000    & 266351       \\ \hline
+16000   & 348620       \\ \hline
+32000   & 723408       \\ \hline
+64000   & 1507858      \\ \hline
+128000  & 3052011      \\ \hline
+256000  & 5779835      \\ \hline
+512000  & 11684001     \\ \hline
+\end{tabular}
+\caption{Tabla de tiempos}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{FlujoDeRedes/tiempos.png}
+\caption{Gráfico de tiempos}
+\end{figure}
+
+Por medio del gráfico, se puede verificar el comportamiento lineal del algoritmo.
+Esto es, cuando duplicamos la cantidad de restricciones, se duplica el tiempo insumido para la ejecución del algoritmo.
+
+\newpage
+
+\subsection{Implementación del algoritmo}
+
+
+
+\renewcommand\refname{Referencias}
+\begin{thebibliography}{X}
+\bibitem{ALGORITHMDESIGN} Algorithm Design, Jon Kleinberg, Eva Tardos, 7.11 Project Selection
+\end{thebibliography}
+\newpage
+
+\end{document}

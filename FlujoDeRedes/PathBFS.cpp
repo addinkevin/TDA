@@ -27,6 +27,7 @@ PathBFS::PathBFS(Digraph* g, int source, int dest ) : Path(g, source, dest ){
 
 		//Barro la lista de adyacencia
 		for (std::list<Edge*>::iterator it=adjList->begin(); it != adjList->end(); ++it){
+				// Agregado adicional para no procesar las aristas invalidas del grafo residual.
 				if ((*it)->getCapacity() <= 0) continue;
 
 			    int vert = (*it)->getDest();

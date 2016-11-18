@@ -1,7 +1,3 @@
-//
-// Created by kevin on 11/12/16.
-//
-
 #ifndef TRABAJOPRACTICO2_PARSERTSPFILE_H
 #define TRABAJOPRACTICO2_PARSERTSPFILE_H
 

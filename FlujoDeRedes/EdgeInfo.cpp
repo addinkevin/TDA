@@ -1,7 +1,3 @@
-//
-// Created by kevin on 11/13/16.
-//
-
 #include "EdgeInfo.h"
 
 EdgeInfo::EdgeInfo(Edge *edge, int flow, int capacity) {

@@ -1,7 +1,3 @@
-//
-// Created by kevin on 11/12/16.
-//
-
 #include <sstream>
 #include "ParserTSPFile.h"
 

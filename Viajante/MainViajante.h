@@ -15,29 +15,49 @@
 
 class MainViajante {
 public:
-    void printMatrix(vector<vector<CostInt>>* matrix) {
-        for (vector<vector<CostInt>>::iterator it = matrix->begin(); it != matrix->end(); ++it) {
-            vector<CostInt> items = *it;
-            for (vector<CostInt>::iterator it2 = items.begin(); it2 != items.end(); ++it2) {
-                CostInt x = *it2;
-                std::cout << int(x) << "\t";
-            }
-            std::cout << std::endl;
-        }
-    }
 
-    void printSolution(vector<VertexInt>* solutionList) {
-        for (vector<VertexInt>::iterator it = solutionList->begin(); it != solutionList->end(); ++it) {
-            VertexInt x = *it;
-            std::cout << int(x) << std::endl;
+    void testExecutionTime() {
+        ofstream outputFile("./Viajante/files/tiempos.csv");
+
+        string path = "./Viajante/files/filesForTiming/";
+        clock_t start_time;
+        clock_t stop_time;
+
+        outputFile << "n, clocks" << std::endl;
+
+        std::vector<string> files;
+        files.push_back("tsp1");
+        for (int i = 15; i <= 21; i++) {
+            files.push_back("n"+to_string(i));
         }
-        std::cout << std::endl;
+
+        for (int i = 0; i < files.size(); i++ ) {
+            ParserTSPFile* parserTSPFile = new ParserTSPFile(path+files[i]+".txt", path + "solution.txt");
+            vector<vector<CostInt>>* matrix = parserTSPFile->getMatrix();
+            std::cout << "Inicio Viajante:" << files[i] << " nodos." << std::endl;
+            start_time = clock();
+            TSPRecursive* tspRecursive = new TSPRecursive(matrix, 0);
+            pair<CostInt, vector<VertexInt>*> par = tspRecursive->run();
+            stop_time = clock();
+
+            outputFile << files[i] << "," << stop_time - start_time << std::endl;
+            std::cout << "Fin Viajante:" << files[i] << " nodos." << std::endl;
+
+            delete parserTSPFile;
+            delete matrix;
+            delete tspRecursive;
+            delete par.second;
+        }
+
+        outputFile.close();
     }
 
     void run() {
         TSPTest test;
         test.runExample("./Viajante/files/prueba.txt", "./Viajante/files/prueba_s.txt");
         test.runExample("./Viajante/files/tsp1.txt", "./Viajante/files/tsp1_s.txt");
+
+        testExecutionTime();
     }
 };
 

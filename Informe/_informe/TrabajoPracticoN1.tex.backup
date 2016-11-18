@@ -175,9 +175,11 @@ Por lo tanto, la complejidad del algoritmo es
 $$ O(n W) $$ siendo n la cantidad de elementos en la mochila y W el peso máximo soportado por la mochila.
 
 \subsubsection{Análisis de tiempos}
+TODO :(
 \newpage
 
 \subsubsection{Implementación del algoritmo}
+TODO :(
 \newpage
 
 \subsection{El problema del viajante de comercio}
@@ -233,6 +235,24 @@ Si $n = 26$, tenemos que $26 * 2^{26} = 1744830464$. Supongamos que requerimos 8
 Nuestra implementación trato de optimizar el espacio lo más posible, utilizando para ello un entero para representar al conjunto de vértices, pero no pudo ser posible ejecutarlo.
 \newpage
 \subsubsection{Implementación del algoritmo}
+\lstinputlisting[language=C++]{Codigo/FlujoDeRedes/Edge.cpp}
+\lstinputlisting[language=C++]{Codigo/FlujoDeRedes/Edge.h}
+\lstinputlisting[language=C++]{Codigo/FlujoDeRedes/EdgeInfo.cpp}
+\lstinputlisting[language=C++]{Codigo/FlujoDeRedes/EdgeInfo.h}
+\lstinputlisting[language=C++]{Codigo/FlujoDeRedes/Flow.cpp}
+\lstinputlisting[language=C++]{Codigo/FlujoDeRedes/Flow.h}
+\lstinputlisting[language=C++]{Codigo/FlujoDeRedes/FordFulkerson.cpp}
+\lstinputlisting[language=C++]{Codigo/FlujoDeRedes/FordFulkerson.h}
+\lstinputlisting[language=C++]{Codigo/FlujoDeRedes/MainFlujoDeRedes.h}
+\lstinputlisting[language=C++]{Codigo/FlujoDeRedes/Mapping.h}
+\lstinputlisting[language=C++]{Codigo/FlujoDeRedes/ParserNetworkFlow.cpp}
+\lstinputlisting[language=C++]{Codigo/FlujoDeRedes/ParserNetworkFlow.h}
+\lstinputlisting[language=C++]{Codigo/FlujoDeRedes/PathBFS.cpp}
+\lstinputlisting[language=C++]{Codigo/FlujoDeRedes/PathBFS.h}
+\lstinputlisting[language=C++]{Codigo/FlujoDeRedes/Path.cpp}
+\lstinputlisting[language=C++]{Codigo/FlujoDeRedes/Path.h}
+\lstinputlisting[language=C++]{Codigo/FlujoDeRedes/VertexInfo.h}
+
 \newpage
 \section{Flujo de redes}
 \subsection{Modelado del problema}
@@ -271,16 +291,20 @@ El grafo nos quedaría de la siguiente manera:
 \end{figure}
 
 Para obtener qué proyectos se realizarán y qué areas se contratarán se debe calcular el corte mínimo de este grafo, esto es equivalente a calcular el flujo máximo. 
+
+
 Sea $A$ un conjunto de vertices tal que si existe un proyecto dentro del mismo, también están las areas requeridas para dicho proyecto.
 Definimos $A' = A \cup \{s\}$, $B' = (V - A) \cup \{t\}$, donde $V$ es el conjunto de vertices del grafo.
-Se puede demostrar que la capacidad del corte $c(A', B') = C - (\sum g_i - \sum c_i)$, donde $g_i$ es la ganancia del proyecto $i$ y $c_i$ es el costo para contratar el area $i$.
+Sea $c(A',B')$ la capacidad del corte $(A',B')$, se puede demostrar que 
+$$c(A', B') = C - \left(\sum g_i - \sum c_i\right)$$
+donde $g_i$ es la ganancia del proyecto $i$ y $c_i$ es el costo para contratar el area $i$.
 Tenemos tres tipos de aristas: Las aristas que conectan s con los proyectos, las aristas que conectan las areas con t y las aristas que conectan los proyectos con las areas.
 Estas ultimas no contribuyen a dicho corte debido al supuesto inicial sobre A, esto es, si está un proyecto también están las areas requeridas para el mismo.
 
-Las aristas que conectan s con los proyectos que no están en $A'$ aportan al corte
+Las aristas que conectan s con los proyectos que no están en $A$ aportan al corte
 $$ \sum_{project\ i \notin A} g_i $$
 
-Las aristas que conectan las areas que están en $A'$ con t aportan al corte
+Las aristas que conectan las areas que están en $A$ con t aportan al corte
 $$ \sum_{area\ i \in A} c_i $$
 
 Usando la definición de C
@@ -292,12 +316,14 @@ $$c(A',B') = \left( C - \sum_{project\ i \in A} g_i \right)+  \sum_{area\ i \in 
 $$c(A',B') = C - \left(\sum_{project\ i \in A} g_i - \sum_{area\ i \in A} c_i \right)$$
 
 
+Entonces, si $(A', B')$ es un corte con capacidad a lo sumo C, entonces el conjunto $A = A' -\{s\}$ satisface el problema planteado, ya que no existirá ninguna arista del estilo $(proy, area)$ que 
+contribuya al corte.
+
+Al maximizar el flujo, minimizamos el corte minimo. Esto quiere decir que maximizamos $\sum_{project\ i \in A} g_i - \sum_{area\ i \in A} c_i$, que es lo que buscamos.
 
 
 
-La demostración está detallada en el libro ``Algorithm Design'' \cite{ALGORITHMDESIGN}.
-
-Luego de aplicar el algoritmo de Ford Fulkerson, obtenemos un corte c(S,T), tal que $$S = \{ s, Proyecto 3, Proyecto 4, Area 3\}$$ 
+Volviendo al grafo de ejemplo, al aplicar el algoritmo de Ford Fulkerson, obtenemos un corte c(S,T), tal que $$S = \{ s, Proyecto 3, Proyecto 4, Area 3\}$$ 
 $$ T = \{ t, Projecto 1, Proyecto 2, Area 1, Area 2 \}$$
 
 La conclusión que obtenemos de este resultado es que:

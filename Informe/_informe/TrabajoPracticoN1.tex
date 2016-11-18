@@ -175,9 +175,11 @@ Por lo tanto, la complejidad del algoritmo es
 $$ O(n W) $$ siendo n la cantidad de elementos en la mochila y W el peso máximo soportado por la mochila.
 
 \subsubsection{Análisis de tiempos}
+TODO :(
 \newpage
 
 \subsubsection{Implementación del algoritmo}
+TODO :(
 \newpage
 
 \subsection{El problema del viajante de comercio}
@@ -233,6 +235,13 @@ Si $n = 26$, tenemos que $26 * 2^{26} = 1744830464$. Supongamos que requerimos 8
 Nuestra implementación trato de optimizar el espacio lo más posible, utilizando para ello un entero para representar al conjunto de vértices, pero no pudo ser posible ejecutarlo.
 \newpage
 \subsubsection{Implementación del algoritmo}
+\lstinputlisting[language=C++,caption=TSPRecursive.cpp]{Codigo/Viajante/TSPRecursive.cpp}
+\lstinputlisting[language=C++,caption=TSPRecursive.h]{Codigo/Viajante/TSPRecursive.h}
+\lstinputlisting[language=C++,caption=TSPTest.h]{Codigo/Viajante/TSPTest.h}
+\lstinputlisting[language=C++,caption=Types.h]{Codigo/Viajante/Types.h}
+
+
+
 \newpage
 \section{Flujo de redes}
 \subsection{Modelado del problema}
@@ -392,7 +401,15 @@ Esto es, cuando duplicamos la cantidad de restricciones, se duplica el tiempo in
 \newpage
 
 \subsection{Implementación del algoritmo}
-
+\lstinputlisting[language=C++,caption=Edge.cpp]{Codigo/FlujoDeRedes/Edge.cpp}
+\lstinputlisting[language=C++,caption=EdgeInfo.cpp]{Codigo/FlujoDeRedes/EdgeInfo.cpp}
+\lstinputlisting[language=C++,caption=Flow.cpp]{Codigo/FlujoDeRedes/Flow.cpp}
+\lstinputlisting[language=C++,caption=FordFulkerson.h]{Codigo/FlujoDeRedes/FordFulkerson.h}
+\lstinputlisting[language=C++,caption=FordFulkerson.cpp]{Codigo/FlujoDeRedes/FordFulkerson.cpp}
+\lstinputlisting[language=C++,caption=Mapping.h]{Codigo/FlujoDeRedes/Mapping.h}
+\lstinputlisting[language=C++,caption=ParserNetworkFlow.cpp]{Codigo/FlujoDeRedes/ParserNetworkFlow.cpp}
+\lstinputlisting[language=C++,caption=PathBFS.cpp]{Codigo/FlujoDeRedes/PathBFS.cpp}
+\lstinputlisting[language=C++,caption=VertexInfo.h]{Codigo/FlujoDeRedes/VertexInfo.h}
 
 
 \renewcommand\refname{Referencias}

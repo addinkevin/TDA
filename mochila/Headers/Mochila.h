@@ -15,12 +15,14 @@ using namespace std;
 class Mochila {
 
 public:
-	Mochila();
+	Mochila(string);
 	~Mochila();
 
 private:
-	int initMochila();
+
+	int initMochila(string);
 	void computarMochila(Stage);
+
 };
 
 #endif /* MOCHILA_H_ */

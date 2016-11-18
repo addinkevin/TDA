@@ -19,7 +19,8 @@ int main() {
         //MainFlujoDeRedes().run();
 
         // Mochila test
-        Mochila mochila;
+        string ruta = "/home/gatti2602/Downloads/hardinstances_pisinger/knapPI_16_100_1000.csv";
+        Mochila* mochila = new Mochila(ruta);
 
     } catch(string & error) {
         std::cout << "***ERROR***: "<< error << endl;

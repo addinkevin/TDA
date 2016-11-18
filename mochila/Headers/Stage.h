@@ -22,7 +22,7 @@ public:
 	string name;
 	int qtyNode;
 	int capacityBag;
-	list<Node*> nodes = *(new list<Node*>());
+	list<Node*> nodes;// = *(new list<Node*>());
 
 	void loadNode(string* line);
 	bool isFull();

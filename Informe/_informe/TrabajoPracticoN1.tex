@@ -175,11 +175,53 @@ Por lo tanto, la complejidad del algoritmo es
 $$ O(n W) $$ siendo n la cantidad de elementos en la mochila y W el peso máximo soportado por la mochila.
 
 \subsubsection{Análisis de tiempos}
-TODO :(
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Mochila/100_1000.png}
+\caption{Gráfico de tiempos de las instancias de n=100, W=1000}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Mochila/500_1000.png}
+\caption{Gráfico de tiempos de las instancias de n=500, W=1000}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Mochila/1000_1000.png}
+\caption{Gráfico de tiempos de las instancias de n=1000, W=1000}
+\end{figure}
+
+Se puede observar que los archivos de prueba están preparados de forma tal que las primeras instancias no incluyan a ningún ítem y que las ultimas instancias incluyan a todos los items. Es por esto que 
+va aumentando el tiempo incurrido debido a que se hacen algunas operaciones adicionales.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{n-w} & \textbf{Segundos} \\ \hline
+100-1000     & 0,05347443        \\ \hline
+500-1000     & 1,33120953        \\ \hline
+1000-1000    & 5,24668911        \\ \hline
+\end{tabular}
+\caption{Tiempos promedio}
+\end{table}
+
+Es esta ultima tabla calculamos los tiempos promedios para las instancias de los archivos probados.
+Lo extraño que se puede observar es que a pesar de que duplicamos uno de los parámetros, no se duplico el tiempo, sino que aumento más del doble.
+
 \newpage
 
 \subsubsection{Implementación del algoritmo}
-TODO :(
+\lstinputlisting[language=C++,caption=Mochila.h]{Codigo/mochila/Headers/Mochila.h}
+\lstinputlisting[language=C++,caption=Node.h]{Codigo/mochila/Headers/Node.h}
+\lstinputlisting[language=C++,caption=Stage.h]{Codigo/mochila/Headers/Stage.h}
+\lstinputlisting[language=C++,caption=Mochila.cpp]{Codigo/mochila/Source/Mochila.cpp}
+\lstinputlisting[language=C++,caption=Stage.cpp]{Codigo/mochila/Source/Stage.cpp}
+
+
 \newpage
 
 \subsection{El problema del viajante de comercio}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.11)  18 NOV 2016 18:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.11)  18 NOV 2016 23:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -693,27 +693,42 @@ acticoN1.toc)
 \openout4 = `TrabajoPracticoN1.toc'.
 
 
-[1] [2] [3]
-Overfull \hbox (32.96089pt too wide) in paragraph at lines 198--217
-\OT1/cmr/m/n/12 Para la medici^^Son de tiem-pos, cor-rere-mos el archivo de pru
-eba ``p01.tsp''(renombrado
- []
+[1] <Mochila/100_1000.png, id=17, 455.45157pt x 255.95625pt>
+File: Mochila/100_1000.png Graphic file (type png)
 
-<ProblemaDelViajante/tiempos.png, id=24, 455.45157pt x 255.95625pt>
-File: ProblemaDelViajante/tiempos.png Graphic file (type png)
-
-<use ProblemaDelViajante/tiempos.png>
-Package pdftex.def Info: ProblemaDelViajante/tiempos.png used on input line 221
-.
+<use Mochila/100_1000.png>
+Package pdftex.def Info: Mochila/100_1000.png used on input line 181.
 (pdftex.def)             Requested size: 390.0pt x 219.17683pt.
- [4] [5 <./ProblemaDelViajante/tiempos.png (PNG copy)>] (./Codigo/Viajante/TSPR
-ecursive.cpp
+
+<Mochila/500_1000.png, id=18, 455.45157pt x 255.95625pt>
+File: Mochila/500_1000.png Graphic file (type png)
+
+<use Mochila/500_1000.png>
+Package pdftex.def Info: Mochila/500_1000.png used on input line 187.
+(pdftex.def)             Requested size: 390.0pt x 219.17683pt.
+ [2 <./Mochila/100_1000.png (PNG copy)>]
+<Mochila/1000_1000.png, id=23, 455.45157pt x 255.95625pt>
+File: Mochila/1000_1000.png Graphic file (type png)
+
+<use Mochila/1000_1000.png>
+Package pdftex.def Info: Mochila/1000_1000.png used on input line 193.
+(pdftex.def)             Requested size: 390.0pt x 219.17683pt.
+ [3 <./Mochila/500_1000.png (PNG copy)> <./Mochila/1000_1000.png (PNG copy)>] [
+4] (./Codigo/mochila/Headers/Mochila.h
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 8.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 8.
+
 ! Font TS1/cmr/m/n/10=tcrm1000 at 10.0pt not loadable: Metric (TFM) file not fo
 und.
 <to be read again> 
                    relax 
-l.3 /*
-      
+l.10 	int** 
+            tPesos;
 I wasn't able to read the size data for this font,
 so I will ignore the font specification.
 [Wizards can fix TFM files using TFtoPL/PLtoTF.]
@@ -722,34 +737,72 @@ e.g., type `I\font<same font id>=<substitute font name>'.
 
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 4.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 24.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 4.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 24.
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 11.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 11.
+(./Codigo/mochila/Headers/Node.h [5]
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+) (./Codigo/mochila/Headers/Stage.h
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
- [6]
+)
+[6] (./Codigo/mochila/Source/Mochila.cpp
+Missing character: There is no * in font nullfont!
+ [7])
+(./Codigo/mochila/Source/Stage.cpp
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no ' in font nullfont!
+Missing character: There is no ' in font nullfont!
+ [8]
+Missing character: There is no ' in font nullfont!
+Missing character: There is no ' in font nullfont!
+Missing character: There is no ' in font nullfont!
+Missing character: There is no ' in font nullfont!
+Missing character: There is no ' in font nullfont!
+Missing character: There is no ' in font nullfont!
+) [9]
+Overfull \hbox (32.96089pt too wide) in paragraph at lines 240--259
+\OT1/cmr/m/n/12 Para la medici^^Son de tiem-pos, cor-rere-mos el archivo de pru
+eba ``p01.tsp''(renombrado
+ []
+
+<ProblemaDelViajante/tiempos.png, id=51, 455.45157pt x 255.95625pt>
+File: ProblemaDelViajante/tiempos.png Graphic file (type png)
+
+<use ProblemaDelViajante/tiempos.png>
+Package pdftex.def Info: ProblemaDelViajante/tiempos.png used on input line 263
+.
+(pdftex.def)             Requested size: 390.0pt x 219.17683pt.
+ [10] [11 <./ProblemaDelViajante/tiempos.png (PNG copy)>] (./Codigo/Viajante/TS
+PRecursive.cpp
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+ [12]
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
@@ -767,12 +820,12 @@ Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
- [7]
+ [13]
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
-) [8]
+) [14]
 (./Codigo/Viajante/TSPRecursive.h
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
@@ -790,7 +843,7 @@ Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
- [9]
+ [15]
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
@@ -805,20 +858,20 @@ Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
- [10]
+ [16]
 Missing character: There is no * in font nullfont!
 
-[11]
+[17]
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
- [12]) (./Codigo/Viajante/Types.h) [13]
+ [18]) (./Codigo/Viajante/Types.h) [19]
 ! Font TS1/cmr/m/n/12=tcrm1200 at 12.0pt not loadable: Metric (TFM) file not fo
 und.
 <to be read again> 
                    relax 
-l.248 ...enemos 4 proyectos, con ganancias de 10\$
+l.290 ...enemos 4 proyectos, con ganancias de 10\$
                                                   , 5\$, 4\$ y 3\$, y supong...
 I wasn't able to read the size data for this font,
 so I will ignore the font specification.
@@ -833,31 +886,31 @@ Missing character: There is no $ in font nullfont!
 Missing character: There is no $ in font nullfont!
 Missing character: There is no $ in font nullfont!
 Missing character: There is no $ in font nullfont!
-[14] <FlujoDeRedes/GrafoInicial.png, id=68, 765.86125pt x 444.66125pt>
+[20] <FlujoDeRedes/GrafoInicial.png, id=90, 765.86125pt x 444.66125pt>
 File: FlujoDeRedes/GrafoInicial.png Graphic file (type png)
 
 <use FlujoDeRedes/GrafoInicial.png>
-Package pdftex.def Info: FlujoDeRedes/GrafoInicial.png used on input line 278.
+Package pdftex.def Info: FlujoDeRedes/GrafoInicial.png used on input line 320.
 (pdftex.def)             Requested size: 390.0pt x 226.43498pt.
- [15 <./FlujoDeRedes/GrafoInicial.png>]
-<FlujoDeRedes/GrafoResultado.png, id=75, 765.86125pt x 444.66125pt>
+ [21 <./FlujoDeRedes/GrafoInicial.png>]
+<FlujoDeRedes/GrafoResultado.png, id=97, 765.86125pt x 444.66125pt>
 File: FlujoDeRedes/GrafoResultado.png Graphic file (type png)
 
 <use FlujoDeRedes/GrafoResultado.png>
-Package pdftex.def Info: FlujoDeRedes/GrafoResultado.png used on input line 328
+Package pdftex.def Info: FlujoDeRedes/GrafoResultado.png used on input line 370
 .
 (pdftex.def)             Requested size: 390.0pt x 226.43498pt.
- [16] [17 <./FlujoDeRedes/GrafoResultado.png>] [18] <FlujoDeRedes/tiempos.png, 
-id=87, 455.45157pt x 255.95625pt>
+ [22] [23 <./FlujoDeRedes/GrafoResultado.png>] [24] <FlujoDeRedes/tiempos.png, 
+id=109, 455.45157pt x 255.95625pt>
 File: FlujoDeRedes/tiempos.png Graphic file (type png)
 
 <use FlujoDeRedes/tiempos.png>
-Package pdftex.def Info: FlujoDeRedes/tiempos.png used on input line 394.
+Package pdftex.def Info: FlujoDeRedes/tiempos.png used on input line 436.
 (pdftex.def)             Requested size: 390.0pt x 219.17683pt.
- [19 <./FlujoDeRedes/tiempos.png (PNG copy)>]
+ [25 <./FlujoDeRedes/tiempos.png (PNG copy)>]
 (./Codigo/FlujoDeRedes/Edge.cpp) (./Codigo/FlujoDeRedes/EdgeInfo.cpp
 Missing character: There is no * in font nullfont!
- [20])
+ [26])
 (./Codigo/FlujoDeRedes/Flow.cpp
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
@@ -870,7 +923,7 @@ Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
- [21]) (./Codigo/FlujoDeRedes/FordFulkerson.h
+ [27]) (./Codigo/FlujoDeRedes/FordFulkerson.h
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
@@ -881,50 +934,7 @@ Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 
-[22]) (./Codigo/FlujoDeRedes/FordFulkerson.cpp
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
- [23]
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
- [24]
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
- [25]
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-)
-(./Codigo/FlujoDeRedes/Mapping.h
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
-Missing character: There is no * in font nullfont!
- [26]
-Missing character: There is no * in font nullfont!
-)
-(./Codigo/FlujoDeRedes/ParserNetworkFlow.cpp [27]
-Missing character: There is no ' in font nullfont!
-Missing character: There is no ' in font nullfont!
- [28]
+[28]) (./Codigo/FlujoDeRedes/FordFulkerson.cpp
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
@@ -937,7 +947,50 @@ Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
  [30]
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+ [31]
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+)
+(./Codigo/FlujoDeRedes/Mapping.h
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+ [32]
+Missing character: There is no * in font nullfont!
+)
+(./Codigo/FlujoDeRedes/ParserNetworkFlow.cpp [33]
+Missing character: There is no ' in font nullfont!
+Missing character: There is no ' in font nullfont!
+ [34]
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+ [35]
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no * in font nullfont!
+ [36]
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
@@ -946,23 +999,23 @@ Missing character: There is no * in font nullfont!
 )
 (./Codigo/FlujoDeRedes/PathBFS.cpp
 Missing character: There is no * in font nullfont!
- [31]
+ [37]
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
 Missing character: There is no * in font nullfont!
-) [32]
-(./Codigo/FlujoDeRedes/VertexInfo.h) [33] [34] (./TrabajoPracticoN1.aux) ) 
+) [38]
+(./Codigo/FlujoDeRedes/VertexInfo.h) [39] [40] (./TrabajoPracticoN1.aux) ) 
 Here is how much of TeX's memory you used:
- 15852 strings out of 494953
- 297174 string characters out of 6180976
+ 15937 strings out of 494953
+ 298547 string characters out of 6180976
  486189 words of memory out of 5000000
- 18780 multiletter control sequences out of 15000+600000
+ 18846 multiletter control sequences out of 15000+600000
  11046 words of font info for 40 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 62i,10n,122p,448b,1087s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,10n,122p,448b,989s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texl
@@ -977,10 +1030,10 @@ mr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on TrabajoPracticoN1.pdf (35 pages, 384551 bytes).
+Output written on TrabajoPracticoN1.pdf (41 pages, 459531 bytes).
 PDF statistics:
- 184 PDF objects out of 1000 (max. 8388607)
- 124 compressed objects within 2 object streams
+ 208 PDF objects out of 1000 (max. 8388607)
+ 139 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 38 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 53 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -175,28 +175,70 @@ Por lo tanto, la complejidad del algoritmo es
 $$ O(n W) $$ siendo n la cantidad de elementos en la mochila y W el peso máximo soportado por la mochila.
 
 \subsubsection{Análisis de tiempos}
-TODO :(
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Mochila/100_1000.png}
+\caption{Gráfico de tiempos de las instancias de n=100, W=1000}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Mochila/500_1000.png}
+\caption{Gráfico de tiempos de las instancias de n=500, W=1000}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Mochila/1000_1000.png}
+\caption{Gráfico de tiempos de las instancias de n=1000, W=1000}
+\end{figure}
+
+Se puede observar que los archivos de prueba están preparados de forma tal que las primeras instancias no incluyan a ningun item y que las ultimas instancias incluyan a todos los items. Es por esto que 
+va aumentando el tiempo incurrido debido a que se hacen algunas operaciones adicionales.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{n-w} & \textbf{Segundos} \\ \hline
+100-1000     & 0,05347443        \\ \hline
+500-1000     & 1,33120953        \\ \hline
+1000-1000    & 5,24668911        \\ \hline
+\end{tabular}
+\caption{Tiempos promedio}
+\end{table}
+
+Es esta ultima tabla calculamos los tiempos promedios para las instancias de los archivos probados.
+Lo extraño que se puede observar es que a pesar de que duplicamos uno de los parametros, no se duplico el tiempo, sino que aumento más del doble.
+
 \newpage
 
 \subsubsection{Implementación del algoritmo}
-TODO :(
+\lstinputlisting[language=C++,caption=Mochila.h]{Codigo/mochila/Headers/Mochila.h}
+\lstinputlisting[language=C++,caption=Node.h]{Codigo/mochila/Headers/Node.h}
+\lstinputlisting[language=C++,caption=Stage.h]{Codigo/mochila/Headers/Stage.h}
+\lstinputlisting[language=C++,caption=Mochila.cpp]{Codigo/mochila/Source/Mochila.cpp}
+\lstinputlisting[language=C++,caption=Stage.cpp]{Codigo/mochila/Source/Stage.cpp}
+
+
 \newpage
 
 \subsection{El problema del viajante de comercio}
 \subsubsection{Análisis de complejidad}
-En este algoritmo tenemos que analizar los distintos conjuntos de vertices posibles. Para cada conjunto de vertices posible, tenemos que determinar el optimo de cada vertice para recorrer ese conjunto.
-Para determinar ese optimo, tenemos que realizar un minimo entre el resto de los vertices del conjunto, haciendo que la complejidad del algoritmo en tiempo sea:
+En este algoritmo tenemos que analizar los distintos conjuntos de vértices posibles. Para cada conjunto de vértices posible, tenemos que determinar el óptimo de cada vértice para recorrer ese conjunto.
+Para determinar ese óptimo, tenemos que realizar un mínimo entre el resto de los vértices del conjunto, haciendo que la complejidad del algoritmo en tiempo sea:
 $$O(n^2 2^n)$$
 siendo n la cantidad de vértices.
 
-En cuanto el espacio, hay que tener en cuenta que tenemos n vértices, y por cada vertice necesitamos guardar el resultado optimo para los distintos conjuntos de vertices posibles.
+En cuanto el espacio, hay que tener en cuenta que tenemos n vértices, y por cada vértice necesitamos guardar el resultado óptimo para los distintos conjuntos de vértices posibles.
 Por lo tanto, la complejidad en espacio del algoritmo es:
 $$O(n 2^n)$$
 siendo n la cantidad de vértices.
 
 \subsubsection{Análisis de tiempos}
-Para la medición de tiempos, correremos el archivo de prueba ``p01.tsp''(renombrado como tsp1) y 7 archivos adicionales que contienen desde 15 vertices hasta 21 vertices inclusive, 
-extraidos del archivo
+Para la medición de tiempos, correremos el archivo de prueba ``p01.tsp''(renombrado como tsp1) y 7 archivos adicionales que contienen desde 15 vértices hasta 21 vértices inclusive, 
+extraídos del archivo
 ``att48\_d.txt''.
 La idea es poder ver como varía el tiempo con tan solo aumentar la entrada en una unidad.
 \begin{table}[H]
@@ -222,7 +264,7 @@ n21             & 117923147       \\ \hline
 \caption{Gráfico de tiempos}
 \end{figure}
 
-Con el gráfico podemos observar que la ejecución del archivo de prueba ``p01.tsp''(renombrado como tsp1) es casi instantanea.
+Con el gráfico podemos observar que la ejecución del archivo de prueba ``p01.tsp''(renombrado como tsp1) es casi instantánea.
 
 También podemos apreciar que a medida que aumenta el número de nodos en tan solo una unidad, aumenta enormemente el tiempo insumido a más del doble.
 
@@ -245,13 +287,13 @@ Nuestra implementación trato de optimizar el espacio lo más posible, utilizand
 \newpage
 \section{Flujo de redes}
 \subsection{Modelado del problema}
-Para el modelado del problema, supongamos que tenemos 4 proyectos, con ganancias de 10\$, 5\$, 4\$ y 3\$, y supongamos que tenemos 3 areas con costos de 15\$, 8\$ y 4\$.
-Para realizar un proyecto dado requerimos contratar ciertas areas, por ejemplo:
+Para el modelado del problema, supongamos que tenemos 4 proyectos, con ganancias de 10\$, 5\$, 4\$ y 3\$, y supongamos que tenemos 3 áreas con costos de 15\$, 8\$ y 4\$.
+Para realizar un proyecto dado requerimos contratar ciertas áreas, por ejemplo:
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|}
 \hline
-Proyecto & Areas requeridas \\ \hline
+Proyecto & Áreas requeridas \\ \hline
 1        & 1, 2             \\ \hline
 2        & 2,3              \\ \hline
 3        & 3                \\ \hline
@@ -260,15 +302,15 @@ Proyecto & Areas requeridas \\ \hline
 \caption{Tabla de requisitos}
 \end{table}
 
-Resolveremos este problema utilizando flujo de redes, basandonos en la versión del libro ``Algorithm Design'' \cite{ALGORITHMDESIGN}.
+Resolveremos este problema utilizando flujo de redes, basándonos en la versión del libro ``Algorithm Design'' \cite{ALGORITHMDESIGN}.
 
-Para ello lo que haremos será crear un grafo que contengan como vertices los proyectos, las areas y dos vertices adicionales, s y t.
+Para ello lo que haremos será crear un grafo que contengan como vértices los proyectos, las áreas y dos vértices adicionales, s y t.
 
-Conectaremos el vertice s con cada proyecto y conectaremos cada area con el vertice t.
-Luego, conectaremos cada proyecto con las areas requeridas para su realización.
+Conectaremos el vértice s con cada proyecto y conectaremos cada área con el vértice t.
+Luego, conectaremos cada proyecto con las áreas requeridas para su realización.
 
-En cuanto a las capacidad de las aristas, las aristas que conecten el vertice s con los proyectos tendrán como capacidad la ganancia de realizar dicho proyecto. Para las aristas que conecten las areas 
-con el vertice t tendrán como capacidad el costo de contratar dicha area. Por ultimo, las aristas que conectan los proyectos con las areas tendrán capacidad ''Infinita``, de modo que no constituyan 
+En cuanto a las capacidad de las aristas, las aristas que conecten el vértice s con los proyectos tendrán como capacidad la ganancia de realizar dicho proyecto. Para las aristas que conecten las áreas 
+con el vértice t tendrán como capacidad el costo de contratar dicha área. Por ultimo, las aristas que conectan los proyectos con las áreas tendrán capacidad ''Infinita``, de modo que no constituyan 
 una limitación para el algoritmo. Esta capacidad infinita basta que sea igual a $ C + 1 $, siendo $ C = \sum g_i $, donde $g_i$ es la ganancia del proyecto $i$.
 \newpage
 El grafo nos quedaría de la siguiente manera:
@@ -279,21 +321,21 @@ El grafo nos quedaría de la siguiente manera:
 \caption{Grafo de ejemplo}
 \end{figure}
 
-Para obtener qué proyectos se realizarán y qué areas se contratarán se debe calcular el corte mínimo de este grafo, esto es equivalente a calcular el flujo máximo. 
+Para obtener qué proyectos se realizarán y qué áreas se contratarán se debe calcular el corte mínimo de este grafo, esto es equivalente a calcular el flujo máximo. 
 
 
-Sea $A$ un conjunto de vertices tal que si existe un proyecto dentro del mismo, también están las areas requeridas para dicho proyecto.
-Definimos $A' = A \cup \{s\}$, $B' = (V - A) \cup \{t\}$, donde $V$ es el conjunto de vertices del grafo.
+Sea $A$ un conjunto de vértices tal que si existe un proyecto dentro del mismo, también están las áreas requeridas para dicho proyecto.
+Definimos $A' = A \cup \{s\}$, $B' = (V - A) \cup \{t\}$, donde $V$ es el conjunto de vértices del grafo.
 Sea $c(A',B')$ la capacidad del corte $(A',B')$, se puede demostrar que 
 $$c(A', B') = C - \left(\sum g_i - \sum c_i\right)$$
-donde $g_i$ es la ganancia del proyecto $i$ y $c_i$ es el costo para contratar el area $i$.
-Tenemos tres tipos de aristas: Las aristas que conectan s con los proyectos, las aristas que conectan las areas con t y las aristas que conectan los proyectos con las areas.
-Estas ultimas no contribuyen a dicho corte debido al supuesto inicial sobre A, esto es, si está un proyecto también están las areas requeridas para el mismo.
+donde $g_i$ es la ganancia del proyecto $i$ y $c_i$ es el costo para contratar el área $i$.
+Tenemos tres tipos de aristas: Las aristas que conectan s con los proyectos, las aristas que conectan las áreas con t y las aristas que conectan los proyectos con las áreas.
+Estas ultimas no contribuyen a dicho corte debido al supuesto inicial sobre A, esto es, si está un proyecto también están las áreas requeridas para el mismo.
 
 Las aristas que conectan s con los proyectos que no están en $A$ aportan al corte
 $$ \sum_{project\ i \notin A} g_i $$
 
-Las aristas que conectan las areas que están en $A$ con t aportan al corte
+Las aristas que conectan las áreas que están en $A$ con t aportan al corte
 $$ \sum_{area\ i \in A} c_i $$
 
 Usando la definición de C
@@ -308,19 +350,19 @@ $$c(A',B') = C - \left(\sum_{project\ i \in A} g_i - \sum_{area\ i \in A} c_i \r
 Entonces, si $(A', B')$ es un corte con capacidad a lo sumo C, entonces el conjunto $A = A' -\{s\}$ es válido, ya que no existirá ninguna arista del estilo $(proy, area)$ que 
 contribuya al corte.
 
-Al maximizar el flujo, obtenemos un corte minimo. Esto quiere decir que maximizamos $\sum_{project\ i \in A} g_i - \sum_{area\ i \in A} c_i$, que es lo que buscamos.
+Al maximizar el flujo, obtenemos un corte mínimo. Esto quiere decir que maximizamos $\sum_{project\ i \in A} g_i - \sum_{area\ i \in A} c_i$, que es lo que buscamos.
 
 
 
 Volviendo al grafo de ejemplo, al aplicar el algoritmo de Ford Fulkerson, obtenemos un corte c(S,T), tal que $$S = \{ s, Proyecto 3, Proyecto 4, Area 3\}$$ 
-$$ T = \{ t, Projecto 1, Proyecto 2, Area 1, Area 2 \}$$
+$$ T = \{ t, Proyecto 1, Proyecto 2, Area 1, Area 2 \}$$
 
 La conclusión que obtenemos de este resultado es que:
 \begin{itemize}
  \item[-] Los proyectos a realizar son: Proyecto 3, Proyecto 4
- \item[-] Las areas a contratar son: Area 3
+ \item[-] Las áreas a contratar son: Área 3
  \item[-] Los proyectos a descartar: Proyecto 1, Proyecto 2
- \item[-] Las areas a no contratar son: Area1, Area 2
+ \item[-] Las áreas a no contratar son: Área1, Área 2
 \end{itemize}
 
 \begin{figure}[H]
@@ -329,13 +371,13 @@ La conclusión que obtenemos de este resultado es que:
 \caption{Resultado aplicado al grafo. En azul el conjunto S, en rojo el conjunto T.}
 \end{figure}
 
-Se puede observar que no hay ninguna arista de capacidad $C+1$ que contribuya a la capacidad del corte. Esto significa que no existe ningun proyecto i en el conjunto S tal que alguna de sus areas requeridas 
+Se puede observar que no hay ninguna arista de capacidad $C+1$ que contribuya a la capacidad del corte. Esto significa que no existe ningún proyecto i en el conjunto S tal que alguna de sus áreas requeridas 
 esté en el conjunto T, lo cual es correcto ya que en ese caso no se cumplirían las restricciones necesarias para la realización del proyecto.
 
 
 \subsection{Análisis de complejidad}
 
-Para realizar el análisis vamos a suponer lo siguiente. Sea G el grafo y sea m la cantidad de aristas y n la cantidad de vertices. Diremos que cada vértice tiene al menos una arista incidente, 
+Para realizar el análisis vamos a suponer lo siguiente. Sea G el grafo y sea m la cantidad de aristas y n la cantidad de vértices. Diremos que cada vértice tiene al menos una arista incidente, 
 por lo tanto $m >= \frac{n}{2}$, de modo tal que $O(m + n) = O(m)$, con el fin de simplificar las cuentas.
 
 Lo primero que podemos observar es que necesitamos calcular un camino desde el nodo s hasta el nodo t. Utilizando BFS, logramos esto con una complejidad de $O(m)$.
@@ -353,18 +395,18 @@ para que de esta forma no quede camino de s hacia t en el grafo residual y pueda
 En conclusión, la complejidad del algoritmo es:
 $$ O(C * m) $$
 
-Sea $p$ el numero de proyectos, $a$ el número de areas y $r$ la cantidad total de requisitos por parte de todos los proyectos.
+Sea $p$ el numero de proyectos, $a$ el número de áreas y $r$ la cantidad total de requisitos por parte de todos los proyectos.
 Estos números determinan la cantidad de aristas que tendrá nuestro grafo sobre el cual aplicaremos el algoritmo de Ford-Fulkerson.
 
 Dicha relación la podemos calcular teniendo en cuenta que para crear el grafo agregamos $p$ aristas que unen al vértice s con cada proyecto, 
-agregamos $a$ aristas que unen cada area con el vértice t, y luego tenemos una arista por cada requisito entre un proyecto y un area, agregandose $r$ aristas más. Por lo tanto tenemos que:
+agregamos $a$ aristas que unen cada área con el vértice t, y luego tenemos una arista por cada requisito entre un proyecto y un área, agregándose $r$ aristas más. Por lo tanto tenemos que:
 $$ m = p + a + r $$
 
-Por lo tanto, la complejidad del algoritmo utilizando estos parametros es:
+Por lo tanto, la complejidad del algoritmo utilizando estos parámetros es:
 $$ O ( C * (p +a +r)) $$
 
 \subsection{Análisis de tiempos}
-Para poder analizar los tiempos de ejecución, supondremos como casos una entrada donde el número de proyectos y el número de areas esté fijado a 1000. Las ganancias y los costos los 
+Para poder analizar los tiempos de ejecución, supondremos como casos una entrada donde el número de proyectos y el número de áreas esté fijado a 1000. Las ganancias y los costos los 
 dejaremos fijo a una unidad. 
 Variaremos la cantidad de restricciones r para ver como se comporta el algoritmo.
 $C = \sum g_i$ no variará, por lo que solo tendrá influencia la cantidad de restricciones.

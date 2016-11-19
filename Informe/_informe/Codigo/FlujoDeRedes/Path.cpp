@@ -17,9 +17,9 @@ Path::Path(Digraph* g, int source, int dest){
 }
 
 Path::~Path() {
-	delete marked;
-	delete edgeTo;
-	delete distance;
+	delete[] marked;
+	delete[] edgeTo;
+	delete[] distance;
 }
 
 bool Path::visited(int v) {
